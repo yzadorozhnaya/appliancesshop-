@@ -4,9 +4,9 @@
         <div class="breadcrumb-area mt-30">
             <div class="container">
                 <div class="breadcrumb">
-                    <ul class="d-flex align-items-center">
-                        <li><a href="/index">Home</a></li>
-                        <li class="active"><a href="/contact">Contact Us</a></li>
+                     <ul class="d-flex align-items-center">
+                        <li><a href="{{route('index')}}">Головна</a></li>
+                        <li class="active"><a href="{{route('contact')}}">контакти</a></a></li>
                     </ul>
                 </div>
             </div>

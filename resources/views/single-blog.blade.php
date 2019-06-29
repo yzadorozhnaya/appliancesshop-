@@ -5,9 +5,9 @@
             <div class="container">
                 <div class="breadcrumb">
                     <ul class="d-flex align-items-center">
-                        <li><a href="/index">Home</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li class="active"><a href="/single">Single Blog</a></li>
+                        <li><a href="{{route('index')}}">Головна</a></li>
+                        <li><a href="{{route('blog')}}">блог</a></li>
+                        <li class="active"><a href="{{route('single')}}">подробиці блогу</a></li>
                     </ul>
                 </div>
             </div>

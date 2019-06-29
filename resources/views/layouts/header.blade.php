@@ -125,7 +125,7 @@
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
-                                    <li><a href="/blog">блог<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="{{route('blog')}}">блог<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
                                             <li><a href="{{route('single')}}">подробиці блогу</a></li>
@@ -159,7 +159,7 @@
                                             </ul>
                                             <!-- Mobile Menu Dropdown End -->
                                         </li>
-                                        <li><a href="/blog">блог</a>
+                                        <li><a href="{{route('blog')}}">блог</a>
                                             <!-- Mobile Menu Dropdown Start -->
                                             <ul>
                                                 <li><a href="{{route('single')}}">подробиці блогу</a></li>

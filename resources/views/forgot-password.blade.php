@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <ul class="d-flex align-items-center">
-                        <li><a href="/index">Home</a></li>
+                        <li><a href="{{route('index')}}">Головна</a></li>
                         <li><a href="/register">account</a></li>
                         <li class="active"><a href="/forgot">Forgot Password</a></li>
                     </ul>

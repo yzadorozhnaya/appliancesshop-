@@ -5,8 +5,8 @@
             <div class="container">
                 <div class="breadcrumb">
                     <ul class="d-flex align-items-center">
-                        <li><a href="/index">Home</a></li>
-                        <li class="active"><a href="/product">Shop</a></li>
+                        <li><a href="{{route('index')}}">Головна</a></li>
+                        <li class="active"><a href="{{route('shop')}}">Магазин</a></li>
                     </ul>
                 </div>
             </div>
