@@ -7,8 +7,7 @@
                             <i class="lnr lnr-gift"></i>
                         </div>
                         <div class="support-desc">
-                            <h6>Great Value</h6>
-                            <span>Nunc id ante quis tellus faucibus dictum in eget.</span>
+                            <h6>ВЕЛИЧЕЗНИЙ АСОРТИМЕНТ</h6>
                         </div>
                     </div>
                     <div class="single-support">
@@ -16,8 +15,8 @@
                             <i class="lnr lnr-rocket" ></i>
                         </div>
                         <div class="support-desc">
-                            <h6>Worlwide Delivery</h6>
-                            <span>Quisque posuere enim augue, in rhoncus diam dictum non</span>
+                            <h6>ДОСТАВКА ТОВАРУ ПО УКРАЇНІ</h6>
+                            <!--<p>Для жителів: Дніпропетровськa працюють філії безкоштовної доставки. В інші регіони України ми доставимо ваше замовлення за допомогою кур'єрських служб доставки.</p>-->
                         </div>
                     </div>
                     <div class="single-support">
@@ -25,8 +24,7 @@
                            <i class="lnr lnr-lock"></i>
                         </div>
                         <div class="support-desc">
-                            <h6>Safe Payment</h6>
-                            <span>Duis suscipit elit sem, sed mattis tellus accumsan.</span>
+                            <h6>ОПЛАТА ГОТІВКОЮ АБО КАРТОЮ</h6>
                         </div>
                     </div>
                     <div class="single-support">
@@ -34,8 +32,7 @@
                            <i class="lnr lnr-enter-down"></i>
                         </div>
                         <div class="support-desc">
-                            <h6>Shop Confidence</h6>
-                            <span>Faucibus dictum suscipit eget metus. Duis  elit sem, sed.</span>
+                            <h6>ОФІЦІЙНА ГАРАНТІЯ ВІД ВИРОБНИКА</h6>
                         </div>
                     </div>
                     <div class="single-support">
@@ -43,8 +40,7 @@
                            <i class="lnr lnr-users"></i>
                         </div>
                         <div class="support-desc">
-                            <h6>24/7 Help Center</h6>
-                            <span>Quisque posuere enim augue, in rhoncus diam dictum non.</span>
+                            <h6>КВАЛІФІКОВАНІ КОНСУЛЬТАНТИ</h6>
                         </div>
                     </div>
                 </div>
@@ -150,30 +146,12 @@
                 </div>
                 <!-- Container End -->
             </div>
-            <!-- Footer Top End -->
-            <!-- Footer Middle Start -->
-            <div class="footer-middle text-center">
-                <div class="container">
-                    <div class="footer-middle-content pt-20 pb-30">
-                            <ul class="social-footer">
-                                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><img src="img/icon/social-img1.png" alt="google play"></a></li>
-                                <li><a href="#"><img src="img/icon/social-img2.png" alt="app store"></a></li>
-                            </ul>
-                    </div>
-                </div>
-                <!-- Container End -->
-            </div>
-            <!-- Footer Middle End -->
-            <!-- Footer Bottom Start -->
+          
             <div class="footer-bottom pb-30">
                 <div class="container">
 
                      <div class="copyright-text text-center">                    
-                        <p>Copyright © 2018 <a target="_blank" href="#">Truemart</a> All Rights Reserved.</p>
+                        <p>© 2019 <a target="_blank">electron.ua</a></p>
                      </div>
                 </div>
                 <!-- Container End -->
@@ -277,7 +255,6 @@
                                         <li>share</li>
                                         <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus-official" aria-hidden="true"></i></a></li>
                                         <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Categor;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -46,21 +47,24 @@ class ProjectController extends Controller
 	}	
 
 	public  function register() {
-    return view('auth.register', ['categories' => Categor::where('publish', 1)->get()]);
+    return view('register');
 	}	
+
 
 	public  function shop() {
 
 		$categories = Categor::all();
+	
 		//dd($categories);
         return view('shop', ['categories' => $categories]);
 	}
 
-	public function category($slug) {
+	public function slug($slug) {
 
         $category = Categor::where('slug',$slug)->first();
       
-        return view('shop', ['categories' => Categor::where('is_publish', 1)->get()]);
+        return view('shop', ['categories' => $category, 'categories' => Categor::where('is_publish', 1)->get()]);
+
     }
 
 	public  function single() {

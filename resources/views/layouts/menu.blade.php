@@ -6,10 +6,10 @@
                         <div class="vertical-menu mb-all-30">
                             <nav>
                                 <ul class="vertical-menu-list">
-                                    <li class=""><a href="{{route('shop', ['slug' => $cat->slug])}}"><span><img src="img/vertical-menu/1.png" alt="menu-icon"></span>{{$cat->name}} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                    <li class=""><a href="#"><span><img src="img/vertical-menu/1.png" alt="menu-icon"></span>{{$cat->name}} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                         <ul class="ht-dropdown mega-child">
                                              @foreach($cat->child()->get() as $cat2)
-                                              <li><a href="{{route('shop', ['slug' => $cat2->slug])}}">{{$cat2->name}}<i class="fa fa-angle-right"></i></a>
+                                              <li><a href="#">{{$cat2->name}}<i class="fa fa-angle-right"></i></a>
                                                 <ul class="ht-dropdown mega-child">
                                                     @foreach($cat2->child()->get() as $cat3)
                                                     <li><a href="{{route('shop', ['slug' => $cat3->slug])}}">{{$cat3->name}}</a></li>                     
@@ -27,6 +27,7 @@
             </div>
         </div>
 @endforeach
+
  <!-- Mobile Vertical Menu Start Here -->
 <div class="container d-block d-lg-none">
                 <div class="vertical-menu mt-30">
@@ -37,7 +38,7 @@
                                 <li class="has-sub"><a href="#">{{$cat->name}}</a>
                                     <ul class="category-sub">
                                         @foreach($cat->child()->get() as $cat2)
-                                            <li class="has-sub"><a href="{{route('shop', ['slug' => $cat2->slug])}}">{{$cat2->name}}</a>
+                                            <li class="has-sub"><a href="#">{{$cat2->name}}</a>
                                                 <ul class="category-sub">
                                                     @foreach($cat2->child()->get() as $cat3)
                                                        <li><a href="{{route('shop', ['slug' => $cat3->slug])}}">{{$cat3->name}}</a></li>

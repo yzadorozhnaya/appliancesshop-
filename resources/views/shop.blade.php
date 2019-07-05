@@ -8,7 +8,6 @@
                     <ul class="d-flex align-items-center">
                         <li><a href="{{route('index')}}">Головна</a></li>
                         <li class="active"><a href="{{route('shop')}}">Магазин</a></li>
-                     
                     </ul>
                 </div>
             </div>
@@ -24,84 +23,38 @@
                     <div class="col-lg-3 order-2 order-lg-1">
                         <div class="sidebar">
                             <!-- Sidebar Electronics Categorie Start -->
+                            @foreach($categories->where('parent_id',0) as $cat)
                             <div class="electronics mb-40">
-                                <h3 class="sidebar-title">Electronics</h3>
+
+                                <h3 class="sidebar-title">{{$cat->name}}</h3>
                                 <div id="shop-cate-toggle" class="category-menu sidebar-menu sidbar-style">
                                     <ul>
-                                        <li class="has-sub"><a href="#">Camera</a>
+                                         @foreach($cat->child()->get() as $cat2)
+                                        <li class="has-sub"><a href="#">{{$cat2->name}}</a>
                                             <ul class="category-sub">
-                                                <li><a href="/shop">Cords and Cables</a></li>
-                                                <li><a href="/shop">gps accessories</a></li>
-                                                <li><a href="/shop">Microphones</a></li>
-                                                <li><a href="/shop">Wireless Transmitters</a></li>
+                                                @foreach($cat2->child()->get() as $cat3)
+                                                <li><a href="{{route('shop')}}">{{$cat3->name}}</a></li>
+                                                @endforeach
                                             </ul>
                                             <!-- category submenu end-->
                                         </li>
-                                        <li class="has-sub"><a href="#">gamepad</a>
-                                            <ul class="category-sub">
-                                                <li><a href="/shop">cube lifestyle hd</a></li>
-                                                <li><a href="/shop">gopro hero4</a></li>
-                                                <li><a href="/shop">bhandycam cx405ags</a></li>
-                                                <li><a href="/shop">vixia hf r600</a></li>
-                                            </ul>
-                                            <!-- category submenu end-->
-                                        </li>
-                                        <li class="has-sub"><a href="#">Digital Cameras</a>
-                                            <ul class="category-sub">
-                                                <li><a href="/shop">Gold eye</a></li>
-                                                <li><a href="/shop">Questek</a></li>
-                                                <li><a href="/shop">Snm</a></li>
-                                                <li><a href="/shop">vantech</a></li>
-                                            </ul>
-                                            <!-- category submenu end-->
-                                        </li>
-                                        <li class="has-sub"><a href="#">Virtual Reality</a>
-                                            <ul class="category-sub">
-                                                <li><a href="/shop">Samsung</a></li>
-                                                <li><a href="/shop">Toshiba</a></li>
-                                                <li><a href="/shop">Transcend</a></li>
-                                                <li><a href="/shop">Sandisk</a></li>
-                                            </ul>
-                                            <!-- category submenu end-->
-                                        </li>
+                                        @endforeach
+                                        
                                     </ul>
                                 </div>
                                 <!-- category-menu-end -->
                             </div>
+                            @endforeach
                             <!-- Sidebar Electronics Categorie End -->
                             <!-- Price Filter Options Start -->
                             <div class="search-filter mb-40">
-                                <h3 class="sidebar-title">filter by price</h3>
+                                <h3 class="sidebar-title">Фільтрувати за ціною</h3>
                                 <form action="#" class="sidbar-style">
                                     <div id="slider-range"></div>
                                     <input type="text" id="amount" class="amount-range" readonly>
                                 </form>
                             </div>
-                            <!-- Price Filter Options End -->
-                            <!-- Sidebar Categorie Start -->
-                            <div class="sidebar-categorie mb-40">
-                                <h3 class="sidebar-title">categories</h3>
-                                <ul class="sidbar-style">
-                                    <li class="form-check">
-                                        <input class="form-check-input" value="#" id="camera" type="checkbox">
-                                        <label class="form-check-label" for="camera">Cameras (8)</label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" value="#" id="GamePad" type="checkbox">
-                                        <label class="form-check-label" for="GamePad">GamePad (8)</label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" value="#" id="Digital" type="checkbox">
-                                        <label class="form-check-label" for="Digital">Digital Cameras (8)</label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" value="#" id="Virtual" type="checkbox">
-                                        <label class="form-check-label" for="Virtual"> Virtual Reality (8) </label>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Sidebar Categorie Start -->
-                            <!-- Product Color Start -->
+                       
                             <div class="color mb-40">
                                 <h3 class="sidebar-title">color</h3>
                                 <ul class="color-option sidbar-style">
@@ -126,7 +79,7 @@
                             <!-- Product Color End -->                      
                             <!-- Single Banner Start -->
                             <div class="col-img">
-                                <a href="/shop"><img src="img/banner/banner-sidebar.jpg" alt="slider-banner"></a>
+                                <a href="{{route('shop')}}"><img src="img/banner/banner-sidebar.jpg" alt="slider-banner"></a>
                             </div>
                             <!-- Single Banner End -->
                         </div>

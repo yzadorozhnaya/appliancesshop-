@@ -6,7 +6,8 @@
                 <div class="breadcrumb">
                     <ul class="d-flex align-items-center">
                         <li><a href="{{route('index')}}">Головна</a></li>
-                        <li class="active"><a href="/register">Register</a></li>
+                        <li class="active"><a href="{{route('register')}}">Register</a></li>
+                        <!--  <li class="active"><a href="/register">Register</a></li> -->
                     </ul>
                 </div>
             </div>
