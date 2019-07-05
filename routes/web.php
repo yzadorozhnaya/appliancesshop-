@@ -30,6 +30,8 @@ Route::get('/product', 'ProjectController@product') -> name('product');
 
 Route::get('/register', 'ProjectController@register') -> name('register');
 
+Route::get('/category/{slug}', 'ProjectController@category') -> name('category');
+
 Route::get('/shop', 'ProjectController@shop') -> name('shop');
 
 Route::get('/single', 'ProjectController@single') -> name('single');

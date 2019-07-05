@@ -1,5 +1,6 @@
 @extends('layouts.layout')
     @section('content')
+
         <!-- Breadcrumb Start -->
         <div class="breadcrumb-area mt-30">
             <div class="container">
@@ -7,6 +8,7 @@
                     <ul class="d-flex align-items-center">
                         <li><a href="{{route('index')}}">Головна</a></li>
                         <li class="active"><a href="{{route('shop')}}">Магазин</a></li>
+                     
                     </ul>
                 </div>
             </div>

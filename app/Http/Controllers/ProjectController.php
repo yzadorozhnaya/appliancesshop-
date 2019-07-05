@@ -50,9 +50,18 @@ class ProjectController extends Controller
 	}	
 
 	public  function shop() {
+
 		$categories = Categor::all();
+		//dd($categories);
         return view('shop', ['categories' => $categories]);
 	}
+
+	public function category($slug) {
+
+        $category = Categor::where('slug',$slug)->first();
+      
+        return view('shop', ['categories' => Categor::where('is_publish', 1)->get()]);
+    }
 
 	public  function single() {
     return view('single-blog', ['categories' => Categor::where('publish', 1)->get()]);
