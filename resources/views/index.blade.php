@@ -52,7 +52,7 @@
                     <div class="single-product">
                         <!-- Product Image Start -->
                         <div class="pro-img">
-                            <a href="/product">
+                            <a href="#">
                                 <img class="primary-img" src="img/products/1.jpg" alt="single-product">
                                 <img class="secondary-img" src="img/products/7.jpg" alt="single-product">
                             </a>
@@ -63,7 +63,7 @@
                         <!-- Product Content Start -->
                         <div class="pro-content">
                             <div class="pro-info">
-                                <h4><a href="/product">Poly and Bark Vortex Side</a></h4>
+                                <h4><a href="#">Poly and Bark Vortex Side</a></h4>
                                 <p><span class="price">$84.45</span><del class="prev-price">$105.50</del></p>
                                 <div class="label-product l_sale">20<span class="symbol-percent">%</span></div>
                             </div>
@@ -83,7 +83,7 @@
                     <div class="single-product">
                         <!-- Product Image Start -->
                         <div class="pro-img">
-                            <a href="/product">
+                            <a href="#">
                                 <img class="primary-img" src="img/products/24.jpg" alt="single-product">
                                 <img class="secondary-img" src="img/products/25.jpg" alt="single-product">
                             </a>
@@ -94,7 +94,7 @@
                         <!-- Product Content Start -->
                         <div class="pro-content">
                             <div class="pro-info">
-                                <h4><a href="/product">Light Inverted Pendant Quick</a></h4>
+                                <h4><a href="#">Light Inverted Pendant Quick</a></h4>
                                 <p><span class="price">$84.45</span><del class="prev-price">$105.50</del></p>
                                 <div class="label-product l_sale">20<span class="symbol-percent">%</span></div>
                             </div>
@@ -114,7 +114,7 @@
                     <div class="single-product">
                         <!-- Product Image Start -->
                         <div class="pro-img">
-                            <a href="/product">
+                            <a href="#">
                                 <img class="primary-img" src="img/products/42.jpg" alt="single-product">
                                 <img class="secondary-img" src="img/products/43.jpg" alt="single-product">
                             </a>

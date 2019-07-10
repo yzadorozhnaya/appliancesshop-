@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Categor;
 use App\User;
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -12,7 +13,11 @@ class ProjectController extends Controller
             'categories' => Categor::where('publish', 1)->get()
         ]);
     }
-//fore
+	
+	 public function home() {
+        return view('home', ['categories' => Category::where('is_publish', 1)->get()
+        ]);
+    }
 
 	public  function about() {
     return view('about', ['categories' => Categor::where('publish', 1)->get()]);
@@ -42,28 +47,31 @@ class ProjectController extends Controller
     return view('login', ['categories' => Categor::where('publish', 1)->get()]);
 	}	
 
-	public  function product() {
-    return view('product', ['categories' => Categor::where('publish', 1)->get()]);
+	public  function product($id) {
+
+		$product = Product::find($id);
+		//dd($product);
+    return view('product', ['product' => $product]);
 	}	
 
 	public  function register() {
     return view('register');
 	}	
 
-
-	public  function shop() {
+	public  function categories() {
 
 		$categories = Categor::all();
-	
-		//dd($categories);
-        return view('shop', ['categories' => $categories]);
+
+        return view('categories', ['categories' => $categories]);
 	}
 
-	public function slug($slug) {
-
+	public function shop($slug) {
+		
         $category = Categor::where('slug',$slug)->first();
-      
-        return view('shop', ['categories' => $category, 'categories' => Categor::where('is_publish', 1)->get()]);
+        
+      	$products = Product::where('category_id',$category->id)->paginate(10);
+
+        return view('shop', ['products' => $products, 'categories' => Categor::where('publish', 1)->get()]);
 
     }
 

@@ -26,13 +26,15 @@ Route::get('/forgot', 'ProjectController@forgot') -> name('forgot');
 
 Route::get('/login', 'ProjectController@login') -> name('login');
 
-Route::get('/product', 'ProjectController@product') -> name('product');
+Route::get('/product/{id}', 'ProjectController@product') -> name('product');
 
 Route::get('/register', 'ProjectController@register') -> name('register');
 
-Route::get('/shop/{slug}', 'ProjectController@slug') -> name('slug');
+Route::get('/shop/{slug}', 'ProjectController@shop') -> name('shop');
 
-Route::get('/shop', 'ProjectController@shop') -> name('shop');
+Route::get('/categories', 'ProjectController@categories') -> name('categories');
+
+//Route::get('/shop', 'ProjectController@shop') -> name('shop');
 
 Route::get('/single', 'ProjectController@single') -> name('single');
 

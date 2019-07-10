@@ -11,10 +11,18 @@ class Categor extends Model
     protected $table = 'categories';
 
     public function child() {
-        return $this->hasOne('App\Categor','parent_id');
+        return $this->hasMany('App\Categor','parent_id');
     }
+
     public function parent()
     {
         return $this->belongsTo('App\Categor','parent_id');
     }
+
+     public function product()
+    {
+        return $this->hasMany('App\Product');
+    }
+    
+
 }

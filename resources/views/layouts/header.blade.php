@@ -30,7 +30,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col-lg-3 col-md-12">
                             <div class="logo mb-all-30">
-                                <a href="/index"><img src="img/logo/logo.png" alt="logo-image"></a>
+                                <a href="{{route('index')}}"><img src="img/logo/logo.png" alt="logo-image"></a>
                             </div>
                         </div>
                         <!-- Cart Box Start Here -->
@@ -47,7 +47,7 @@
                                                         <span class="pro-quantity">1X</span>
                                                     </div>
                                                     <div class="cart-content">
-                                                        <h6><a href="/product">Printed Summer Red </a></h6>
+                                                        <h6><a href="#">Printed Summer Red </a></h6>
                                                         <span class="cart-price">27.45</span>
                                                         <span>Size: S</span>
                                                         <span>Color: Yellow</span>
@@ -62,7 +62,7 @@
                                                         <span class="pro-quantity">1X</span>
                                                     </div>
                                                     <div class="cart-content">
-                                                        <h6><a href="/product">Printed Round Neck</a></h6>
+                                                        <h6><a href="#">Printed Round Neck</a></h6>
                                                         <span class="cart-price">45.00</span>
                                                         <span>Size: XL</span>
                                                         <span>Color: Green</span>
@@ -115,10 +115,11 @@
                                
                                 <ul class="header-bottom-list d-flex">
                                     <li class="active"><a href="{{route('index')}}">Головна</a></li>
-                                    <li><a href="{{route('shop')}}">Магазин<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
-                                            <li><a href="{{route('product')}}">Деталі продукту</a></li>
+                                            <li><a href="{{route('categories')}}">Усі категорії</a></li>
+                                            <li><a href="#">Деталі продукту</a></li>
                                             <li><a href="{{route('cart')}}">кошик</a></li>
                                             <li><a href="{{route('checkout')}}">Оформити замовлення</a></li>
                                             <li><a href="{{route('wishlist')}}">Список бажань</a></li>
@@ -135,9 +136,9 @@
                                     <li><a href="#">Мой кабинет<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
-                                            <li><a href="/register">register</a></li>
-                                            <li><a href="/login">sign in</a></li>
-                                            <li><a href="/forgot">forgot password</a></li>
+                                            <li><a href="{{route('register')}}">register</a></li>
+                                            <li><a href="{{route('login')}}">sign in</a></li>
+                                            <li><a href="{{route('forgot')}}">forgot password</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
@@ -149,10 +150,10 @@
                                 <nav>
                                     <ul>
                                         <li><a href="{{route('index')}}">Головна</a></li>
-                                        <li><a href="{{route('shop')}}">Магазин</a>
+                                        <li><a href="#">Магазин</a>
                                             <!-- Mobile Menu Dropdown Start -->
                                             <ul>
-                                                <li><a href="{{route('product')}}">Деталі продукту</a></li>
+                                                <li><a href="#">Деталі продукту</a></li>
                                                 <li><a href="{{route('cart')}}">кошик</a></li>
                                                 <li><a href="{{route('checkout')}}">Оформити замовлення</a></li>
                                                 <li><a href="{{route('wishlist')}}">Список бажань</a></li>
@@ -169,9 +170,9 @@
                                        <li><a href="#">Мой кабинет</a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
-                                            <li><a href="/register">register</a></li>
-                                            <li><a href="/login">sign in</a></li>
-                                            <li><a href="/forgot">forgot password</a></li>
+                                            <li><a href="{{route('register')}}">register</a></li>
+                                            <li><a href="{{route('login')}}">sign in</a></li>
+                                            <li><a href="{{route('forgot')}}">forgot password</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
