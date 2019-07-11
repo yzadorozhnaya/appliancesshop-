@@ -1,7 +1,5 @@
 @extends('layouts.layout')
     @section('content')
-
-
         <!-- Breadcrumb Start -->
         <div class="breadcrumb-area mt-30">
             <div class="container">
@@ -27,30 +25,30 @@
                             <!-- Thumbnail Large Image start -->
                             <div class="tab-content">
                                 <div id="thumb1" class="tab-pane fade show active">
-                                    <a data-fancybox="images" href="img/products/35.jpg"><img src="img/products/35.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{$product->image_path}}"><img src="{{$product->image_path}}" alt="product-view"></a>
                                 </div>
                                 <div id="thumb2" class="tab-pane fade">
-                                    <a data-fancybox="images" href="img/products/13.jpg"><img src="img/products/13.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{$product->image_path}}"><img src="{{$product->image_path}}" alt="product-view"></a>
                                 </div>
                                 <div id="thumb3" class="tab-pane fade">
-                                    <a data-fancybox="images" href="img/products/15.jpg"><img src="img/products/15.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{$product->image_path}}"><img src="{{$product->image_path}}" alt="product-view"></a>
                                 </div>
                                 <div id="thumb4" class="tab-pane fade">
-                                    <a data-fancybox="images" href="img/products/4.jpg"><img src="img/products/4.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{$product->image_path}}"><img src="{{$product->image_path}}" alt="product-view"></a>
                                 </div>
                                 <div id="thumb5" class="tab-pane fade">
-                                    <a data-fancybox="images" href="img/products/5.jpg"><img src="img/products/5.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" href="{{$product->image_path}}"><img src="{{$product->image_path}}" alt="product-view"></a>
                                 </div>
                             </div>
                             <!-- Thumbnail Large Image End -->
                             <!-- Thumbnail Image End -->
                             <div class="product-thumbnail mt-15">
                                 <div class="thumb-menu owl-carousel nav tabs-area" role="tablist">
-                                    <a class="active" data-toggle="tab" href="#thumb1"><img src="img/products/35.jpg" alt="product-thumbnail"></a>
-                                    <a data-toggle="tab" href="#thumb2"><img src="img/products/13.jpg" alt="product-thumbnail"></a>
-                                    <a data-toggle="tab" href="#thumb3"><img src="img/products/15.jpg" alt="product-thumbnail"></a>
-                                    <a data-toggle="tab" href="#thumb4"><img src="img/products/4.jpg" alt="product-thumbnail"></a>
-                                    <a data-toggle="tab" href="#thumb5"><img src="img/products/5.jpg" alt="product-thumbnail"></a>
+                                    <a class="active" data-toggle="tab" href="#thumb1"><img src="{{$product->image_path}}" alt="product-thumbnail"></a>
+                                    <a data-toggle="tab" href="#thumb2"><img src="{{$product->image_path}}" alt="product-thumbnail"></a>
+                                    <a data-toggle="tab" href="#thumb3"><img src="{{$product->image_path}}" alt="product-thumbnail"></a>
+                                    <a data-toggle="tab" href="#thumb4"><img src="{{$product->image_path}}" alt="product-thumbnail"></a>
+                                    <a data-toggle="tab" href="#thumb5"><img src="{{$product->image_path}}" alt="product-thumbnail"></a>
                                 </div>
                             </div>
                             <!-- Thumbnail image end -->
@@ -59,7 +57,7 @@
                         <!-- Thumbnail Description Start -->
                         <div class="col-lg-7">
                             <div class="thubnail-desc fix">
-                                <h3 class="product-header">Faded Short Sleeves T-shirt</h3>
+                                <h3 class="product-header">{{$product->name}}</h3>
                                 <div class="rating-summary fix mtb-10">
                                     <div class="rating">
                                         <i class="fa fa-star"></i>
@@ -69,12 +67,12 @@
                                         <i class="fa fa-star-o"></i>
                                     </div>
                                     <div class="rating-feedback">
-                                        <a href="#">(1 review)</a>
-                                        <a href="#">add to your review</a>
+                                        <a href="#">(1 відгук)</a>
+                                        <a href="#">Додати свій відгук</a>
                                     </div>
                                 </div>
                                 <div class="pro-price mtb-30">
-                                    <p class="d-flex align-items-center"><span class="prev-price">16.51</span><span class="price">$15.19</span><span class="saving-price">save 8%</span></p>
+                                    <p class="d-flex align-items-center"><span class="prev-price">{{$product->price}}</span><span class="price">{{$product->price}}</span><span class="saving-price">{{$product->price}}</span></p>
                                 </div>
                                 <p class="mb-20 pro-desc-details">Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
                                 <div class="color clearfix mb-20">
@@ -95,17 +93,17 @@
                                     @section('proactions')
                                     <div class="pro-actions">
                                         <div class="actions-primary">
-                                            <a href="/cart" title="" data-original-title="Add to Cart"> + Add To Cart</a>
+                                            <a href="{{route('cart')}}" title="" data-original-title="Купити"> + Купити</a>
                                         </div>
                                         <div class="actions-secondary">
-                                            <a href="/wishlist" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                            <a href="{{route('wishlist')}}" title="" data-original-title="Список Бажання"><i class="lnr lnr-heart"></i> <span>Додати до списку бажань</span></a>
                                         </div>
                                     </div>
 
                                     @show
                                 </div>
                                 <div class="pro-ref mt-20">
-                                    <p><span class="in-stock"><i class="ion-checkmark-round"></i> IN STOCK</span></p>
+                                    <p><span class="in-stock"><i class="ion-checkmark-round"></i>В НАЯВНОСТІ</span></p>
                                 </div>
                                 <div class="socila-sharing mt-25">
                                     <ul class="d-flex">
@@ -132,13 +130,13 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul class="main-thumb-desc nav tabs-area" role="tablist">
-                            <li><a class="active" data-toggle="tab" href="#">Product Details</a></li>
-                            <li><a data-toggle="tab" href="#review">Reviews 1</a></li>
+                            <li><a class="active" data-toggle="tab" href="#dtail">Опис</a></li>
+                            <li><a data-toggle="tab" href="#review">Відгуки</a></li>
                         </ul>
                         <!-- Product Thumbnail Tab Content Start -->
                         <div class="tab-content thumb-content border-default">
                             <div id="dtail" class="tab-pane fade show active">
-                                <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
+                                <p>{{$product->description}}</p>
                             </div>
                             <div id="review" class="tab-pane fade">
                                 <!-- Reviews Start -->
@@ -186,7 +184,7 @@
                                 <!-- Reviews End -->
                                 <!-- Reviews Start -->
                                 <div class="review border-default universal-padding mt-30">
-                                    <h2 class="review-title mb-30">You're reviewing: <br><span>Faded Short Sleeves T-shirt</span></h2>
+                                    <h2 class="review-title mb-30">Ви переглядаєте: <br><span>{{$product->name}}</span></h2>
                                     <p class="review-mini-title">your rating</p>
                                     <ul class="review-list">
                                         <!-- Single Review List Start -->
@@ -250,10 +248,7 @@
             </div>
             <!-- Container End -->
         </div>
-
-
         <!-- Product Thumbnail Description End -->
-        <!-- Realted Products Start Here -->
-       
+        <!-- Realted Products Start Here -->     
     @endsection
    

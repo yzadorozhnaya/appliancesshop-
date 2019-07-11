@@ -1,7 +1,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{asset("img/favicon.ico")}}">
+    <link rel="shortcut icon" href="{{asset("/img/favicon.ico")}}">
     <!-- Fontawesome css -->
     <link rel="stylesheet" href="{{asset("/css/font-awesome.min.css")}}">
     <!-- Ionicons css -->

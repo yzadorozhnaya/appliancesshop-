@@ -51,7 +51,8 @@ class ProjectController extends Controller
 
 		$product = Product::find($id);
 		//dd($product);
-    return view('product', ['product' => $product]);
+    return view('product', ['product' => $product,'categories'=>Categor::all()]);
+
 	}	
 
 	public  function register() {
@@ -68,9 +69,9 @@ class ProjectController extends Controller
 	public function shop($slug) {
 		
         $category = Categor::where('slug',$slug)->first();
-        
+       // dd($category);
       	$products = Product::where('category_id',$category->id)->paginate(10);
-
+      	//dd($products);
         return view('shop', ['products' => $products, 'categories' => Categor::where('publish', 1)->get()]);
 
     }

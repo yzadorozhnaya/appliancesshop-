@@ -24,5 +24,6 @@ class Categor extends Model
         return $this->hasMany('App\Product');
     }
     
+    
 
 }
