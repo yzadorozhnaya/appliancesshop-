@@ -10,51 +10,48 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
 	public  function index() {
-    return view('index', [
-            'categories' => Categor::where('publish', 1)->get()
-        ]);
+    return view('index');
     }
 	
-	 public function home() {
-        return view('home', ['categories' => Category::where('is_publish', 1)->get()
-        ]);
+	public function home() {
+    return view('home');
     }
 
 	public  function about() {
-    return view('about', ['categories' => Categor::where('publish', 1)->get()]);
+    return view('about');
 	}
 
 	public  function blog() {
 		$article = Article::paginate(3);
 
-    return view('blog', ['article' => $article, 'categories' => Categor::where('publish', 1)->get()]);
+    return view('blog', ['article' => $article]);
 	}
 
 	public  function cart() {
-    return view('cart', ['categories' => Categor::where('publish', 1)->get()]);
+    return view('cart');
 	}
 
    	public  function checkout() {
-    return view('checkout', ['categories' => Categor::where('publish', 1)->get()]);
+    return view('checkout');
 	}
 
 	public  function contact() {
-    return view('contact', ['categories' => Categor::where('publish', 1)->get()]);
+    return view('contact');
 	}	
 
 	public  function forgot() {
-    return view('forgot-password', ['categories' => Categor::where('publish', 1)->get()]);
+    return view('forgot-password');
 	}	
 
 	public  function login() {
-    return view('login', ['categories' => Categor::where('publish', 1)->get()]);
+    return view('login');
 	}	
 
 	public  function product($id) {
 
 		$product = Product::find($id);
 		//dd($product);
-    return view('product', ['product' => $product,'categories'=>Categor::all()]);
+    return view('product', ['product' => $product]);
 
 	}	
 
@@ -63,10 +60,7 @@ class ProjectController extends Controller
 	}	
 
 	public  function categories() {
-
-		$categories = Categor::all();
-
-        return view('categories', ['categories' => $categories]);
+    return view('categories');
 	}
 
 	public function shop($slug) {
@@ -75,22 +69,22 @@ class ProjectController extends Controller
        // dd($category);
       	$products = Product::where('category_id',$category->id)->paginate(10);
       	//dd($products);
-        return view('shop', ['products' => $products, 'categories' => Categor::where('publish', 1)->get()]);
+        return view('shop', ['products' => $products]);
 
     }
 
 	public  function single($slug) {
 		$article = Article::where('slug', $slug)->first();
         
-    return view('single-blog', ['article' => $article,'categories' => Categor::where('publish', 1)->get()]);
+    return view('single-blog', ['article' => $article]);
 	}	
 
 	public  function terms() {
-    return view('terms-conditions', ['categories' => Categor::where('publish', 1)->get()]);
+    return view('terms-conditions');
 	}
 
 	public  function wishlist() {
-    return view('wishlist', ['categories' => Categor::where('publish', 1)->get()]);
+    return view('wishlist');
 	}	
 		
 }
