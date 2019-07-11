@@ -6,7 +6,7 @@
                 <div class="breadcrumb">
                     <ul class="d-flex align-items-center">
                         <li><a href="{{route('index')}}">Головна</a></li>
-                        <li class="active"><a href="#">Магазин</a></li>
+                        <li class="active"><a href="{{route('categories')}}">Магазин</a></li>
                     </ul>
                 </div>
             </div>
@@ -107,8 +107,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="#">
-                                                    <img class="primary-img" src="img/products/20.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/19.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/20.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/19.jpg")}}" alt="single-product">
                                                 </a>
                                                 <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
                                             </div>
@@ -126,8 +126,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="#">
-                                                    <img class="primary-img" src="img/products/2.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/1.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/2.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/1.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -144,8 +144,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="#">
-                                                    <img class="primary-img" src="img/products/3.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/4.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/3.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/4.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -162,8 +162,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="#">
-                                                    <img class="primary-img" src="img/products/25.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/26.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/25.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/26.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -184,8 +184,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="#">
-                                                    <img class="primary-img" src="img/products/41.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/42.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/41.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/42.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -202,8 +202,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="product.html">
-                                                    <img class="primary-img" src="img/products/36.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/35.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/36.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/35.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -220,8 +220,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="product.html">
-                                                    <img class="primary-img" src="img/products/33.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/34.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/33.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/34.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -238,8 +238,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="product.html">
-                                                    <img class="primary-img" src="img/products/31.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/32.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/31.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/32.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -260,8 +260,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="product.html">
-                                                    <img class="primary-img" src="img/products/15.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/16.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/15.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/16.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -278,8 +278,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="product.html">
-                                                    <img class="primary-img" src="img/products/17.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/18.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/17.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/18.jpg")}}" alt="single-product">
                                                 </a>
                                                 <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
                                             </div>
@@ -297,8 +297,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="product.html">
-                                                    <img class="primary-img" src="img/products/23.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/24.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/23.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/24.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -315,8 +315,8 @@
                                             <!-- Product Image Start -->
                                             <div class="pro-img">
                                                 <a href="product.html">
-                                                    <img class="primary-img" src="img/products/25.jpg" alt="single-product">
-                                                    <img class="secondary-img" src="img/products/26.jpg" alt="single-product">
+                                                    <img class="primary-img" src="{{asset("img/products/25.jpg")}}" alt="single-product">
+                                                    <img class="secondary-img" src="{{asset("img/products/26.jpg")}}" alt="single-product">
                                                 </a>
                                             </div>
                                             <!-- Product Image End -->
@@ -335,7 +335,7 @@
                             <!-- Product Top End -->                            
                             <!-- Single Banner Start -->
                             <div class="col-img">
-                                <a href="#"><img src="img/banner/banner-sidebar.jpg" alt="slider-banner"></a>
+                                <a href="#"><img src="{{asset("img/banner/banner-sidebar.jpg")}}" alt="slider-banner"></a>
                             </div>
                             <!-- Single Banner End -->
                         </div>
@@ -393,8 +393,8 @@
                                                 <!-- Product Image Start -->
                                                 <div class="pro-img">
                                                     <a href="{{route('product', ['id' => $product_item->id])}}">
-                                                        <img class="primary-img" src="img/products/1.jpg" alt="single-product">
-                                                        <img class="secondary-img" src="img/products/2.jpg" alt="single-product">
+                                                        <img class="primary-img" src="{{asset("img/products/1.jpg")}}" alt="single-product">
+                                                        <img class="secondary-img" src="{{asset("img/products/2.jpg")}}" alt="single-product">
                                                     </a>
                                                     <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                                 </div>
@@ -416,6 +416,7 @@
                                     </div>
                                     <!-- Row End -->
                                 </div>
+                                {{$products->links()}}
                                 <!-- #grid view End -->
                                 <div id="list-view" class="tab-pane fade">
                                     <!-- Single Product Start -->
@@ -425,8 +426,8 @@
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
                                                     <a href="{{route('product', ['id' => $product_item->id])}}">
-                                                        <img class="primary-img" src="img/products/23.jpg" alt="single-product">
-                                                        <img class="secondary-img" src="img/products/24.jpg" alt="single-product">
+                                                        <img class="primary-img" src="{{asset("img/products/23.jpg")}}" alt="single-product">
+                                                        <img class="secondary-img" src="{{asset("img/products/24.jpg")}}" alt="single-product">
                                                     </a>
                                                     <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                                      <span class="sticker-new">new</span>
@@ -460,8 +461,8 @@
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
                                                     <a href="/product">
-                                                        <img class="primary-img" src="img/products/30.jpg" alt="single-product">
-                                                        <img class="secondary-img" src="img/products/31.jpg" alt="single-product">
+                                                        <img class="primary-img" src="{{asset("img/products/30.jpg")}}" alt="single-product">
+                                                        <img class="secondary-img" src="{{asset("img/products/31.jpg")}}" alt="single-product">
                                                     </a>
                                                     <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                                 </div>
@@ -494,8 +495,8 @@
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
                                                     <a href="/product">
-                                                        <img class="primary-img" src="img/products/41.jpg" alt="single-product">
-                                                        <img class="secondary-img" src="img/products/42.jpg" alt="single-product">
+                                                        <img class="primary-img" src="{{asset("img/products/41.jpg")}}" alt="single-product">
+                                                        <img class="secondary-img" src="{{asset("img/products/42.jpg")}}" alt="single-product">
                                                     </a>
                                                     <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                                     <span class="sticker-new">new</span>
@@ -529,8 +530,8 @@
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
                                                     <a href="/product">
-                                                        <img class="primary-img" src="img/products/1.jpg" alt="single-product">
-                                                        <img class="secondary-img" src="img/products/2.jpg" alt="single-product">
+                                                        <img class="primary-img" src="{{asset("img/products/1.jpg")}}" alt="single-product">
+                                                        <img class="secondary-img" src="{{asset("img/products/2.jpg")}}" alt="single-product">
                                                     </a>
                                                     <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                                 </div>
@@ -563,8 +564,8 @@
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
                                                     <a href="/product">
-                                                        <img class="primary-img" src="img/products/23.jpg" alt="single-product">
-                                                        <img class="secondary-img" src="img/products/24.jpg" alt="single-product">
+                                                        <img class="primary-img" src="{{asset("img/products/23.jpg")}}" alt="single-product">
+                                                        <img class="secondary-img" src="{{asset("img/products/24.jpg")}}" alt="single-product">
                                                     </a>
                                                     <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                                 </div>

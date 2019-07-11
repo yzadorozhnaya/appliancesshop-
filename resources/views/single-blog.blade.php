@@ -7,7 +7,7 @@
                     <ul class="d-flex align-items-center">
                         <li><a href="{{route('index')}}">Головна</a></li>
                         <li><a href="{{route('blog')}}">блог</a></li>
-                        <li class="active"><a href="{{route('single')}}">подробиці блогу</a></li>
+                        <li class="active"><a href="#">{{$article->title}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                             <div class="col-img mb-30">
-                                <a href="/shop"><img src="img/banner/banner-sidebar.jpg" alt="slider-banner"></a>
+                                <a href="{{route('categories')}}"><img src="{{asset("img/banner/banner-sidebar.jpg")}}" alt="slider-banner"></a>
                             </div>
                             <div class="single-sidebar mb-30">
                                  <h3 class="sidebar-title">others</h3>
@@ -62,19 +62,19 @@
                     <div class="col-lg-9 order-1 order-lg-2">
                         <div class="single-sidebar-desc mb-all-40">
                             <div class="sidebar-img">
-                                <img src="img/blog/10.jpg" alt="single-blog-img">
+                                <img src="{{asset("img/blog/10.jpg")}}" alt="single-blog-img">
                             </div>
                             <div class="sidebar-post-content">
-                                <h3 class="sidebar-lg-title">This is Second Post For XipBlog</h3>
+                                <h3 class="sidebar-lg-title">{{$article->title}}</h3>
                                 <ul class="post-meta d-sm-inline-flex">
                                     <li><span>Posted</span> by Demo Posthemes</li>
-                                    <li><span> April 27TH, 2018</span></li>
+                                    <li><span>{{$article->created_at}}</span></li>
                                 </ul>
                             </div>
                             <div class="sidebar-desc mb-50">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. Duis aute irure dolor in rep rehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. Duis aute irure dolor in rep rehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <blockquote class="mtb-30"> <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms with righteous indignation and dislike.</p><span>Christine Rios</span></blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. Duis aute irure dolor in rep rehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. Duis aute irure dolor in rep rehenderit. Lorem ipsum dolor sit.</p>
+                                <p>{{$article->description}}</p>
+                                <blockquote class="mtb-30"> <p>{{$article->description}}</span></blockquote>
+                                <p>{{$article->description}}</p>
                             </div>
                             <!-- Contact Email Area Start -->
                             <div class="blog-detail-contact">

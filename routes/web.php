@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/index', 'ProjectController@index') -> name('index');
+Route::get('/', 'ProjectController@index') -> name('index');
 
 Route::get('/about', 'ProjectController@about') -> name('about');
 
@@ -36,7 +36,7 @@ Route::get('/categories', 'ProjectController@categories') -> name('categories');
 
 //Route::get('/shop', 'ProjectController@shop') -> name('shop');
 
-Route::get('/single', 'ProjectController@single') -> name('single');
+Route::get('/single/{slug}', 'ProjectController@single') -> name('single');
 
 Route::get('/terms', 'ProjectController@terms') -> name('terms');
 

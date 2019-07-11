@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Categor;
 use App\User;
 use App\Product;
+use App\Article;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -24,7 +25,9 @@ class ProjectController extends Controller
 	}
 
 	public  function blog() {
-    return view('blog', ['categories' => Categor::where('publish', 1)->get()]);
+		$article = Article::paginate(3);
+
+    return view('blog', ['article' => $article, 'categories' => Categor::where('publish', 1)->get()]);
 	}
 
 	public  function cart() {
@@ -76,8 +79,10 @@ class ProjectController extends Controller
 
     }
 
-	public  function single() {
-    return view('single-blog', ['categories' => Categor::where('publish', 1)->get()]);
+	public  function single($slug) {
+		$article = Article::where('slug', $slug)->first();
+        
+    return view('single-blog', ['article' => $article,'categories' => Categor::where('publish', 1)->get()]);
 	}	
 
 	public  function terms() {

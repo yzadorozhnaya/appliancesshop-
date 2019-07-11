@@ -20,191 +20,30 @@
                     <div class="row">
                         <!-- Single Blog Start -->
                         <div class="col-lg-6 col-sm-12">
+                          @foreach($article as $article_item)
                            <div class="single-latest-blog">
                                <div class="blog-img">
-                                   <a href="/single"><img src="img/blog/1.jpg" alt="blog-image"></a>
+                                   <a href="{{route('single', ['slug' => $article_item->slug])}}"><img src="{{asset("img/blog/1.jpg")}}" alt="blog-image"></a>
                                </div>
                                <div class="blog-desc">
-                                   <h4><a href="/single">At wisi enim ad minim veniam.</a></h4>
+                                   <h4><a href="{{route('single', ['slug' => $article_item->slug])}}">{{$article_item->title}}</a></h4>
                                     <ul class="meta-box d-flex">
                                         <li><a href="#">By Truemart</a></li>
                                     </ul>
-                                    <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                                    <a  class="readmore" href="/single">Read More</a>
+                                    <p>{{$article_item->description}}...</p>
+                                    <a  class="readmore" href="{{route('single', ['slug' => $article_item->slug])}}">Read More</a>
                                </div>
                                <div class="blog-date">
-                                    <span>28</span>
+                                    <span>{{$article_item->created_at}}</span>
                                     June
                                 </div>
                            </div>
-                        </div>
-                        <!-- Single Blog End -->
-                        <!-- Single Blog Start -->
-                        <div class="col-lg-6 col-sm-12">
-                           <div class="single-latest-blog">
-                               <div class="blog-img">
-                                   <a href="/single"><img src="img/blog/2.jpg" alt="blog-image"></a>
-                               </div>
-                               <div class="blog-desc">
-                                   <h4><a href="/single">Dt wisi enim ad minim veniam..</a></h4>
-                                    <ul class="meta-box d-flex">
-                                        <li><a href="#">By Truemart</a></li>
-                                    </ul>
-                                    <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                                    <a  class="readmore" href="/single">Read More</a>
-                               </div>
-                               <div class="blog-date">
-                                    <span>26</span>
-                                    Oct
-                                </div>
-                           </div>
-                        </div>
-                        <!-- Single Blog End -->
-                        <!-- Single Blog Start -->
-                        <div class="col-lg-6 col-sm-12">
-                           <div class="single-latest-blog">
-                               <div class="blog-img">
-                                   <a href="/single"><img src="img/blog/2.jpg" alt="blog-image"></a>
-                               </div>
-                               <div class="blog-desc">
-                                   <h4><a href="/single">At wisi enim ad minim veniam.</a></h4>
-                                    <ul class="meta-box d-flex">
-                                        <li><a href="#">By Truemart</a></li>
-                                    </ul>
-                                    <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                                    <a  class="readmore" href="/single">Read More</a>
-                               </div>
-                               <div class="blog-date">
-                                    <span>18</span>
-                                    Jan
-                                </div>
-                           </div>
-                        </div>
-                        <!-- Single Blog End -->
-                        <!-- Single Blog Start -->
-                        <div class="col-lg-6 col-sm-12">
-                           <div class="single-latest-blog">
-                               <div class="blog-img">
-                                   <a href="/single"><img src="img/blog/1.jpg" alt="blog-image"></a>
-                               </div>
-                               <div class="blog-desc">
-                                   <h4><a href="/single">Dt wisi enim ad minim veniam..</a></h4>
-                                    <ul class="meta-box d-flex">
-                                        <li><a href="#">By Truemart</a></li>
-                                    </ul>
-                                    <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                                    <a  class="readmore" href="/single">Read More</a>
-                               </div>
-                               <div class="blog-date">
-                                    <span>21</span>
-                                    Feb
-                                </div>
-                           </div>
-                        </div>
-                        <!-- Single Blog End -->
-                        <!-- Single Blog Start -->
-                        <div class="col-lg-6 col-sm-12">
-                           <div class="single-latest-blog">
-                               <div class="blog-img">
-                                   <a href="/single"><img src="img/blog/1.jpg" alt="blog-image"></a>
-                               </div>
-                               <div class="blog-desc">
-                                   <h4><a href="/single">At wisi enim ad minim veniam.</a></h4>
-                                    <ul class="meta-box d-flex">
-                                        <li><a href="#">By Truemart</a></li>
-                                    </ul>
-                                    <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                                    <a  class="readmore" href="/single">Read More</a>
-                               </div>
-                               <div class="blog-date">
-                                    <span>19</span>
-                                    Sep
-                                </div>
-                           </div>
-                        </div>
-                        <!-- Single Blog End -->
-                        <!-- Single Blog Start -->
-                        <div class="col-lg-6 col-sm-12">
-                           <div class="single-latest-blog">
-                               <div class="blog-img">
-                                   <a href="/single"><img src="img/blog/2.jpg" alt="blog-image"></a>
-                               </div>
-                               <div class="blog-desc">
-                                   <h4><a href="/single">Dt wisi enim ad minim veniam..</a></h4>
-                                    <ul class="meta-box d-flex">
-                                        <li><a href="#">By Truemart</a></li>
-                                    </ul>
-                                    <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                                    <a  class="readmore" href="/single">Read More</a>
-                               </div>
-                               <div class="blog-date">
-                                    <span>28</span>
-                                    June
-                                </div>
-                           </div>
-                        </div>
-                        <!-- Single Blog End -->
-                        <!-- Single Blog Start -->
-                        <div class="col-lg-6 col-sm-12">
-                           <div class="single-latest-blog">
-                               <div class="blog-img">
-                                   <a href="/single"><img src="img/blog/2.jpg" alt="blog-image"></a>
-                               </div>
-                               <div class="blog-desc">
-                                   <h4><a href="/single">At wisi enim ad minim veniam.</a></h4>
-                                    <ul class="meta-box d-flex">
-                                        <li><a href="#">By Truemart</a></li>
-                                    </ul>
-                                    <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                                    <a  class="readmore" href="/single">Read More</a>
-                               </div>
-                               <div class="blog-date">
-                                    <span>25</span>
-                                    Mar
-                                </div>
-                           </div>
-                        </div>
-                        <!-- Single Blog End -->
-                        <!-- Single Blog Start -->
-                        <div class="col-lg-6 col-sm-12">
-                           <div class="single-latest-blog">
-                               <div class="blog-img">
-                                   <a href="/single"><img src="img/blog/1.jpg" alt="blog-image"></a>
-                               </div>
-                               <div class="blog-desc">
-                                   <h4><a href="/single">Dt wisi enim ad minim veniam..</a></h4>
-                                    <ul class="meta-box d-flex">
-                                        <li><a href="#">By Truemart</a></li>
-                                    </ul>
-                                    <p>Aenean vestibulum pretium enim vitae , non commodo urna volutpat . Pellentesque vel lacus  eget est d...</p>
-                                    <a  class="readmore" href="/single">Read More</a>
-                               </div>
-                               <div class="blog-date">
-                                    <span>14</span>
-                                    Aug
-                                </div>
-                           </div>
+                           @endforeach
                         </div>
                         <!-- Single Blog End -->
                     </div>
-                    <!-- Row End -->
-                    <div class="row">
-                        <div class="col-sm-12">
-                                <div class="pro-pagination">
-                                    <ul class="blog-pagination">
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                    </ul>                                    
-                                    <div class="product-pagination">
-                                        <span class="grid-item-list">Showing 1 to 12 of 51 (5 Pages)</span>
-                                    </div>
-                                </div>
-                                <!-- Product Pagination Info -->
-                        </div>
-                    </div>
-                    <!-- Row End -->
+
+                  {{$article->links()}}
                 </div>
             </div>
             <!-- Container End -->

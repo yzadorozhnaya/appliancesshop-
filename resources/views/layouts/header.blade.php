@@ -12,8 +12,8 @@
                             <li><span>Мова</span> <a href="#">Українська<i class="lnr lnr-chevron-down"></i></a>
                                 <!-- Dropdown Start -->
                                 <ul class="ht-dropdown">
-                                    <li><a href="#"><img src="img/header/1.jpg" alt="language-selector">Українська</a></li>
-                                    <li><a href="#"><img src="img/header/2.jpg" alt="language-selector">Російська</a></li>
+                                    <li><a href="#"><img src="{{asset("img/header/1.jpg")}}" alt="language-selector">Українська</a></li>
+                                    <li><a href="#"><img src="{{asset("img/header/2.jpg")}}" alt="language-selector">Російська</a></li>
                                 </ul>
                                 <!-- Dropdown End -->
                             </li>
@@ -30,7 +30,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col-lg-3 col-md-12">
                             <div class="logo mb-all-30">
-                                <a href="{{route('index')}}"><img src="img/logo/logo.png" alt="logo-image"></a>
+                                <a href="{{route('index')}}"><img src="{{asset("/img/logo/logo.png")}}" alt="logo-image"></a>
                             </div>
                         </div>
                         <!-- Cart Box Start Here -->
@@ -115,7 +115,7 @@
                                
                                 <ul class="header-bottom-list d-flex">
                                     <li class="active"><a href="{{route('index')}}">Головна</a></li>
-                                    <li><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="{{route('categories')}}">Магазин<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
                                             <li><a href="{{route('categories')}}">Усі категорії</a></li>
@@ -129,7 +129,7 @@
                                     <li><a href="{{route('blog')}}">блог<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
-                                            <li><a href="{{route('single')}}">подробиці блогу</a></li>
+                                            <li><a href="#">подробиці блогу</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
@@ -163,7 +163,7 @@
                                         <li><a href="{{route('blog')}}">блог</a>
                                             <!-- Mobile Menu Dropdown Start -->
                                             <ul>
-                                                <li><a href="{{route('single')}}">подробиці блогу</a></li>
+                                                <li><a href="#">подробиці блогу</a></li>
                                             </ul>
                                             <!-- Mobile Menu Dropdown End -->
                                         </li>
