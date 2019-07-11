@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +12,7 @@ class Product extends Model
 
      public function category()
     {
-        return $this->belongsTo('App\Categor', 'category_id');
+        return $this->belongsTo('App\Models\Categor', 'category_id');
     }
 
     

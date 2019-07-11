@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Categor;
-use App\User;
-use App\Product;
-use App\Article;
+use App\Models\Categor;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller

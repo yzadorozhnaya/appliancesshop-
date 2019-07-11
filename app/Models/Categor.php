@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,17 +11,17 @@ class Categor extends Model
     protected $table = 'categories';
 
     public function child() {
-        return $this->hasMany('App\Categor','parent_id');
+        return $this->hasMany('App\Models\Categor','parent_id');
     }
 
     public function parent()
     {
-        return $this->belongsTo('App\Categor','parent_id');
+        return $this->belongsTo('App\Models\Categor','parent_id');
     }
 
      public function product()
     {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('App\Models\Product');
     }
     
     

@@ -36,7 +36,7 @@
                             <div class="single-sidebar mb-30">
                                  <h3 class="sidebar-title">others</h3>
                                  <ul class="sidbar-style">
-                                     <li><a href="/login">Log in</a></li>
+                                     <li><a href="{{route('login')}}">Log in</a></li>
                                      <li><a href="#">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
                                      <li><a href="#">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
                                      <li><a href="#">Others link</a></li>
