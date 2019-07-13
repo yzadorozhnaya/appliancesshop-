@@ -86,5 +86,6 @@ class ProjectController extends Controller
 	public  function wishlist() {
     return view('wishlist');
 	}	
-		
+	 
+	
 }

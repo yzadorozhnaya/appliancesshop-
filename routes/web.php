@@ -45,3 +45,10 @@ Route::get('/wishlist', 'ProjectController@wishlist') -> name('wishlist');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function()
+//{
+//    Route::get('/admin/edit', 'Admin\AdminController@adminEdit')->name('admin.edit');
+//});
+Route::get('/admin/edit', 'AdminController@adminEdit')->name('admin.edit');
+Route::post('/admin/save/', 'AdminController@adminSave')->name('admin.save');
