@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public  function adminEdit() {
-    	$user = User::find(5);
+    	$user =  \Auth::user();
     return view('admin.edit', [ 
     	'user' => $user]);
     }	
 
     public  function adminSave(Request $request) {
-    	dd($request->all());
-    	$user = User::find(5);
+    	//dd($request->all());
+    	$user = \Auth::user();
     	$user->fill($request->only('name', 'email', 'password'));
     	$user->save();
     return redirect()->back();
