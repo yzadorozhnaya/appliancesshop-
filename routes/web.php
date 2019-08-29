@@ -50,5 +50,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //{
 //    Route::get('/admin/edit', 'Admin\AdminController@adminEdit')->name('admin.edit');
 //});
-Route::get('/admin/edit', 'AdminController@adminEdit')->name('admin.edit');
-Route::post('/admin/save/', 'AdminController@adminSave')->name('admin.save');
+Route::get('/admin/list', 'AdminController@adminList')->name('admin.list');
+Route::get('/admin/edit/{id}', 'AdminController@adminEdit')->name('admin.edit');
+Route::post('/admin/save/{id?}', 'AdminController@adminSave')->name('admin.save');
+Route::get('/admin/delete/{id}', 'AdminController@adminDelete')->name('admin.delete');
+Route::get('/admin/create', 'AdminController@adminCreate')->name('admin.create');
