@@ -28,17 +28,22 @@ class AdminController extends Controller
     }	
 
     public  function adminSave($id=null, Request $request) 
-    {
-    	//dd($request->all());
-        $request->validate([
-            'name'=> 'required|max:255',
-            'email'=> 'required|email|max:255',
-            'password' => 'required|min:8',
-        ]);
+    {    
+        //dd($request->all());
         if($id){
             $user =  User::find($id);
+        }else{
+        $user= new User();
         }
-    	$user= new User();
+        $email_rules = 'required|email';
+        if ($user->isDirty('email')) {
+            $email_rules = $email_rules. '|unique:users,email';
+        }
+        $request->validate([
+            'name'=> 'required|min:8|max:255',
+            'email'=> $email_rules,
+            'password' => 'required|min:8',
+        ]);
     	$user->fill($request->only('name', 'email', 'password'));
         $user->password = \Hash::make($request->password);
     	$user->save();
