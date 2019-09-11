@@ -9,7 +9,7 @@
             <strong>{{$message}}</strong>
         </div>
         @endif
-        <a href="{{route('admin.create')}}">создать</a>
+        <a href="{{route('admin.users.create')}}">создать</a>
         <table class="table table-striped table-bordered table-hover" width="100%">
             <thead>
                 <tr>
@@ -26,8 +26,8 @@
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td><a href="{{route('admin.edit',['id'=>$user->id])}}">редактировать</td>
-                     <td><a href="{{route('admin.delete',['id'=>$user->id])}}">удалить</td>
+                    <td><a href="{{route('admin.users.edit',['id'=>$user->id])}}">редактировать</td>
+                     <td><a href="{{route('admin.users.delete',['id'=>$user->id])}}">удалить</td>
                 </tr>
                 @endforeach
             </tbody>

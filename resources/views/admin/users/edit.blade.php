@@ -10,9 +10,9 @@
                 <div class="card-body">
                     <form method="POST" 
 @if(isset($user))
-                    action="{{ route('admin.save',['id'=>$user->id]) }}"
+                    action="{{ route('admin.users.save',['id'=>$user->id]) }}"
 @else
-                    action="{{ route('admin.save') }}"
+                    action="{{ route('admin.users.save') }}"
 @endif
                     >
                         @csrf

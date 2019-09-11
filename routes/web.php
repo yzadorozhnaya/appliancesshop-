@@ -46,12 +46,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function()
-//{
-//    Route::get('/admin/edit', 'Admin\AdminController@adminEdit')->name('admin.edit');
-//});
-Route::get('/admin/list', 'AdminController@adminList')->name('admin.list');
-Route::get('/admin/edit/{id}', 'AdminController@adminEdit')->name('admin.edit');
-Route::post('/admin/save/{id?}', 'AdminController@adminSave')->name('admin.save');
-Route::get('/admin/delete/{id}', 'AdminController@adminDelete')->name('admin.delete');
-Route::get('/admin/create', 'AdminController@adminCreate')->name('admin.create');
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function()
+{
+
+Route::get('/users/list', 'AdminController@adminUsersList')->name('admin.users.list');
+Route::get('/users/edit/{id}', 'AdminController@adminUsersEdit')->name('admin.users.edit');
+Route::post('/users/save/{id?}', 'AdminController@adminUsersSave')->name('admin.users.save');
+Route::get('/users/delete/{id}', 'AdminController@adminUsersDelete')->name('admin.users.delete');
+Route::get('/users/create', 'AdminController@adminUsersCreate')->name('admin.users.create');
+
+Route::get('/products/list', 'AdminController@adminProductsList')->name('admin.products.list');
+Route::get('/products/edit/{id}', 'AdminController@adminProductsEdit')->name('admin.products.edit');
+Route::post('/products/save/{id?}', 'AdminController@adminProductsSave')->name('admin.products.save');
+Route::get('/products/delete/{id}', 'AdminController@adminProductsDelete')->name('admin.products.delete');
+Route::get('/products/create', 'AdminController@adminProductsCreate')->name('admin.products.create');
+
+});
