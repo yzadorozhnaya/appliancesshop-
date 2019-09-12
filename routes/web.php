@@ -61,10 +61,17 @@ Route::post('/products/save/{id?}', 'AdminController@adminProductsSave')->name('
 Route::get('/products/delete/{id}', 'AdminController@adminProductsDelete')->name('admin.products.delete');
 Route::get('/products/create', 'AdminController@adminProductsCreate')->name('admin.products.create');
 
-Route::get('/categories/list', 'AdminController@adminCategoriesList')->name('admin.categories.list');
-Route::get('/categories/edit/{id}', 'AdminController@adminCategoriesEdit')->name('admin.categories.edit');
-Route::post('/categories/save/{id?}', 'AdminController@adminCategoriesSave')->name('admin.categories.save');
-Route::get('/categories/delete/{id}', 'AdminController@adminCategoriesDelete')->name('admin.categories.delete');
-Route::get('/categories/create', 'AdminController@adminCategoriesCreate')->name('admin.categories.create');
+Route::get('/articles/list', 'AdminController@adminArticlesList')->name('admin.articles.list');
+Route::get('/articles/edit/{id}', 'AdminController@adminArticlesEdit')->name('admin.articles.edit');
+Route::post('/articles/save/{id?}', 'AdminController@adminArticlesSave')->name('admin.articles.save');
+Route::get('/articles/delete/{id}', 'AdminController@adminArticlesDelete')->name('admin.articles.delete');
+Route::get('/articles/create', 'AdminController@adminArticlesCreate')->name('admin.articles.create');
+
+Route::get('/orders/list', 'AdminController@adminOrdersList')->name('admin.orders.list');
+Route::get('/orders/edit/{id}', 'AdminController@adminOrdersEdit')->name('admin.orders.edit');
+Route::post('/orders/save/{id?}', 'AdminController@adminOrdersSave')->name('admin.orders.save');
+Route::get('/orders/delete/{id}', 'AdminController@adminOrdersDelete')->name('admin.orders.delete');
+Route::get('/orders/create', 'AdminController@adminOrdersCreate')->name('admin.orders.create');
+
 
 });

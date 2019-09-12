@@ -5,6 +5,7 @@ use App\Models\Categor;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Article;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -154,6 +155,91 @@ class AdminController extends Controller
         return redirect()->back()->with('success','Успешно удлен');
     }
 
+    //admin.articles
 
+    public  function adminArticlesList() 
+    {
+        $articles = Article::paginate(10);
+        return view('admin.articles.list', [ 
+        'articles' => $articles]);
+    }   
+    public  function adminArticlesCreate() 
+    {
+        return view('admin.articles.edit');
+    }   
+
+    public  function adminArticlesEdit($id) 
+    {
+        $article =  Article::find($id);
+        return view('admin.articles.edit', [ 
+        'article' => $article]);
+    }   
+
+    public  function adminArticlesSave($id=null, Request $request) 
+    {
+        //dd($request->all());
+        if($id){
+            $article =  Article::find($id);
+        }else{
+        $article= new Article();
+    }
+        $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required',
+            'description' => 'required',
+        ]);
+        $article->fill($request->only('title', 'slug', 'description'));
+        $article->save();
+        return redirect(route('admin.articles.list'))->with('success','Статья ' . $article->title . ' добавлена' . '!');
+    }   
+    public  function adminArticlesDelete($id) 
+    {
+        $article =  Article::find($id);
+        $article->delete();
+        return redirect()->back()->with('success','Успешно удлен');
+    }
+
+    //admin.orders
+
+    public  function adminOrdersList() 
+    {
+        $orders = Order::paginate(10);
+        return view('admin.orders.list', [ 
+        'orders' => $orders]);
+    }   
+    public  function adminOrdersCreate() 
+    {
+        return view('admin.orders.edit');
+    }   
+
+    public  function adminOrdersEdit($id) 
+    {
+        $order =  Order::find($id);
+        return view('admin.orders.edit', [ 
+        'order' => $order]);
+    }   
+
+    public  function adminOrdersSave($id=null, Request $request) 
+    {
+        //dd($request->all());
+        if($id){
+            $order =  Order::find($id);
+        }else{
+        $order= new Order();
+    }
+        $request->validate([
+            'user_id' => 'required|max:11',
+            'phone' => 'required',
+        ]);
+        $order->fill($request->only('user_id', 'phone'));
+        $order->save();
+        return redirect(route('admin.orders.list'))->with('success','Заказ ' . $order->user_id. ' добавлена' . '!');
+    }   
+    public  function adminOrdersDelete($id) 
+    {
+        $order =  Order::find($id);
+        $order->delete();
+        return redirect()->back()->with('success','Успешно удлен');
+    }
 
 }
