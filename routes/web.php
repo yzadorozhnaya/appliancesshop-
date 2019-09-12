@@ -61,4 +61,10 @@ Route::post('/products/save/{id?}', 'AdminController@adminProductsSave')->name('
 Route::get('/products/delete/{id}', 'AdminController@adminProductsDelete')->name('admin.products.delete');
 Route::get('/products/create', 'AdminController@adminProductsCreate')->name('admin.products.create');
 
+Route::get('/categories/list', 'AdminController@adminCategoriesList')->name('admin.categories.list');
+Route::get('/categories/edit/{id}', 'AdminController@adminCategoriesEdit')->name('admin.categories.edit');
+Route::post('/categories/save/{id?}', 'AdminController@adminCategoriesSave')->name('admin.categories.save');
+Route::get('/categories/delete/{id}', 'AdminController@adminCategoriesDelete')->name('admin.categories.delete');
+Route::get('/categories/create', 'AdminController@adminCategoriesCreate')->name('admin.categories.create');
+
 });

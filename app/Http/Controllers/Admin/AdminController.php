@@ -10,7 +10,8 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    
+    //admin.users
+
     public  function adminUsersList() 
     {
         $users = User::paginate(10);
@@ -57,6 +58,9 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->back()->with('success','Успешно удлен');
     }
+
+    //admin.products
+
     public  function adminProductsList() 
     {
         $products = Product::paginate(10);
@@ -101,6 +105,52 @@ class AdminController extends Controller
     {
         $product =  Product::find($id);
         $product->delete();
+        return redirect()->back()->with('success','Успешно удлен');
+    }
+
+    //admin.categories
+
+
+    public  function adminCategoriesList() 
+    {
+        $categories = Categor::paginate(10);
+        return view('admin.categories.list', [ 
+        'categories' => $categories]);
+    }   
+    public  function adminCategoriesCreate() 
+    {
+        return view('admin.categories.edit');
+    }   
+
+    public  function adminCategoriesEdit($id) 
+    {
+        $category =  Categor::find($id);
+        return view('admin.categories.edit', [ 
+        'category' => $category]);
+    }   
+
+    public  function adminCategoriesSave($id=null, Request $request) 
+    {
+        //dd($request->all());
+        if($id){
+            $category =  Categor::find($id);
+        }else{
+        $category= new Categor();
+        $category->publish = false;
+    }
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'slug' => 'required',
+        ]);
+        $category->fill($request->only('name', 'description', 'publish', 'slug', 'parent_id'));
+        $category->save();
+        return redirect(route('admin.categories.list'))->with('success','Категория ' . $category->title . ' добавлена' . '!');
+    }   
+    public  function adminCategoriesDelete($id) 
+    {
+        $category =  Categor::find($id);
+        $category->delete();
         return redirect()->back()->with('success','Успешно удлен');
     }
 
