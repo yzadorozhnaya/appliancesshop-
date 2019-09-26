@@ -49,6 +49,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function()
 {
 
+Route::get('admin', 'AdminController@admin')->name('admin.admin');
+
 Route::get('/users/list', 'AdminController@adminUsersList')->name('admin.users.list');
 Route::get('/users/edit/{id}', 'AdminController@adminUsersEdit')->name('admin.users.edit');
 Route::post('/users/save/{id?}', 'AdminController@adminUsersSave')->name('admin.users.save');

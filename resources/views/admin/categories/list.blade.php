@@ -1,8 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
+ <div class="row align-items-center">
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row ">
+
+ @include('admin.admin')
+        <div  class="col-xl-9 col-lg-8 col-md-12 d-none d-sm-block alert-block ">
         @if ($message = Session::get ('success'))
         <div class="alert alert-success alert-block">
             <button type="button" class="close" data-dismiss="alert"> x</button>
@@ -44,5 +47,6 @@
         </table>
     {{$categories->links()}}
     </div>
+</div>
 </div>
 @endsection
