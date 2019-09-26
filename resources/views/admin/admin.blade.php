@@ -1,7 +1,7 @@
 @include('layouts.styles')   
     <div  class="col-xl-3 col-lg-4 col-md-6 d-none d-sm-block alert alert-success alert-block ">
         <nav>
-        <ul class="vertical-menu">
+        <ul class="header-bottom-list">
             <li >
                 <a  href="{{route('admin.users.list')}}">                            
                             <h4 align="center">Пользователи</h4>      
