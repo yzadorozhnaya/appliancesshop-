@@ -208,7 +208,7 @@
                                     </div>
                                     <!-- Main Thumbnail Image End -->
                                     <!-- Thumbnail Description Start -->
-                                    <div class="col-lg-7 col-md-6 col-sm-7">
+                                    <!--<div class="col-lg-7 col-md-6 col-sm-7">
                                         <div class="thubnail-desc fix mt-sm-40">
                                             <h3 class="product-header">Printed Summer Dress</h3>
                                             <div class="pro-price mtb-30">
@@ -244,8 +244,9 @@
                                                 <p><span class="in-stock"><i class="ion-checkmark-round"></i> IN STOCK</span></p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <!-- Thumbnail Description End -->
+                                   
                                 </div>
                             </div>
                             <!-- Modal footer -->
@@ -264,5 +265,9 @@
                 </div>
             </div>
         </div>
+         @if(\Auth::user())
+                                    <li><a href="{{route('admin.users.edit', ['id' => \Auth::user()->id])}}"><i class="icon fa fa-user"></i>My Account</a></li>
+                                     {{ Auth::user()->name }} <span class="caret"></span>
+                                @endif
          <!-- Quick View Content End -->
          

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Providers;
-use App\Models\Categor;
-use Illuminate\Support\Facades\View;
 
+use App\Models\Categor;
+use App\Models\Product;
+use App\Models\Cart;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,9 +28,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         $categories = Categor::all();
+        $categories = Categor::all();
         View::share('categories', $categories);
     }
 
+    public function cartview() {
+        
+    }
     
 }

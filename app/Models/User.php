@@ -38,4 +38,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     protected $table = 'users';
+
+    public function order() {
+        return $this->hasMany('App\Models\Order');
+    }
 }

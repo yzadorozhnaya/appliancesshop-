@@ -17,6 +17,9 @@
         <div class="cart-main-area ptb-100 ptb-sm-60">
             <div class="container">
                 <div class="row">
+                    @if(count($cart->products)<1)
+                <h1>The shopping cart is empty</h1>
+            @else
                     <div class="col-md-12 col-sm-12">
                         <!-- Form Start -->
                         <form action="#">
@@ -25,36 +28,28 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="product-thumbnail">Image</th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
-                                            <th class="product-remove">Remove</th>
+                                            <th class="product-thumbnail">Картинка</th>
+                                            <th class="product-name">Продукт</th>
+                                            <th class="product-price">Цена</th>
+                                            <th class="product-quantity">Количество</th>
+                                            <th class="product-subtotal">Общее количество</th>
+                                            <th class="product-remove">Удалить</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="img/products/13.jpg" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a href="#">dictum idrisus</a></td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£165.00</td>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="img/products/23.jpg" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a href="#">Carte Postal Clock</a></td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£50.00</td>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                        </tr>
-                                    </tbody>
+                                     @foreach($cart->products as $product)
+                                        <tbody>
+                                            <tr>
+                                                <td class="product-thumbnail">
+                                                    <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>
+                                                </td>
+                                                <td class="product-name"><a href="#">{{$products->get($product['id'])->name}}</a></td>
+                                                <td class="product-price"><span class="amount">{{$product['price']}}</span></td>
+                                                <td class="product-quantity"><input type="number" value="1" /><a href="#">{{$product['count']}}</a></td> 
+                                                <td class="product-subtotal">£165.00</td>
+                                                <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                                            </tr>                                    
+                                        </tbody> 
+                                    @endforeach
                                 </table>
                             </div>
                             <!-- Table Content Start -->
@@ -62,8 +57,8 @@
                                <!-- Cart Button Start -->
                                 <div class="col-md-8 col-sm-12">
                                     <div class="buttons-cart">
-                                        <input type="submit" value="Update Cart" />
-                                        <a href="#">Continue Shopping</a>
+                                        <input type="submit" value="обновить корзину" />
+                                        <a href="{{route('categories')}}">продолжить покупки</a>
                                     </div>
                                 </div>
                                 <!-- Cart Button Start -->
@@ -75,8 +70,12 @@
                                         <table class="float-md-right">
                                             <tbody>
                                                 <tr class="cart-subtotal">
-                                                    <th>Subtotal</th>
-                                                    <td><span class="amount">$215.00</span></td>
+                                                    <th>сумма</th>
+                                                    <td><span class="amount">{{$cart->sum}}</span></td>
+                                                </tr>
+                                                <tr class="cart-subtotal">
+                                                    <th>количество</th>
+                                                    <td><span class="amount">{{$cart->count}}</span></td>
                                                 </tr>
                                                 <tr class="order-total">
                                                     <th>Total</th>
@@ -97,6 +96,7 @@
                         </form>
                         <!-- Form End -->
                     </div>
+                        @endif
                 </div>
                  <!-- Row End -->
             </div>

@@ -5,12 +5,21 @@ use App\Models\Categor;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Article;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
 	public  function index() {
-    return view('index');
+		$this->cart = new Cart();
+		foreach($this->cart->products as $product) {
+           $ids[] = $product['id'];
+        }
+        $products = Product::whereIn('id',$ids)->get()->keyBy('id');
+    return view('index',[
+        'cart'=> $this->cart,
+        'products' => $products
+    ]);
     }
 	
 	public function home() {
@@ -27,9 +36,10 @@ class ProjectController extends Controller
     return view('blog', ['article' => $article]);
 	}
 
-	public  function cart() {
-    return view('cart');
-	}
+	//public  function cart(Request $request) {
+	//$products=Product::paginate(10);	
+    //return view('cart', ['products' => $products]);
+	//}
 
    	public  function checkout() {
     return view('checkout');
@@ -48,8 +58,11 @@ class ProjectController extends Controller
 	}	
 
 	public  function product($id) {
-
 		$product = Product::find($id);
+		//\DB::enableQueryLog();
+       //  dd($product->category()->get(),
+     //   \DB::getQueryLog());
+		
 		//dd($product);
     return view('product', ['product' => $product]);
 

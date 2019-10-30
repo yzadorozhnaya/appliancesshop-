@@ -39,16 +39,17 @@
                                 <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
                                     <li><a href="#"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">2</span><span>cart</span></span></a>
                                         <ul class="ht-dropdown cart-box-width">
+                                            @foreach($cart->products as $product)
                                             <li>
                                                 <!-- Cart Box Start -->
                                                 <div class="single-cart-box">
                                                     <div class="cart-img">
-                                                        <a href="#"><img src="img/products/1.jpg" alt="cart-image"></a>
-                                                        <span class="pro-quantity">1X</span>
+                                                        <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>
+                                                        <span class="pro-quantity">{{$product['count']}}</span>
                                                     </div>
                                                     <div class="cart-content">
-                                                        <h6><a href="#">Printed Summer Red </a></h6>
-                                                        <span class="cart-price">27.45</span>
+                                                        <h6><a href="#">{{$products->get($product['id'])->name}}</a></h6>
+                                                        <span class="cart-price">{{$product['price']}}</span>
                                                         <span>Size: S</span>
                                                         <span>Color: Yellow</span>
                                                     </div>
@@ -84,6 +85,7 @@
                                                 </div>
                                                 <!-- Cart Footer Inner End -->
                                             </li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="#"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Wish</span><span>list (0)</span></span></a>

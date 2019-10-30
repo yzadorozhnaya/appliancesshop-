@@ -7,13 +7,16 @@
                     <ul class="d-flex align-items-center">
                         <li><a href="{{route('index')}}">Головна</a></li>
                         <li><a href="{{route('categories')}}">Усі категорії</a></li>
+                        <li><a href="#">{{$product->category->parent->parent->name}}</a></li>
+                        <li><a href="#">{{$product->category->parent->name}}</a></li>
+                        <li><a href="#">{{$product->category->name}}</a></li>
                         <li class='active'>{{$product->name}}</li>
                     </ul>
                 </div>
             </div>
             <!-- Container End -->
         </div>
-      
+ 
         <!-- Breadcrumb End -->
         <!-- Product Thumbnail Start -->
         <div class="main-product-thumbnail ptb-100 ptb-sm-60">
@@ -88,14 +91,21 @@
                                 </div>
                                 <div class="box-quantity d-flex hot-product2">
                                     <form action="#">
-                                        <input class="quantity mr-15" type="number" min="1" value="1">
+                                        
                                     </form>
                                     @section('proactions')
                                     <div class="pro-actions">
                                         <div class="actions-primary">
-                                            <a href="{{route('cart')}}" title="" data-original-title="Купити"> + Купити</a>
+                                            <form method="POST" action="{{route('cart.add')}}">
+                                            @csrf
+                                                <input name="id" type="hidden"  value="{{$product->id}}">
+                                                <input name="count" class="quantity mr-15" type="number" min="1" value="1">
+                                                <button class="btn btn-primary" type="submit"><i class="fa fa-shopping-cart inner-right-vs"></i> + Купити</button>
+                                               
+                                            </form>
                                         </div>
                                         <div class="actions-secondary">
+                                            <!--<a href="{{route('cart')}}" title="" data-original-title="Купити"> + Купити</a>-->
                                             <a href="{{route('wishlist')}}" title="" data-original-title="Список Бажання"><i class="lnr lnr-heart"></i> <span>Додати до списку бажань</span></a>
                                         </div>
                                     </div>
@@ -248,6 +258,7 @@
             </div>
             <!-- Container End -->
         </div>
+
         <!-- Product Thumbnail Description End -->
         <!-- Realted Products Start Here -->     
     @endsection

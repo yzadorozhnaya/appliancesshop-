@@ -16,7 +16,7 @@ Route::get('/about', 'ProjectController@about') -> name('about');
 
 Route::get('/blog', 'ProjectController@blog') -> name('blog');
 
-Route::get('/cart', 'ProjectController@cart') -> name('cart');
+//Route::get('/cart', 'ProjectController@cart') -> name('cart');
 
 Route::get('/checkout', 'ProjectController@checkout') -> name('checkout');
 
@@ -81,5 +81,10 @@ Route::post('/orders/save/{id?}', 'AdminController@adminOrdersSave')->name('admi
 Route::get('/orders/delete/{id}', 'AdminController@adminOrdersDelete')->name('admin.orders.delete');
 Route::get('/orders/create', 'AdminController@adminOrdersCreate')->name('admin.orders.create');
 
-
 });
+
+Route::get('/cart', 'CartController@cart') -> name('cart');
+Route::post('/cart/add', 'CartController@add')->name('cart.add');
+Route::post('/cart/remove', 'CartController@remove')->name('cart.remove');
+Route::post('/cart/change', 'CartController@change')->name('cart.change');
+Route::post('/cart/clear', 'CartController@clear')->name('cart.clear');
