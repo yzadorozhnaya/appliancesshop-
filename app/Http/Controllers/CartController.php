@@ -44,19 +44,34 @@ class CartController extends Controller
     }  
 
    public  function cart(Request $request) {
-       // dd($this->cart);
-       
         $this->cart = new Cart();
         //dd(session()->all());
-        //$ids=[];
+        //dd($this->cart);
+        $ids=[];
         foreach($this->cart->products as $product) {
            $ids[] = $product['id'];
         }
         $products = Product::whereIn('id',$ids)->get()->keyBy('id');
-        
+        //dd(Product::all());
+        //dd($ids);
         return view('cart', [
         'cart'=> $this->cart,
         'products' => $products
     ]);
     }
+    public  function remove(Request $request){
+       // dd($request);
+        $id = $request->id;
+        $this->cart = new Cart();
+        $this->cart->remove($id);
+        return redirect(route('cart'));
+    }  
+
+    public  function change(Request $request){
+        $id = $request->id;
+        $count = $request->count;
+        $this->cart = new Cart();
+        $this->cart->change($id, $count);
+        return redirect(route('cart'));
+    }  
 }

@@ -11,15 +11,8 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
 	public  function index() {
-		$this->cart = new Cart();
-		foreach($this->cart->products as $product) {
-           $ids[] = $product['id'];
-        }
-        $products = Product::whereIn('id',$ids)->get()->keyBy('id');
-    return view('index',[
-        'cart'=> $this->cart,
-        'products' => $products
-    ]);
+		
+    return view('index');
     }
 	
 	public function home() {

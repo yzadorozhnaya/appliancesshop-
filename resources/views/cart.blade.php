@@ -19,37 +19,49 @@
                 <div class="row">
                     @if(count($cart->products)<1)
                 <h1>The shopping cart is empty</h1>
-            @else
+                @else
                     <div class="col-md-12 col-sm-12">
-                        <!-- Form Start -->
-                        <form action="#">
                             <!-- Table Content Start -->
                             <div class="table-content table-responsive mb-45">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="product-thumbnail">Картинка</th>
+                                            <th class="product-thumbnail">зображення</th>
                                             <th class="product-name">Продукт</th>
-                                            <th class="product-price">Цена</th>
-                                            <th class="product-quantity">Количество</th>
-                                            <th class="product-subtotal">Общее количество</th>
-                                            <th class="product-remove">Удалить</th>
+                                            <th class="product-price">Ціна</th>
+                                            <th class="product-quantity">Кількість</th>
+                                            <th class="product-subtotal">загальна кількість</th>
+                                            <th class="product-remove">Видалити</th>
                                         </tr>
                                     </thead>
-                                     @foreach($cart->products as $product)
-                                        <tbody>
-                                            <tr>
-                                                <td class="product-thumbnail">
-                                                    <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>
-                                                </td>
-                                                <td class="product-name"><a href="#">{{$products->get($product['id'])->name}}</a></td>
-                                                <td class="product-price"><span class="amount">{{$product['price']}}</span></td>
-                                                <td class="product-quantity"><input type="number" value="1" /><a href="#">{{$product['count']}}</a></td> 
-                                                <td class="product-subtotal">£165.00</td>
-                                                <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                            </tr>                                    
-                                        </tbody> 
-                                    @endforeach
+                                    <tbody>
+                                        @foreach($cart->products as $product)
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>
+                                            </td>
+                                            <td class="product-name"><a href="#"></a>{{$products->get($product['id'])->name}}<br>{{$products->get($product['id'])->articul}}</td>
+                                            <td class="product-price"><span class="amount">{{$product['price']}}</span></td>
+                                            <form method="POST" action="{{route('cart.change')}}">
+                                                 @csrf
+                                                    <td class="product-quantity">
+                                                        <input name="id" type="hidden"  value="{{$product['id']}}">
+                                                        <input name="count" class="quantity mr-15" type="number" min="1" value="{{$product['count']}}">
+                                                        <button class="btn btn-danger" type="submit"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+
+                                                    </td>
+                                            </form>
+                                            <td class="product-subtotal">{{$product['price']*$product['count']}}</td>
+                                            <form method="POST" action="{{route('cart.remove')}}">
+                                                @csrf
+                                                    <td class="product-remove">
+                                                        <input name="id" type="hidden"  value="{{$product['id']}}">
+                                                        <button type="submit"> <a href=""><i class="fa fa-times"></i></a></button>
+                                                    </td>
+                                            </form>
+                                        </tr> 
+                                        @endforeach                                   
+                                    </tbody> 
                                 </table>
                             </div>
                             <!-- Table Content Start -->
@@ -78,23 +90,21 @@
                                                     <td><span class="amount">{{$cart->count}}</span></td>
                                                 </tr>
                                                 <tr class="order-total">
-                                                    <th>Total</th>
+                                                    <th>сумма+%скидки</th>
                                                     <td>
-                                                        <strong><span class="amount">$215.00</span></strong>
+                                                        <strong><span class="amount">{{$cart->sum}}</span></strong>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="#">Proceed to Checkout</a>
+                                            <a href="#">оформление заказа</a>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Cart Totals End -->
                             </div>
-                            <!-- Row End -->
-                        </form>
-                        <!-- Form End -->
+                            <!-- Row End -->                        
                     </div>
                         @endif
                 </div>

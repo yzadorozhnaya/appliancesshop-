@@ -28,6 +28,4 @@
     <link rel="stylesheet" href="{{asset("/css/style.css")}}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{asset("/css/responsive.css")}}">
-
-   
-
+ 

@@ -28,14 +28,22 @@ class Cart {
 
      public  function add($product,$count){
         $flag = true;
-        
-        foreach ($this->products as &$product_cart) {
-            if ($product_cart['id']==$product->id) {
-                $product_cart['count'] += $count;
-                $flag = false;
-                break;
-            }
-        }
+        //dd($this->products);
+        //foreach ($this->products as &$product_cart) {
+        //    if ($product_cart['id']==$product->id) {
+//
+        //        $product_cart['count'] += $count;
+        //        $flag = false;
+        //        break;
+        //    }
+        //}
+       foreach($this->products as $key => $product_cart) {
+           if($product_cart['id']==$product->id) {
+               $this->products[$key]['count'] = $product_cart['count']+$count;
+               $flag = false;
+               break;
+           }
+       }
         if ($flag) {
               $this->products[]=[
                 'id'=>$product->id,
@@ -46,23 +54,23 @@ class Cart {
         $this->calc();
     }  
 
-     public  function remove(Request $request){
-     	$id = $request->poducts_id;
-        foreach ($this->products as &$product) {
-                if ($product['id']==$id) {
-                    unset($product);
+     public  function remove($id){
+        //dd($id,$this->products);
+        foreach ($this->products as $key => $product) {
+           //dd($product['id'], $id);
+                if ($product['id']==$id) { 
+                    unset($this->products[$key]);
                     break;
                 }
         }
         $this->calc(); 
     }   
 
-     public  function change(){
-        $id = $request->poducts_id;
-        $count = $request->count;
-        foreach ($this->products as &$product) {
+     public  function change($id, $count){
+        
+        foreach ($this->products as $key => $product) {
             if ($product['id']==$id) {
-                $product['count'] += $count;
+                $this->products[$key]['count'] = $count;
                 break;
             }
         }	

@@ -256,7 +256,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="your-order">
-                            <h3>Your order</h3>
+                            <h3>Ваше змовлення</h3>
                             <div class="your-order-table table-responsive">
                                 <table>
                                     <thead>
