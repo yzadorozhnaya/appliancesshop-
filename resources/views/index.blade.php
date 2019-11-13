@@ -1,5 +1,6 @@
 @extends('layouts.layout')
- @section('sliderwrapper')
+
+@section('sliderwrapper')
 <!-- Categorie Menu & Slider Area Start Here -->
         <div class="main-page-banner pb-50 off-white-bg">
             <div class="container">
@@ -27,6 +28,7 @@
         </div>
         @endsection
 	@section('content') 
+   
         <!-- Categorie Menu & Slider Area End Here -->
         <!-- Brand Banner Area Start Here -->
         <div class="image-banner pb-50 off-white-bg">

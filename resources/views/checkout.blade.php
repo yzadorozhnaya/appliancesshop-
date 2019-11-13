@@ -20,10 +20,13 @@
                     <div class="col-md-12">
                         <div class="coupon-accordion">
                             <!-- ACCORDION START -->
-                            <h3>Returning customer? <span id="showlogin">Click here to login</span></h3>
+                            @if (auth()->check())
+                            {{ Auth::user()->name }}
+                            @else
+                            <h3><span id="showlogin">Будь ласка увійдіть до свого кабінету</span></h3>
                             <div id="checkout-login" class="coupon-content">
                                 <div class="coupon-info">
-                                    <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
+                                    <p class="coupon-text"></p>
                                     <form action="#">
                                         <p class="form-row-first">
                                             <label>Username or email <span class="required">*</span></label>
@@ -46,9 +49,10 @@
                                     </form>
                                 </div>
                             </div>
+                            @endif
                             <!-- ACCORDION END -->
                             <!-- ACCORDION START -->
-                            <h3>Have a coupon? <span id="showcoupon">Click here to enter your code</span></h3>
+                            <h3>Есть купон? <span id="showcoupon">Нажмите здесь, чтобы ввести код</span></h3>
                             <div id="checkout_coupon" class="coupon-checkout-content">
                                 <div class="coupon-info">
                                     <form action="#">
@@ -74,37 +78,10 @@
                         <div class="checkbox-form mb-sm-40">
                             <h3>Billing Details</h3>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="country-select clearfix mb-30">
-                                        <label>Country <span class="required">*</span></label>
-                                        <select class="wide">
-                                            <option value="volvo">Bangladesh</option>
-                                            <option value="saab">Algeria</option>
-                                            <option value="mercedes">Afghanistan</option>
-                                            <option value="audi">Ghana</option>
-                                            <option value="audi2">Albania</option>
-                                            <option value="audi3">Bahrain</option>
-                                            <option value="audi4">Colombia</option>
-                                            <option value="audi5">Dominican Republic</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-sm-30">
-                                        <label>First Name <span class="required">*</span></label>
-                                        <input type="text" placeholder="" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>Last Name <span class="required">*</span></label>
-                                        <input type="text" placeholder="" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>Company Name</label>
-                                        <input type="text" placeholder="" />
+                                        <label>Name <span class="required"></span></label>
+                                        <input type="text" placeholder="{{ Auth::user()->name }}" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -126,7 +103,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
-                                        <label>State / County <span class="required">*</span></label>
+                                        <label>County <span class="required">*</span></label>
                                         <input type="text" placeholder="" />
                                     </div>
                                 </div>
@@ -168,37 +145,9 @@
                                     </h3>
                                 </div>
                                 <div id="ship-box-info">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="country-select clearfix mb-30">
-                                                <label>Country <span class="required">*</span></label>
-                                                <select class="wide">
-                                                    <option value="volvo">Bangladesh</option>
-                                                    <option value="saab">Algeria</option>
-                                                    <option value="mercedes">Afghanistan</option>
-                                                    <option value="audi">Ghana</option>
-                                                    <option value="audi2">Albania</option>
-                                                    <option value="audi3">Bahrain</option>
-                                                    <option value="audi4">Colombia</option>
-                                                    <option value="audi5">Dominican Republic</option>
-                                               </select>
-                                            </div>
-                                        </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list mb-30">
-                                                <label>First Name <span class="required">*</span></label>
-                                                <input type="text" placeholder="" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Last Name <span class="required">*</span></label>
-                                                <input type="text" placeholder="" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Company Name</label>
+                                                <label>Name <span class="required">*</span></label>
                                                 <input type="text" placeholder="" />
                                             </div>
                                         </div>
@@ -221,7 +170,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list mb-30">
-                                                <label>State / County <span class="required">*</span></label>
+                                                <label> County <span class="required">*</span></label>
                                                 <input type="text" placeholder="" />
                                             </div>
                                         </div>
@@ -261,41 +210,76 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-total">Total</th>
+                                            <th class="product-name">Продукт</th>
+                                            <th class="product-total">Ціна</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                         @foreach($cart->products as $product)
                                         <tr class="cart_item">
                                             <td class="product-name">
-                                                Vestibulum suscipit <span class="product-quantity"> × 1</span>
+                                               {{$products->get($product['id'])->name}}<span class="product-quantity"></span>
                                             </td>
                                             <td class="product-total">
-                                                <span class="amount">£165.00</span>
+                                                <span class="amount">{{$product['price']}}</span>
                                             </td>
                                         </tr>
                                         <tr class="cart_item">
                                             <td class="product-name">
-                                                Vestibulum dictum magna <span class="product-quantity"> × 1</span>
+                                             <span class="product-quantity"> x {{$product['count']}}</span>
                                             </td>
                                             <td class="product-total">
-                                                <span class="amount">£50.00</span>
+                                                <span class="amount">{{$product['price']*$product['count']}}</span>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
+                                         <tr class="cart-subtotal">
+                                            <th>количество</th>
+                                            <td><span class="amount">{{$cart->sum}}</span></td>
+                                        </tr>
                                         <tr class="cart-subtotal">
-                                            <th>Cart Subtotal</th>
-                                            <td><span class="amount">£215.00</span></td>
+                                            <th>сумма</th>
+                                            <td><span class="amount">{{$cart->count}}</span></td>
                                         </tr>
                                         <tr class="order-total">
-                                            <th>Order Total</th>
-                                            <td><span class=" total amount">£215.00</span>
+                                            <th>сумма+%скидки</th>
+                                            <td><span class=" total amount">{{$cart->sum}}</span>
                                             </td>
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
+                            <div class="col-md-4 col-sm-12 cart-shopping-total">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <div class="cart-sub-total">
+                        Quantity<span class="inner-left-md">{{$cart->count}}</span>
+                    </div>
+                    <div class="cart-grand-total">
+                        Sum<span class="inner-left-md">{{$cart->sum}}</span>
+                    </div>
+                </th>
+            </tr>
+        </thead><!-- /thead -->
+        <tbody>
+                <tr>
+                    <td>
+                        <div class="cart-checkout-btn pull-right">
+                            <form method="POST" action="{{route('checkout.buy')}}">
+                                @csrf
+                            <button type="submit" class="btn btn-primary checkout-btn">відправити замовлення</button>
+                            </form>
+                            <span class="">Checkout with multiples address!</span>
+                        </div>
+                    </td>
+                </tr>
+        </tbody><!-- /tbody -->
+    </table><!-- /table -->
+</div><!-- /.cart-shopping-total -->
                             <div class="payment-method">
                                 <div id="accordion">
                                     <div class="card">

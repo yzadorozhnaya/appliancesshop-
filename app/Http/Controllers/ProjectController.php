@@ -34,9 +34,9 @@ class ProjectController extends Controller
     //return view('cart', ['products' => $products]);
 	//}
 
-   	public  function checkout() {
-    return view('checkout');
-	}
+ //   	public  function checkout() {
+ //    return view('checkout');
+	// }
 
 	public  function contact() {
     return view('contact');

@@ -12,14 +12,21 @@
             </div>
             <!-- Container End -->
         </div>
+         @section('content') 
+        @if(session('success'))
+            <h1>{{session('success')}}</h1>
+        @endif
         <!-- Breadcrumb End -->
         <!-- Cart Main Area Start -->
         <div class="cart-main-area ptb-100 ptb-sm-60">
             <div class="container">
                 <div class="row">
                     @if(count($cart->products)<1)
-                <h1>The shopping cart is empty</h1>
-                @else
+                         <h1>Кошик порожній</h1>
+                          <div class="wc-proceed-to-checkout">
+                                            <a href="{{route('categories')}}">продолжить покупки</a>
+                                        </div>
+                    @else
                     <div class="col-md-12 col-sm-12">
                             <!-- Table Content Start -->
                             <div class="table-content table-responsive mb-45">
@@ -98,7 +105,7 @@
                                             </tbody>
                                         </table>
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="#">оформление заказа</a>
+                                            <a href="{{route('checkout')}}">оформление заказа</a>
                                         </div>
                                     </div>
                                 </div>
@@ -107,6 +114,7 @@
                             <!-- Row End -->                        
                     </div>
                         @endif
+  
                 </div>
                  <!-- Row End -->
             </div>

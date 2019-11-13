@@ -265,9 +265,5 @@
                 </div>
             </div>
         </div>
-         @if(\Auth::user())
-                                    <li><a href="{{route('admin.users.edit', ['id' => \Auth::user()->id])}}"><i class="icon fa fa-user"></i>My Account</a></li>
-                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                @endif
-         <!-- Quick View Content End -->
+        
          

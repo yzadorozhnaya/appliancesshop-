@@ -1,4 +1,5 @@
 <!-- Main Header Area Start Here -->
+
         <header>
             <!-- Header Top Start Here -->
             <div class="header-top-area">
@@ -18,7 +19,42 @@
                                 <!-- Dropdown End -->
                             </li>
                         </ul>
+                            @if (auth()->check()) 
+                            
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Вихід') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('admin.users.edit',['id'=>\Auth::user()->id])}}">Pедагувати</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                       
+                                @else
+                                <ul>                                          
+                            <li><span>Мій кабінет</span> <a href="#"><i class="lnr lnr-chevron-down"></i></a>
+                                <!-- Dropdown Start -->
+                                <ul class="ht-dropdown">
+                                    <li><a href="{{route('register')}}">Реєстрація</a></li>
+                                    <li><a href="{{route('login')}}">Вхід</a></li>
+                                </ul>
+                                <!-- Dropdown End -->
+                            </li>
+                        </ul>
+                            
+                            @endif
+                          
                     </div>
+                      
                     <!-- Header Top End -->
                 </div>
                 <!-- Container End -->

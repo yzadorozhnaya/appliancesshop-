@@ -11,6 +11,7 @@
 <body>
     <!-- Main Wrapper Start Here -->
     <div class="wrapper">
+
         @include('layouts.popup-banner')
         @include('layouts.popup-wrapper')
         @include('layouts.header')
@@ -18,6 +19,7 @@
         @yield('sliderwrapper')
         @yield('content')
         @include('layouts.footer')
+        
     </div>
     <!-- Main Wrapper End Here -->
     @include('layouts.scripts')

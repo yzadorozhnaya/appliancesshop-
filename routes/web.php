@@ -18,7 +18,7 @@ Route::get('/blog', 'ProjectController@blog') -> name('blog');
 
 //Route::get('/cart', 'ProjectController@cart') -> name('cart');
 
-Route::get('/checkout', 'ProjectController@checkout') -> name('checkout');
+// Route::get('/checkout', 'ProjectController@checkout') -> name('checkout');
 
 Route::get('/contact', 'ProjectController@contact') -> name('contact');
 
@@ -44,7 +44,7 @@ Route::get('/wishlist', 'ProjectController@wishlist') -> name('wishlist');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@home')->name('home');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function()
 {
@@ -88,3 +88,5 @@ Route::post('/cart/add', 'CartController@add')->name('cart.add');
 Route::post('/cart/remove', 'CartController@remove')->name('cart.remove');
 Route::post('/cart/change', 'CartController@change')->name('cart.change');
 Route::post('/cart/clear', 'CartController@clear')->name('cart.clear');
+Route::get('/checkout', 'CartController@checkout') ->name('checkout');
+Route::post('/checkout/buy', 'CartController@buy')->name('checkout.buy');

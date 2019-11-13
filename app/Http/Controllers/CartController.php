@@ -1,11 +1,13 @@
 <?php
-
+namespace App\Http\Controllers\Auth;
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller; 
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Cart;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class CartController extends Controller
 {	
 
@@ -17,7 +19,6 @@ class CartController extends Controller
             //dd($this->cart);
      //  }
     public  function add(Request $request){
-
        //dd($request);
         //$id = $request->id;
        // $count = $request->count;
@@ -25,7 +26,6 @@ class CartController extends Controller
         //dd( $this->cart);
         //$this->cart->add($product,$count);
         //dd($this->cart);
-
         $id = $request->id;
         //dd($id);
         $count = $request->count;
@@ -41,9 +41,10 @@ class CartController extends Controller
         $this->cart->add($product, $count);
         //dd($this->cart);
         return redirect(route('cart'));
+        return redirect(route('checkout'));
     }  
 
-   public  function cart(Request $request) {
+    public  function cart(Request $request) {
         $this->cart = new Cart();
         //dd(session()->all());
         //dd($this->cart);
@@ -52,11 +53,11 @@ class CartController extends Controller
            $ids[] = $product['id'];
         }
         $products = Product::whereIn('id',$ids)->get()->keyBy('id');
-        //dd(Product::all());
+       // dd($products);
         //dd($ids);
         return view('cart', [
         'cart'=> $this->cart,
-        'products' => $products
+        'products' => $products,
     ]);
     }
     public  function remove(Request $request){
@@ -73,5 +74,44 @@ class CartController extends Controller
         $this->cart = new Cart();
         $this->cart->change($id, $count);
         return redirect(route('cart'));
+        return redirect(route('checkout'));
     }  
+     public  function checkout(Request $request) {
+        $this->cart = new Cart();
+        //dd(session()->all());
+        //dd($this->cart);
+        $ids=[];
+        foreach($this->cart->products as $product) {
+           $ids[] = $product['id'];
+        }
+        $products = Product::whereIn('id',$ids)->get()->keyBy('id');
+       // dd($products);
+        //dd($ids);
+         return view('checkout', [
+        'cart'=> $this->cart,
+        'products' => $products,
+    ]);
+    }
+
+  public function buy(){
+        $this->cart = new Cart();
+        $body = '';
+        //dd($this->cart->products);
+        foreach ($this->cart->products as $product) {
+           $body .='заказ'.$product['id'].'<br>'.$product['count']. $product['price'].'<br>';
+
+        }
+        $res = \Mail::raw($body, function($message)
+         {
+             $message->from('domanytskya@gmail.com','domanytskya@gmail.com');
+             //dd($message);
+             $message->to('katya.zadorognay@gmail.com');
+         });
+        $this->cart->clear();
+        //dd($res);
+         return redirect(route('cart',[
+            'cart'=> $this->cart
+            //'users' => $users
+         ]))->with('success','Ви успішно зробили своє замовлення!');
+     }
 }
