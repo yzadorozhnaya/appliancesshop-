@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
 	public  function index() {
+		// $this->cart=new Cart();
+		// $ids=[];
+	 //        foreach($this->cart->products as $product) {
+	 //           $ids[] = $product['id'];
+	 //        }
+  //       $products = Product::whereIn('id',$ids)->get()->keyBy('id');
 		
     return view('index');
     }
@@ -29,15 +35,6 @@ class ProjectController extends Controller
     return view('blog', ['article' => $article]);
 	}
 
-	//public  function cart(Request $request) {
-	//$products=Product::paginate(10);	
-    //return view('cart', ['products' => $products]);
-	//}
-
- //   	public  function checkout() {
- //    return view('checkout');
-	// }
-
 	public  function contact() {
     return view('contact');
 	}	
@@ -51,12 +48,16 @@ class ProjectController extends Controller
 	}	
 
 	public  function product($id) {
-		$product = Product::find($id);
+		$this->cart=new Cart();
 		//\DB::enableQueryLog();
-       //  dd($product->category()->get(),
-     //   \DB::getQueryLog());
-		
-		//dd($product);
+        //dd($product->category()->get(),
+        //\DB::getQueryLog());
+		// $ids=[];
+	 //        foreach($this->cart->products as $product) {
+	 //           $ids[] = $product['id'];
+	 //        }
+		// $products = Product::whereIn('id',$ids)->get()->keyBy('id');
+		$product = Product::find($id);
     return view('product', ['product' => $product]);
 
 	}	
@@ -66,16 +67,29 @@ class ProjectController extends Controller
 	}	
 
 	public  function categories() {
+		// $this->cart=new Cart();
+		// $ids=[];
+	 //        foreach($this->cart->products as $product) {
+	 //           $ids[] = $product['id'];
+	 //        }
+  //       $products = Product::whereIn('id',$ids)->get()->keyBy('id');
     return view('categories');
 	}
 
 	public function shop($slug) {
-		
+		//$this->cart=new Cart();
         $category = Categor::where('slug',$slug)->first();
-       // dd($category);
-      	$products = Product::where('category_id',$category->id)->paginate(10);
-      	//dd($products);
-        return view('shop', ['products' => $products]);
+       //dd($category);
+        // $ids=[];
+	       //  foreach($this->cart->products as $product) {
+	       //     $ids[] = $product['id'];
+	       //  }
+        // $products = Product::whereIn('id',$ids)->get()->keyBy('id');
+      	$product = Product::where('category_id',$category->id)->paginate(10);
+      	//dd($category->name);
+      	//dd($products->name);
+      	//dd($product->name);
+        return view('shop', ['product' => $product]);
 
     }
 

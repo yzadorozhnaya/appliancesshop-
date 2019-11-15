@@ -12,7 +12,7 @@
             </div>
             <!-- Container End -->
         </div>
-         @section('content') 
+
         @if(session('success'))
             <h1>{{session('success')}}</h1>
         @endif
@@ -119,6 +119,7 @@
                  <!-- Row End -->
             </div>
         </div>
+
         <!-- Cart Main Area End -->
          @include('layouts.footer')
     </div>

@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class CartController extends Controller
 {	
 
@@ -96,22 +97,28 @@ class CartController extends Controller
   public function buy(){
         $this->cart = new Cart();
         $body = '';
-        //dd($this->cart->products);
-        foreach ($this->cart->products as $product) {
-           $body .='заказ'.$product['id'].'<br>'.$product['count']. $product['price'].'<br>';
-
+        if (auth()->check()) {
+            $name = Auth::user()->name;
+            $email = Auth::user()->email;
         }
-        $res = \Mail::raw($body, function($message)
-         {
+         $ids=[];
+         foreach ($this->cart->products as $product) {
+            $ids[] = $product['id'];
+        }
+        $products = Product::whereIn('id',$ids)->get()->keyBy('id');
+        foreach ($this->cart->products as $product) {
+            $body .="\r\n"."заказ"."\r\n". $products->get($product['id'])->name."\r\n"."цена"."\r\n". $product['price']."\r\n".'количество'."\r\n".$product['count'];
+        }
+        $sum=$this->cart->sum;
+        $body.= "\r\n".$name."\r\n".$email."\r\n"."заказ общей стоимостью"."\r\n".$sum ;
+        $res = \Mail::raw($body, function($message){
              $message->from('domanytskya@gmail.com','domanytskya@gmail.com');
-             //dd($message);
              $message->to('katya.zadorognay@gmail.com');
          });
         $this->cart->clear();
-        //dd($res);
          return redirect(route('cart',[
-            'cart'=> $this->cart
-            //'users' => $users
+            'cart'=> $this->cart,
+            'products' => $products,
          ]))->with('success','Ви успішно зробили своє замовлення!');
      }
 }

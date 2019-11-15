@@ -81,7 +81,11 @@
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-sm-30">
                                         <label>Name <span class="required"></span></label>
-                                        <input type="text" placeholder="{{ Auth::user()->name }}" />
+                                        @if (auth()->check())
+                                        <input type="text" placeholder="{{ Auth::user()->name }}"/>
+                                        @else
+                                        <input type="text" placeholder=" "/>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-12">

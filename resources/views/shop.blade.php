@@ -386,7 +386,7 @@
                             <div class="tab-content fix">
                                 <div id="grid-view" class="tab-pane fade show active">
                                     <div class="row">
-                                        @foreach($products as $product_item)
+                                        @foreach($product as $product_item)
                                         <!-- Single Product Start -->
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-6">
                                             <div class="single-product">
@@ -416,7 +416,7 @@
                                     </div>
                                     <!-- Row End -->
                                 </div>
-                                {{$products->links()}}
+                                {{$product->links()}}
                                 <!-- #grid view End -->
                                 <div id="list-view" class="tab-pane fade">
                                     <!-- Single Product Start -->

@@ -1,5 +1,4 @@
 <!-- Main Header Area Start Here -->
-
         <header>
             <!-- Header Top Start Here -->
             <div class="header-top-area">
@@ -19,13 +18,11 @@
                                 <!-- Dropdown End -->
                             </li>
                         </ul>
-                            @if (auth()->check()) 
-                            
+                            @if (auth()->check())
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -38,7 +35,6 @@
                                     </form>
                                 </div>
                             </li>
-                       
                                 @else
                                 <ul>                                          
                             <li><span>Мій кабінет</span> <a href="#"><i class="lnr lnr-chevron-down"></i></a>
@@ -50,11 +46,8 @@
                                 <!-- Dropdown End -->
                             </li>
                         </ul>
-                            
                             @endif
-                          
                     </div>
-                      
                     <!-- Header Top End -->
                 </div>
                 <!-- Container End -->
@@ -73,49 +66,35 @@
                         <div class="col-lg-4 col-md-12">
                             <div class="cart-box mt-all-30">
                                 <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
-                                    <li><a href="#"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">2</span><span>cart</span></span></a>
+                                    <li><a href="{{route('cart')}}"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">2</span><span>cart</span></span></a>
                                         <ul class="ht-dropdown cart-box-width">
                                             <li>
                                                 <!-- Cart Box Start -->
+                                                @foreach($cart->products as $product)
                                                 <div class="single-cart-box">
                                                     <div class="cart-img">
-                                                        <a href="#"><img src="img/products/1.jpg" alt="cart-image"></a>
-                                                        <span class="pro-quantity">1X</span>
+                                                        <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>
+                                                        <span class="pro-quantity">{{$product['count']}}X</span>
                                                     </div>
                                                     <div class="cart-content">
-                                                        <h6><a href="#">Printed Summer Red </a></h6>
-                                                        <span class="cart-price">27.45</span>
-                                                        <span>Size: S</span>
-                                                        <span>Color: Yellow</span>
+                                                        <h6><a href="#">{{$products->get($product['id'])->name}}</a></h6>
+                                                        <span class="cart-price">{{$product['price']}}</span>
+                                                        <!--<span>Size: S</span>
+                                                        <span>Color: Yellow</span>-->
                                                     </div>
                                                     <a class="del-icone" href="#"><i class="ion-close"></i></a>
                                                 </div>
-                                                <!-- Cart Box End -->
-                                                <!-- Cart Box Start -->
-                                                <div class="single-cart-box">
-                                                    <div class="cart-img">
-                                                        <a href="#"><img src="img/products/2.jpg" alt="cart-image"></a>
-                                                        <span class="pro-quantity">1X</span>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <h6><a href="#">Printed Round Neck</a></h6>
-                                                        <span class="cart-price">45.00</span>
-                                                        <span>Size: XL</span>
-                                                        <span>Color: Green</span>
-                                                    </div>
-                                                    <a class="del-icone" href="#"><i class="ion-close"></i></a>
-                                                </div>
+                                                @endforeach
                                                 <!-- Cart Box End -->
                                                 <!-- Cart Footer Inner Start -->
                                                 <div class="cart-footer">
                                                    <ul class="price-content">
-                                                       <li>Subtotal <span>$57.95</span></li>
-                                                       <li>Shipping <span>$7.00</span></li>
-                                                       <li>Taxes <span>$0.00</span></li>
-                                                       <li>Total <span>$64.95</span></li>
+                                                       <li>СУММА <span>{{$cart->sum}}</span></li>
+                                                       <li>Доставка <span></span></li>
+                                                       <li>Разом+%Знижка<span>{{$cart->sum}}</span></li>
                                                    </ul>
                                                     <div class="cart-actions text-center">
-                                                        <a class="cart-checkout" href="/checkout">Checkout</a>
+                                                        <a class="cart-checkout" href="{{route('checkout')}}">Checkout</a>
                                                     </div>
                                                 </div>
                                                 <!-- Cart Footer Inner End -->
