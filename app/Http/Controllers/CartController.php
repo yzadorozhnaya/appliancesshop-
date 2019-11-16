@@ -14,11 +14,6 @@ class CartController extends Controller
 
 	private $cart;
 
-   // public function __construct(){
-        
-          //  $this->cart = new Cart();
-            //dd($this->cart);
-     //  }
     public  function add(Request $request){
        //dd($request);
         //$id = $request->id;
@@ -36,8 +31,10 @@ class CartController extends Controller
         //}
         $product = Product::find($id);
         //dd($product);
-        $this->cart = new Cart();
         //dd($this->cart);
+        //$cart=$this->cart;
+        $this->cart = new Cart();
+        //dd($cart);
         //dd($product, $count);
         $this->cart->add($product, $count);
         //dd($this->cart);
@@ -47,6 +44,7 @@ class CartController extends Controller
 
     public  function cart(Request $request) {
         $this->cart = new Cart();
+        //$cart = new Cart();
         //dd(session()->all());
         //dd($this->cart);
         $ids=[];
@@ -110,7 +108,10 @@ class CartController extends Controller
             $body .="\r\n"."заказ"."\r\n". $products->get($product['id'])->name."\r\n"."цена"."\r\n". $product['price']."\r\n".'количество'."\r\n".$product['count'];
         }
         $sum=$this->cart->sum;
-        $body.= "\r\n".$name."\r\n".$email."\r\n"."заказ общей стоимостью"."\r\n".$sum ;
+        if (auth()->check()) {
+           $body.= "\r\n".$name."\r\n".$email."\r\n"."заказ общей стоимостью"."\r\n".$sum ;
+        }
+        $body.="\r\n"."заказ общей стоимостью"."\r\n".$sum ;
         $res = \Mail::raw($body, function($message){
              $message->from('domanytskya@gmail.com','domanytskya@gmail.com');
              $message->to('katya.zadorognay@gmail.com');

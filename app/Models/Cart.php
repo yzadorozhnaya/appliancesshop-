@@ -14,10 +14,10 @@ class Cart {
 
 	public function  __construct()
     {
+
         //dd($product, $count);
         //dd( session()->get('cart'));
 		$cart = session()->get('cart');
-        //dd($cart);
 		if ($cart) {
 			$this->products=$cart;
 			$this->calc();
@@ -39,7 +39,7 @@ class Cart {
         //}
        foreach($this->products as $key => $product_cart) {
            if($product_cart['id']==$product->id) {
-               $this->products[$key]['count'] = $product_cart['count']+$count;
+               $products[$key]['count'] = $product_cart['count']+$count;
                $flag = false;
                break;
            }

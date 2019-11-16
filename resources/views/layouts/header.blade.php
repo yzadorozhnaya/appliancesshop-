@@ -66,11 +66,18 @@
                         <div class="col-lg-4 col-md-12">
                             <div class="cart-box mt-all-30">
                                 <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
-                                    <li><a href="{{route('cart')}}"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">2</span><span>cart</span></span></a>
+                                    <li><a href="{{route('cart')}}"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">{{$cart->count}}</span><span>cart</span></span></a>
                                         <ul class="ht-dropdown cart-box-width">
                                             <li>
+                                            @if(count($cart->products)<1)
+                                                <h1>Кошик порожній</h1>
+                                                 <div class="wc-proceed-to-checkout">
+                                                    <a href="{{route('categories')}}">продолжить покупки</a>
+                                                </div>
+                                            @else
                                                 <!-- Cart Box Start -->
-                                                @foreach($cart->products as $product)
+
+                                                @foreach($products as $product)
                                                 <div class="single-cart-box">
                                                     <div class="cart-img">
                                                         <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>
@@ -98,15 +105,13 @@
                                                     </div>
                                                 </div>
                                                 <!-- Cart Footer Inner End -->
+                                            @endif
                                             </li>
                                         </ul>
                                     </li>
                                     <li><a href="#"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Wish</span><span>list (0)</span></span></a>
                                     </li>
                                     <li><a href="#"><i class="lnr lnr-user"></i><span class="my-cart"><span> <strong>Sign in</strong> Or</span><span> Join My Site</span></span></a>
-
-
-
                                     </li>
                                 </ul>
                             </div>
