@@ -76,8 +76,7 @@
                                                 </div>
                                             @else
                                                 <!-- Cart Box Start -->
-
-                                                @foreach($products as $product)
+                                                @foreach($cart->products as $product)
                                                 <div class="single-cart-box">
                                                     <div class="cart-img">
                                                         <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>

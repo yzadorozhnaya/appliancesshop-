@@ -15,7 +15,7 @@ class CartController extends Controller
 	private $cart;
 
     public  function add(Request $request){
-       //dd($request);
+      // dd($request);
         //$id = $request->id;
        // $count = $request->count;
         //$product = Product::find($id); 
@@ -32,12 +32,11 @@ class CartController extends Controller
         $product = Product::find($id);
         //dd($product);
         //dd($this->cart);
-        //$cart=$this->cart;
         $this->cart = new Cart();
-        //dd($cart);
+        //dd($this->cart);
         //dd($product, $count);
         $this->cart->add($product, $count);
-        //dd($this->cart);
+        //dd($this->cart); 
         return redirect(route('cart'));
         return redirect(route('checkout'));
     }  

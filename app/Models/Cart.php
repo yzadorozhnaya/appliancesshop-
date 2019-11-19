@@ -14,8 +14,6 @@ class Cart {
 
 	public function  __construct()
     {
-
-        //dd($product, $count);
         //dd( session()->get('cart'));
 		$cart = session()->get('cart');
 		if ($cart) {
@@ -27,8 +25,8 @@ class Cart {
 	}
 
      public  function add($product,$count){
-        $flag = true;
-        //dd($this->products);
+        $flag = true; //dd($product, $count);
+       // dd($this->products);
         //foreach ($this->products as &$product_cart) {
         //    if ($product_cart['id']==$product->id) {
 //
@@ -39,7 +37,7 @@ class Cart {
         //}
        foreach($this->products as $key => $product_cart) {
            if($product_cart['id']==$product->id) {
-               $products[$key]['count'] = $product_cart['count']+$count;
+               $this->products[$key]['count'] = $product_cart['count']+$count;
                $flag = false;
                break;
            }

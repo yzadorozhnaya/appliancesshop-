@@ -9,7 +9,6 @@ class CartComposer
 {
     public function compose(View $view)
     {
-       
-       
+        
     }
 }

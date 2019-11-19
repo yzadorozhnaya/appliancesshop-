@@ -3,7 +3,7 @@
 namespace App\Providers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-
+use App\Http\ViewComposers\CartComposer;
 class ComposerServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +23,6 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         view()->composer('*', CartComposer::class);
+         // view()->composer('*', CartComposer::class);
     }
 }

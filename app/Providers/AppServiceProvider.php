@@ -35,4 +35,7 @@ class AppServiceProvider extends ServiceProvider
 
     }
     
+     // public function cartview() {
+     // }
+    
 }
