@@ -91,7 +91,7 @@ class CartController extends Controller
     ]);
     }
 
-  public function buy(){
+    public function buy(){
         $this->cart = new Cart();
         $body = '';
         if (auth()->check()) {

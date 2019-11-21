@@ -25,16 +25,7 @@ class Cart {
 	}
 
      public  function add($product,$count){
-        $flag = true; //dd($product, $count);
-       // dd($this->products);
-        //foreach ($this->products as &$product_cart) {
-        //    if ($product_cart['id']==$product->id) {
-//
-        //        $product_cart['count'] += $count;
-        //        $flag = false;
-        //        break;
-        //    }
-        //}
+        $flag = true; 
        foreach($this->products as $key => $product_cart) {
            if($product_cart['id']==$product->id) {
                $this->products[$key]['count'] = $product_cart['count']+$count;

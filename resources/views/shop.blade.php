@@ -421,13 +421,16 @@
                                 <div id="list-view" class="tab-pane fade">
                                     <!-- Single Product Start -->
                                     <div class="single-product"> 
-                                        <div class="row">        
+                                        <div class="row"> 
+
+                                            @foreach($product as $product_item)       
                                             <!-- Product Image Start -->
+
                                             <div class="col-lg-4 col-md-5 col-sm-12">
                                                 <div class="pro-img">
                                                     <a href="{{route('product', ['id' => $product_item->id])}}">
-                                                        <img class="primary-img" src="{{asset("img/products/23.jpg")}}" alt="single-product">
-                                                        <img class="secondary-img" src="{{asset("img/products/24.jpg")}}" alt="single-product">
+                                                        <img class="primary-img" src="{{$product_item->image_path}}"  alt="single-product">
+                                                        <img class="secondary-img" src="{{$product_item->image_path}}" alt="single-product">
                                                     </a>
                                                     <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                                                      <span class="sticker-new">new</span>
@@ -435,11 +438,12 @@
                                             </div>
                                             <!-- Product Image End -->
                                             <!-- Product Content Start -->
+                                             
                                             <div class="col-lg-8 col-md-7 col-sm-12">
                                                 <div class="pro-content hot-product2">
-                                                    <h4><a href="{{route('product', ['id' => $product_item->id])}}">Accessorize with a straw hat</a></h4>
-                                                    <p><span class="price">$15.19</span></p>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!Faded short sleeves t-shirt with high neckline. Soft and stretchy material.</p>
+                                                    <h4><a href="{{route('product', ['id' => $product_item->id])}}">{{$product_item->name}}</a></h4>
+                                                    <p><span class="price">{{$product_item->price}}</span></p>
+                                                    <p>{{$product_item->description}}</p>
                                                     <div class="pro-actions">
                                                         <div class="actions-primary">
                                                             <a href="/cart" title="" data-original-title="Add to Cart"> + Add To Cart</a>
@@ -450,147 +454,10 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endforeach
                                             <!-- Product Content End -->
                                         </div>
                                     </div>
-                                    <!-- Single Product End -->
-                                    <!-- Single Product Start -->
-                                    <div class="single-product"> 
-                                        <div class="row">        
-                                            <!-- Product Image Start -->
-                                            <div class="col-lg-4 col-md-5 col-sm-12">
-                                                <div class="pro-img">
-                                                    <a href="/product">
-                                                        <img class="primary-img" src="{{asset("img/products/30.jpg")}}" alt="single-product">
-                                                        <img class="secondary-img" src="{{asset("img/products/31.jpg")}}" alt="single-product">
-                                                    </a>
-                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                                </div>
-                                            </div>
-                                            <!-- Product Image End -->
-                                            <!-- Product Content Start -->
-                                            <div class="col-lg-8 col-md-7 col-sm-12">
-                                                <div class="pro-content hot-product2">
-                                                    <h4><a href="/product">Tretchy Material Comfortable</a></h4>
-                                                    <p><span class="price">$199.19</span><del class="prev-price">$205.50</del></p>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!Faded short sleeves t-shirt with high neckline. Soft and stretchy material.</p>
-                                                    <div class="pro-actions">
-                                                        <div class="actions-primary">
-                                                            <a href="/cart" title="" data-original-title="Add to Cart"> + Add To Cart</a>
-                                                        </div>
-                                                        <div class="actions-secondary">
-                                                            <a href="/wishlist" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Product Content End -->
-                                        </div>
-                                    </div>
-                                    <!-- Single Product End -->
-                                    <!-- Single Product Start -->
-                                    <div class="single-product"> 
-                                        <div class="row">        
-                                            <!-- Product Image Start -->
-                                            <div class="col-lg-4 col-md-5 col-sm-12">
-                                                <div class="pro-img">
-                                                    <a href="/product">
-                                                        <img class="primary-img" src="{{asset("img/products/41.jpg")}}" alt="single-product">
-                                                        <img class="secondary-img" src="{{asset("img/products/42.jpg")}}" alt="single-product">
-                                                    </a>
-                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                                    <span class="sticker-new">new</span>
-                                                </div>
-                                            </div>
-                                            <!-- Product Image End -->
-                                            <!-- Product Content Start -->
-                                            <div class="col-lg-8 col-md-7 col-sm-12">
-                                                <div class="pro-content hot-product2">
-                                                    <h4><a href="/product">Neckline Short Sleeves  Stretchy</a></h4>
-                                                    <p><span class="price">$58.19</span></p>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!Faded short sleeves t-shirt with high neckline. Soft and stretchy material.</p>
-                                                    <div class="pro-actions">
-                                                        <div class="actions-primary">
-                                                            <a href="/cart" title="" data-original-title="Add to Cart"> + Add To Cart</a>
-                                                        </div>
-                                                        <div class="actions-secondary">
-                                                            <a href="/wishlist" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Product Content End -->
-                                        </div>
-                                    </div>
-                                    <!-- Single Product End -->
-                                    <!-- Single Product Start -->
-                                    <div class="single-product"> 
-                                        <div class="row">        
-                                            <!-- Product Image Start -->
-                                            <div class="col-lg-4 col-md-5 col-sm-12">
-                                                <div class="pro-img">
-                                                    <a href="/product">
-                                                        <img class="primary-img" src="{{asset("img/products/1.jpg")}}" alt="single-product">
-                                                        <img class="secondary-img" src="{{asset("img/products/2.jpg")}}" alt="single-product">
-                                                    </a>
-                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                                </div>
-                                            </div>
-                                            <!-- Product Image End -->
-                                            <!-- Product Content Start -->
-                                            <div class="col-lg-8 col-md-7 col-sm-12">
-                                                <div class="pro-content hot-product2">
-                                                    <h4><a href="/product">Accessorize with a straw hat</a></h4>
-                                                    <p><span class="price">$152.19</span><del class="prev-price">$160.50</del></p>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!Faded short sleeves t-shirt with high neckline. Soft and stretchy material.</p>
-                                                    <div class="pro-actions">
-                                                        <div class="actions-primary">
-                                                            <a href="/cart" title="" data-original-title="Add to Cart"> + Add To Cart</a>
-                                                        </div>
-                                                        <div class="actions-secondary">
-                                                            <a href="/wishlist" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Product Content End -->
-                                        </div>
-                                    </div>
-                                    <!-- Single Product End -->
-                                    <!-- Single Product Start -->
-                                    <div class="single-product"> 
-                                        <div class="row">        
-                                            <!-- Product Image Start -->
-                                            <div class="col-lg-4 col-md-5 col-sm-12">
-                                                <div class="pro-img">
-                                                    <a href="/product">
-                                                        <img class="primary-img" src="{{asset("img/products/23.jpg")}}" alt="single-product">
-                                                        <img class="secondary-img" src="{{asset("img/products/24.jpg")}}" alt="single-product">
-                                                    </a>
-                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                                </div>
-                                            </div>
-                                            <!-- Product Image End -->
-                                            <!-- Product Content Start -->
-                                            <div class="col-lg-8 col-md-7 col-sm-12">
-                                                <div class="pro-content hot-product2">
-                                                    <h4><a href="/product">Faded Short Sleeves T-shirt</a></h4>
-                                                    <p><span class="price">$15.19</span><del class="prev-price">$16.50</del></p>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!Faded short sleeves t-shirt with high neckline. Soft and stretchy material.</p>
-                                                    <div class="pro-actions">
-                                                        <div class="actions-primary">
-                                                            <a href="/cart" title="" data-original-title="Add to Cart"> + Add To Cart</a>
-                                                        </div>
-                                                        <div class="actions-secondary">
-                                                            <a href="/wishlist" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Product Content End -->
-                                        </div>
-                                    </div>
-                                    <!-- Single Product End -->
                                 </div>
                                 <!-- #list view End -->
                             </div>

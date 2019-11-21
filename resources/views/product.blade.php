@@ -77,7 +77,7 @@
                                 <div class="pro-price mtb-30">
                                     <p class="d-flex align-items-center"><span class="prev-price">{{$product->price}}</span><span class="price">{{$product->price}}</span><span class="saving-price">{{$product->price}}</span></p>
                                 </div>
-                                <p class="mb-20 pro-desc-details">Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
+                                <p class="mb-20 pro-desc-details">{{$description}}</p>
                                 <div class="color clearfix mb-20">
                                     <label>color</label>
                                     <ul class="color-list">

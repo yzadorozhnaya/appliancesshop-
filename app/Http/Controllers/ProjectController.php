@@ -48,62 +48,51 @@ class ProjectController extends Controller
 	}	
 
 	public  function product($id) {
-		$this->cart=new Cart();
-		//\DB::enableQueryLog();
-        //dd($product->category()->get(),
-        //\DB::getQueryLog());
-		// $ids=[];
-	 //        foreach($this->cart->products as $product) {
-	 //           $ids[] = $product['id'];
-	 //        }
-		// $products = Product::whereIn('id',$ids)->get()->keyBy('id');
+		
+		$category_id = Product::find($id)->category_id;
+	    
+		$description =Categor::find($category_id)->description;
+
 		$product = Product::find($id);
-    return view('product', ['product' => $product]);
+		dd($product );
+    return view('product', ['product' => $product, 'description'=>$description]);
 
 	}	
 
 	public  function register() {
+
     return view('register');
 	}	
 
 	public  function categories() {
-		// $this->cart=new Cart();
-		// $ids=[];
-	 //        foreach($this->cart->products as $product) {
-	 //           $ids[] = $product['id'];
-	 //        }
-  //       $products = Product::whereIn('id',$ids)->get()->keyBy('id');
+		
     return view('categories');
 	}
 
 	public function shop($slug) {
-		//$this->cart=new Cart();
+		
         $category = Categor::where('slug',$slug)->first();
-       //dd($category);
-        // $ids=[];
-	       //  foreach($this->cart->products as $product) {
-	       //     $ids[] = $product['id'];
-	       //  }
-        // $products = Product::whereIn('id',$ids)->get()->keyBy('id');
+
       	$product = Product::where('category_id',$category->id)->paginate(10);
-      	//dd($category->name);
-      	//dd($products->name);
-      	//dd($product->name);
+      //	dd($product);
         return view('shop', ['product' => $product]);
 
     }
 
 	public  function single($slug) {
+
 		$article = Article::where('slug', $slug)->first();
         
     return view('single-blog', ['article' => $article]);
 	}	
 
 	public  function terms() {
+
     return view('terms-conditions');
 	}
 
 	public  function wishlist() {
+
     return view('wishlist');
 	}	
 	 
