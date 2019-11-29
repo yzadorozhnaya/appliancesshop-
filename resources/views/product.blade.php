@@ -9,7 +9,9 @@
                         <li><a href="{{route('categories')}}">Усі категорії</a></li>
                         <li><a href="#">{{$product->category->parent->parent->name}}</a></li>
                         <li><a href="#">{{$product->category->parent->name}}</a></li>
-                        <li><a href="#">{{$product->category->name}}</a></li>
+                       
+                        <li><a href="{{route('shop', ['slug' => $slug])}}">{{$product->category->name}}</a></li>
+                        
                         <li class='active'>{{$product->name}}</li>
                     </ul>
                 </div>
@@ -146,6 +148,7 @@
                         <div class="tab-content thumb-content border-default">
                             <div id="dtail" class="tab-pane fade show active">
                                 <p>{{$product->description}}</p>
+                               
                             </div>
                             <div id="review" class="tab-pane fade">
                                 <!-- Reviews Start -->

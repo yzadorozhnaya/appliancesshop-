@@ -22,6 +22,7 @@
                    <div class="col-lg-3 order-2 order-lg-1">
                         <div class="sidebar">
                             <!-- Sidebar Electronics Categorie Start -->
+
                                    @foreach($categories->where('parent_id',0) as $cat)
                             <div class="electronics mb-40">
 
@@ -354,13 +355,13 @@
                             <!-- Toolbar Short Area Start -->
                             <div class="main-toolbar-sorter clearfix">
                                 <div class="toolbar-sorter d-flex align-items-center">
-                                    <label>Sort By:</label>
+                                    <label>Фильтр:</label>
                                     <select class="sorter wide">
-                                        <option value="Position">Relevance</option>
-                                        <option value="Product Name">Neme, A to Z</option>
-                                        <option value="Product Name">Neme, Z to A</option>
-                                        <option value="Price">Price low to heigh</option>
-                                        <option value="Price" selected>Price heigh to low</option>
+                                        <option value="Position">Актуальность</option>
+                                        <option value="Product Name">Имя, A to Z</option>
+                                        <option value="Product Name">Имя, Z to A</option>
+                                        <option value="Price">Цена от низкой к высокой </option>
+                                        <option value="Price" selected>Цена от высокой к низкой</option>
                                     </select>
                                 </div>
                             </div>
@@ -380,83 +381,96 @@
                             </div>
                             <!-- Toolbar Short Area End -->
                         </div>
+                        <div>
+                            <form method="POST" action="{{route('product.search')}}"  class="filter">
+                                @csrf
+                                    <input type="text" name="name" placeholder="" id="search_name">
+                                    <input type="text" name="brand" placeholder="" id="search_brand">
+                            </form>        
+                        </div>
                         <!-- Grid & List View End -->
                         <div class="main-categorie mb-all-40">
                             <!-- Grid & List Main Area End -->
                             <div class="tab-content fix">
                                 <div id="grid-view" class="tab-pane fade show active">
-                                    <div class="row">
-                                        @foreach($product as $product_item)
-                                        <!-- Single Product Start -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                            <div class="single-product">
-                                                <!-- Product Image Start -->
-                                                <div class="pro-img">
-                                                    <a href="{{route('product', ['id' => $product_item->id])}}">
-                                                        <img class="primary-img" src="{{asset("img/products/1.jpg")}}" alt="single-product">
-                                                        <img class="secondary-img" src="{{asset("img/products/2.jpg")}}" alt="single-product">
-                                                    </a>
-                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                                </div>
-                                                <!-- Product Image End -->
-                                                <!-- Product Content Start -->
-                                                <div class="pro-content">
-                                                    <div class="pro-info">
-                                                        <h4><a href="{{route('product', ['id' => $product_item->id])}}">{{$product_item->name}}</a></h4>
-                                                        <p><span class="price">{{$product_item->price}}</span><del class="prev-price">{{$product_item->price}}</del></p>
-                                                        <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
+                                    <div class="products">
+                                        <div class="row">
+                                            @foreach($products as $product_item)
+                                            <!-- Single Product Start -->
+                                                <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                                                    <div class="single-product">
+                                                        <div class="product">   
+                                                            <div class="pro-img">
+                                                                    <a href="{{route('product', ['id' => $product_item->id])}}">
+                                                                        <img class="primary-img" src="{{$product_item->image_path}}" alt="single-product">
+                                                                        <img class="secondary-img" src="{{$product_item->image_path}}" alt="single-product">
+                                                                    </a>
+                                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View">
+                                                                        <i class="lnr lnr-magnifier"></i>
+                                                                    </a>
+                                                            </div>
+                                                            <div class="product content">
+                                                                <div class="pro-info">
+                                                                        <h4 id="name">
+                                                                            <a href="{{route('product', ['id' => $product_item->id])}}">{{$product_item->name}}</a>
+                                                                            <a>{{$product_item->brand}}</a>
+                                                                            <a>{{$product_item->articul}}</a>
+                                                                        </h4>
+                                                                        <p><span class="price">{{$product_item->price}}</span><del class="prev-price">{{$product_item->price}}</del></p>
+                                                                        <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <!-- Product Content End -->
-                                            </div>
-                                        </div>
-                                        <h4><a href="{{route('product', ['id' => $product_item->id])}}">{{$product_item->name}}</a></h4>
-                                        <!-- Single Product End -->
-                                        @endforeach
+                                            @endforeach
+                                        </div>    
                                     </div>
                                     <!-- Row End -->
                                 </div>
-                                {{$product->links()}}
+                                {{$products->links()}}
                                 <!-- #grid view End -->
                                 <div id="list-view" class="tab-pane fade">
                                     <!-- Single Product Start -->
-                                    <div class="single-product"> 
-                                        <div class="row"> 
-
-                                            @foreach($product as $product_item)       
-                                            <!-- Product Image Start -->
-
-                                            <div class="col-lg-4 col-md-5 col-sm-12">
-                                                <div class="pro-img">
-                                                    <a href="{{route('product', ['id' => $product_item->id])}}">
-                                                        <img class="primary-img" src="{{$product_item->image_path}}"  alt="single-product">
-                                                        <img class="secondary-img" src="{{$product_item->image_path}}" alt="single-product">
-                                                    </a>
-                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                                     <span class="sticker-new">new</span>
-                                                </div>
-                                            </div>
-                                            <!-- Product Image End -->
-                                            <!-- Product Content Start -->
-                                             
-                                            <div class="col-lg-8 col-md-7 col-sm-12">
-                                                <div class="pro-content hot-product2">
-                                                    <h4><a href="{{route('product', ['id' => $product_item->id])}}">{{$product_item->name}}</a></h4>
-                                                    <p><span class="price">{{$product_item->price}}</span></p>
-                                                    <p>{{$product_item->description}}</p>
-                                                    <div class="pro-actions">
-                                                        <div class="actions-primary">
-                                                            <a href="/cart" title="" data-original-title="Add to Cart"> + Add To Cart</a>
+                                    <div class="products">
+                                        @foreach($products as $product_item)
+                                            <div class="row"> 
+                                                <div class="single-product"> 
+                                                    <div class="product"> 
+                                                        <div class="col-lg-4 col-md-5 col-sm-12">
+                                                            <div class="pro-img">
+                                                                <a href="{{route('product', ['id' => $product_item->id])}}">
+                                                                    <img class="primary-img" src="{{$product_item->image_path}}"  alt="single-product">
+                                                                    <img class="secondary-img" src="{{$product_item->image_path}}" alt="single-product">
+                                                                </a>
+                                                                <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
+                                                                 <span class="sticker-new">new</span>
+                                                            </div>
                                                         </div>
-                                                        <div class="actions-secondary">
-                                                            <a href="/wishlist" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                                        <div class="col-lg-8 col-md-7 col-sm-12">
+                                                            <div class="pro-content hot-product2">
+                                                                <h4><a href="{{route('product', ['id' => $product_item->id])}}">{{$product_item->name}}</a></h4>
+                                                                <p><span class="price">{{$product_item->price}}</span></p>
+                                                                <p>{{$product_item->description}}</p>
+                                                                <div class="pro-actions">
+                                                                    <div class="actions-primary">
+                                                                       <form method="POST" action="{{route('cart.add')}}">
+                                                                        @csrf
+                                                                            <input name="id" type="hidden"  value="{{$product_item->id}}">
+                                                                            <input name="count" class="quantity mr-15" type="number" min="1" value="1">
+                                                                            <button class="btn btn-primary" type="submit"><i class="fa fa-shopping-cart inner-right-vs"></i> + Купити</button>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="actions-secondary">
+                                                                        <a href="/wishlist" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endforeach
-                                            <!-- Product Content End -->
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <!-- #list view End -->
@@ -469,5 +483,46 @@
                 <!-- Row End -->
             </div>
             <!-- Container End -->
-        </div>    
+        </div> 
+        <script type="text/javascript">
+        window.onload = function() {
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+            });
+            
+                 $('#search_name,#search_brand').keyup(function(){
+                        var name = $('#search_name').val();
+                        var brand = $('#search_brand').val();
+                        $.ajax({
+                            url:"/product/search",
+                            method: 'POST',
+                            
+                            data: {
+                                'name':name,
+                                'brand':brand
+                            },
+
+                        })
+                            .done(function(data){
+                                    console.log(data);
+                                    $('.product').remove();
+                                    var html='';
+                                    $.each(data, function ( index, value ) {
+                                        console.log( value.name,value.brand );
+                                    html += '<br><div.product><a>'+value.name+'</a><br><a>'+value.brand+'</a><br><a>'+value.articul+'</a><br><a>'+value.price+'</a></div.product></br>'
+                                    });
+                                    $('.products').append(html);
+                                    
+                                    
+                            })
+                                .fail(function(jqXHR,textStatus){
+                                    alert("(((((((:"+ textStatus);
+                                });
+                });
+        };
+     
+    </script> 
+
     @endsection

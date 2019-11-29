@@ -32,6 +32,8 @@ Route::get('/register', 'ProjectController@register') -> name('register');
 
 Route::get('/shop/{slug}', 'ProjectController@shop') -> name('shop');
 
+Route::post('/product/search', 'ProjectController@product_search') -> name('product.search');
+
 Route::get('/categories', 'ProjectController@categories') -> name('categories');
 
 //Route::get('/shop', 'ProjectController@shop') -> name('shop');

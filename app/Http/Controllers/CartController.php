@@ -15,7 +15,7 @@ class CartController extends Controller
 	private $cart;
 
     public  function add(Request $request){
-      // dd($request);
+      //dd($request);
         //$id = $request->id;
        // $count = $request->count;
         //$product = Product::find($id); 

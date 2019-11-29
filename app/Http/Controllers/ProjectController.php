@@ -50,12 +50,14 @@ class ProjectController extends Controller
 	public  function product($id) {
 		
 		$category_id = Product::find($id)->category_id;
-	    
+	    //dd($category_id);
 		$description =Categor::find($category_id)->description;
-
+		//dd($description);
+		$slug=Categor::find($category_id)->slug;
+//dd($slug);
 		$product = Product::find($id);
-		dd($product );
-    return view('product', ['product' => $product, 'description'=>$description]);
+		//dd($product );
+    return view('product', ['product' => $product, 'description'=>$description,'slug'=>$slug]);
 
 	}	
 
@@ -70,13 +72,26 @@ class ProjectController extends Controller
 	}
 
 	public function shop($slug) {
-		
+		//dd($slug);
         $category = Categor::where('slug',$slug)->first();
-
-      	$product = Product::where('category_id',$category->id)->paginate(10);
-      //	dd($product);
-        return view('shop', ['product' => $product]);
-
+      	$products = Product::where('category_id',$category->id)->paginate(10);
+        return view('shop', ['products' => $products/*,'category'=>$category*/]);
+    }
+    
+    public function product_search(Request $request) {
+    	//dd($request);
+         $name = $request->name;
+         $brand = $request->brand;
+         $products = Product::query();
+         if($brand){
+            $products_s = $products->where('brand', 'like', $brand.'%');
+        }
+        if($name){
+            $products_s = $products->where('name', 'like', $name.'%');
+        }
+        
+        $array = $products_s->get()->toArray();
+        return response()->json($array);
     }
 
 	public  function single($slug) {

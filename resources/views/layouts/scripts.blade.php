@@ -32,7 +32,7 @@
     <script src="{{asset("js/plugins.js")}}"></script>
     <!-- Main activaion js -->
     <script src="{{asset("js/main.js")}}"></script>
-    <script src="{{asset("https://code.jquery.com/jquery-3.4.1.min.js")}}"
+    <script src="{{asset('https://code.jquery.com/jquery-3.4.1.min.js')}}"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
 </body>

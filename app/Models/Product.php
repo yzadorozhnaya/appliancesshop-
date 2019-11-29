@@ -15,9 +15,9 @@ class Product extends Model
         return $this->belongsTo('App\Models\Categor', 'category_id');
     }
 
-    // public function getUrl()
-    //{
-    //    return $this->category()->first()->slug;
-    //}
-    
+    /*public function getUrl()
+    {
+       return $this->category()->first()->slug;
+    }
+    */
 }
