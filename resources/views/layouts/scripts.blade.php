@@ -7,6 +7,9 @@
 </head>
 <body>
 <!-- jquery 3.2.1 -->
+<script src="{{asset('https://code.jquery.com/jquery-3.4.1.min.js')}}"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
     <script src="{{asset("js/vendor/jquery-3.2.1.min.js")}}"></script>
     <!-- Countdown js -->
     <script src="{{asset("js/jquery.countdown.min.js")}}"></script>
@@ -32,8 +35,6 @@
     <script src="{{asset("js/plugins.js")}}"></script>
     <!-- Main activaion js -->
     <script src="{{asset("js/main.js")}}"></script>
-    <script src="{{asset('https://code.jquery.com/jquery-3.4.1.min.js')}}"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"></script>
+    
 </body>
 </html>

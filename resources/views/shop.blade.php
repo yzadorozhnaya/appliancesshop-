@@ -507,19 +507,20 @@
                         })
                             .done(function(data){
                                     console.log(data);
-                                    $('.product').remove();
+                                    $(".product").remove();
                                     var html='';
                                     $.each(data, function ( index, value ) {
                                         console.log( value.name,value.brand );
-                                    html += '<br><div.product><a>'+value.name+'</a><br><a>'+value.brand+'</a><br><a>'+value.articul+'</a><br><a>'+value.price+'</a></div.product></br>'
+                                    html += '<div class="product content"><div class="pro-info"><h4 id="name"><a>'+value.name+'</a><a>'+value.brand+'</a><a>'+value.articul+'</a><a>'+value.price+'</a></h4></div></div>'
                                     });
-                                    $('.products').append(html);
                                     
+                                    $('.products').append(html);
                                     
                             })
                                 .fail(function(jqXHR,textStatus){
                                     alert("(((((((:"+ textStatus);
                                 });
+                                
                 });
         };
      
