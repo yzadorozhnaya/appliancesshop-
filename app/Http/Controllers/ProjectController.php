@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Article;
 use App\Models\Cart;
+use URL;
+use Route;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -73,6 +75,9 @@ class ProjectController extends Controller
 
 	public function shop($slug) {
 		//dd($slug);
+		/*$url = URL::to('$products');
+		dd($url);*/
+		
         $category = Categor::where('slug',$slug)->first();
       	$products = Product::where('category_id',$category->id)->paginate(10);
         return view('shop', ['products' => $products/*,'category'=>$category*/]);
