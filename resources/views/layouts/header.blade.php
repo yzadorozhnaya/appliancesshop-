@@ -20,7 +20,7 @@
                         </ul>
                             @if (auth()->check())
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <!-- Cart Box Start Here -->
-                        <div class="col-lg-4 col-md-12">
+                        <div class="col-lg-9 col-md-12">
                             <div class="cart-box mt-all-30">
                                 <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
                                     <li><a href="{{route('cart')}}"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">{{$cart->count}}</span><span>cart</span></span></a>
@@ -108,10 +108,30 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Wish</span><span>list (0)</span></span></a>
+                                    <li><a href="{{route('wishlist')}}"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Список</span><span>бажань (0)</span></span></a>
                                     </li>
-                                    <li><a href="#"><i class="lnr lnr-user"></i><span class="my-cart"><span> <strong>Sign in</strong> Or</span><span> Join My Site</span></span></a>
+                                    @if (auth()->check())
+                                    <li><a href=""><i class="lnr lnr-user"></i><span class="my-cart"></span>
+                                            <a id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                {{ Auth::user()->name }} 
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Вихід') }}
+                                                </a>
+                                                <a class="dropdown-item" href="{{route('admin.users.edit',['id'=>\Auth::user()->id])}}">Pедагувати</a>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    </form>
+                                            </div>
+                                        </a>
                                     </li>
+                                    @else
+                                    <li><a href="{{route('login')}}"><i class="lnr lnr-user"></i><span class="my-cart"><span> <strong>Увійдіть в</strong> </span><span> особистий кабінет</span></span></a>
+                                    </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>

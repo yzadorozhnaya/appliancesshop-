@@ -12,6 +12,8 @@
 */
 Route::get('/', 'ProjectController@index') -> name('index');
 
+Route::get('/newarrivals/{slug}', 'ProjectController@newarrivals') -> name('newarrivals');
+
 Route::get('/about', 'ProjectController@about') -> name('about');
 
 Route::get('/blog', 'ProjectController@blog') -> name('blog');
@@ -20,7 +22,7 @@ Route::get('/blog', 'ProjectController@blog') -> name('blog');
 
 // Route::get('/checkout', 'ProjectController@checkout') -> name('checkout');
 
-Route::get('/contact', 'ProjectController@contact') -> name('contact');
+//Route::get('/contact', 'ProjectController@contact') -> name('contact');
 
 Route::get('/forgot', 'ProjectController@forgot') -> name('forgot');
 
@@ -42,7 +44,7 @@ Route::get('/single/{slug}', 'ProjectController@single') -> name('single');
 
 Route::get('/terms', 'ProjectController@terms') -> name('terms');
 
-Route::get('/wishlist', 'ProjectController@wishlist') -> name('wishlist');
+//Route::get('/wishlist', 'ProjectController@wishlist') -> name('wishlist');
 
 Auth::routes();
 
@@ -92,3 +94,10 @@ Route::post('/cart/change', 'CartController@change')->name('cart.change');
 Route::post('/cart/clear', 'CartController@clear')->name('cart.clear');
 Route::get('/checkout', 'CartController@checkout') ->name('checkout');
 Route::post('/checkout/buy', 'CartController@buy')->name('checkout.buy');
+
+Route::get('/wishlist', 'WishlistController@wishlist') -> name('wishlist');
+Route::post('/wishlist/add', 'WishlistController@add')->name('wishlist.add');
+Route::post('/wishlist/remove', 'WishlistController@remove')->name('wishlist.remove');
+
+Route::get('/contact', 'ContactController@contact')->name('contact');
+Route::post('/contact/buy', 'ContactController@buy')->name('contact.buy');

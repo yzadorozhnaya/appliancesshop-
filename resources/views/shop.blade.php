@@ -395,6 +395,7 @@
                                 <div id="grid-view" class="tab-pane fade show active">
                                     <div class="products">
                                         <div class="row">
+
                                             @foreach($products as $product_item)
                                             <!-- Single Product Start -->
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-6">
@@ -409,15 +410,35 @@
                                                                         <i class="lnr lnr-magnifier"></i>
                                                                     </a>
                                                             </div>
-                                                            <div class="product content">
+                                                            <div class="pro-content">
                                                                 <div class="pro-info">
                                                                         <h4 id="name">
                                                                             <a href="{{route('product', ['id' => $product_item->id])}}">{{$product_item->name}}</a>
+                                                                        </h4>
                                                                             <a>{{$product_item->brand}}</a>
                                                                             <a>{{$product_item->articul}}</a>
-                                                                        </h4>
+                                                                        
                                                                         <p><span class="price">{{$product_item->price}}</span><del class="prev-price">{{$product_item->price}}</del></p>
                                                                         <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
+                                                                </div>        
+                                                                <div class="pro-actions">
+                                                                    <div class="actions-primary">
+                                                                        <form method="POST" action="{{route('cart.add')}}">
+                                                                            @csrf
+                                                                            <input name="id" type="hidden"  value="{{$product_item->id}}">
+                                                                            <input name="count" class="quantity mr-15" type="number" min="1" value="1">
+                                                                            <button class="btn btn-primary" type="submit" ><i class="fa fa-shopping-cart inner-right-vs"></i> + Купити</button>
+                                                                        </form>
+                                                                    </div>
+                                                                   
+                                                                    <div class="actions-secondary">
+                                                                        <form method="POST" action="{{route('wishlist.add')}}">
+                                                                            @csrf
+                                                                            <input name="id" type="hidden"  value="{{$product_item->id}}">
+                                                                            <button class="btn btn-primary" type="submit" > + до списку бажань</button>
+                                                                        </form>
+                                                                    </div>   
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -462,7 +483,7 @@
                                                                         </form>
                                                                     </div>
                                                                     <div class="actions-secondary">
-                                                                        <a href="/wishlist" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                                                        <a href="{{route('wishlist')}}" title data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>+ Список Бажань</span></a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -485,45 +506,45 @@
             <!-- Container End -->
         </div> 
         <script type="text/javascript">
-        window.onload = function() {
-            $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-            });
-            
-                 $('#search_name,#search_brand').keyup(function(){
-                        var name = $('#search_name').val();
-                        var brand = $('#search_brand').val();
-                        $.ajax({
-                            url:"/product/search",
-                            method: 'POST',
-                            
-                            data: {
-                                'name':name,
-                                'brand':brand
-                            },
+            window.onload = function() {
+                $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                });
+                
+                     $('#search_name,#search_brand').keyup(function(){
+                            var name = $('#search_name').val();
+                            var brand = $('#search_brand').val();
+                            $.ajax({
+                                url:"/product/search",
+                                method: 'POST',
+                                
+                                data: {
+                                    'name':name,
+                                    'brand':brand
+                                },
 
-                        })
-                            .done(function(data){
-                                    console.log(data);
-                                    $(".product").remove();
-                                    var html='';
-                                    $.each(data, function ( index, value ) {
-                                        console.log( value.name,value.brand );
-                                    html += '<div class="product content"><div class="pro-info"><h4 id="name"><a>'+value.name+'</a><a>'+value.brand+'</a><a>'+value.articul+'</a><a>'+value.price+'</a></h4></div></div>'
+                            })
+                                .done(function(data){
+                                        console.log(data);
+                                        $(".product").remove();
+                                        var html='';
+                                        $.each(data, function ( index, value ) {
+                                            console.log( value.name,value.brand );
+                                        html += '<div class="product content"><div class="pro-info"><h4 id="name"><a>'+value.name+'</a><a>'+value.brand+'</a><a>'+value.articul+'</a><a>'+value.price+'</a></h4></div></div>'
+                                        });
+                                        
+                                        $('.products').append(html);
+                                        
+                                })
+                                    .fail(function(jqXHR,textStatus){
+                                        alert("(((((((:"+ textStatus);
                                     });
                                     
-                                    $('.products').append(html);
-                                    
-                            })
-                                .fail(function(jqXHR,textStatus){
-                                    alert("(((((((:"+ textStatus);
-                                });
-                                
-                });
-        };
+                    });
+            };
      
-    </script> 
+        </script> 
 
     @endsection

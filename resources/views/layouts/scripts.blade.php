@@ -35,6 +35,8 @@
     <script src="{{asset("js/plugins.js")}}"></script>
     <!-- Main activaion js -->
     <script src="{{asset("js/main.js")}}"></script>
-    
+   
+
+    <script src="{{asset("js/jquery.cookie.js")}}"></script>
 </body>
 </html>

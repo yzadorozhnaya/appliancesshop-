@@ -44,6 +44,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                     
                                         @foreach($cart->products as $product)
                                         <tr>
                                             <td class="product-thumbnail">
@@ -113,17 +114,18 @@
                                 </div>
                                 <!-- Cart Totals End -->
                             </div>
-                            <!-- Row End -->                        
+                            <!-- Row End --> 
+                    @endif
+                        
                     </div>
-                        @endif
-  
+                       
                 </div>
                  <!-- Row End -->
             </div>
         </div>
 
         <!-- Cart Main Area End -->
-         @include('layouts.footer')
+     
     </div>
     <!-- Main Wrapper End Here -->
    @endsection

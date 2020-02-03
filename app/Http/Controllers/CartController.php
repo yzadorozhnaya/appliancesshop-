@@ -36,23 +36,20 @@ class CartController extends Controller
         //dd($this->cart);
         //dd($product, $count);
         $this->cart->add($product, $count);
-        //dd($this->cart); 
+       //dd($this->cart); 
         return redirect(route('cart'));
-        return redirect(route('checkout'));
     }  
 
     public  function cart(Request $request) {
-        $this->cart = new Cart();
-        //$cart = new Cart();
-        //dd(session()->all());
-        //dd($this->cart);
+       
+        $this->cart = new Cart();//dd(new Cart());
+     //dd($this->cart);
         $ids=[];
         foreach($this->cart->products as $product) {
            $ids[] = $product['id'];
         }
         $products = Product::whereIn('id',$ids)->get()->keyBy('id');
-       // dd($products);
-        //dd($ids);
+       //dd($products);
         return view('cart', [
         'cart'=> $this->cart,
         'products' => $products,

@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Categor;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Wishlist;
+
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $cart=new Cart();
         View::share('cart', $cart);
+
+         $wishlist=new Wishlist();
+         View::share('wishlist', $wishlist);
+        
         $categories = Categor::all();
         View::share('categories', $categories);
 

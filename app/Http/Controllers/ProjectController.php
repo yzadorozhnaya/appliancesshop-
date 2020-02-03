@@ -12,15 +12,20 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-	public  function index() {
-		// $this->cart=new Cart();
-		// $ids=[];
-	 //        foreach($this->cart->products as $product) {
-	 //           $ids[] = $product['id'];
-	 //        }
-  //       $products = Product::whereIn('id',$ids)->get()->keyBy('id');
+	
+	public  function index() {		
+        $products = Product::all();
 		
-    return view('index');
+    return view('index',['products' => $products]);
+    }
+
+    public function newarrivals($slug) {
+		
+        $category = Categor::where('slug',$slug)->first();
+        //dd($category);
+      	$products = Product::where('category_id',$category->id)->paginate(10);
+      	//dd($products);
+        return view('index',['products' => $products]);
     }
 	
 	public function home() {
@@ -37,9 +42,9 @@ class ProjectController extends Controller
     return view('blog', ['article' => $article]);
 	}
 
-	public  function contact() {
-    return view('contact');
-	}	
+	// public  function contact() {
+ //    return view('contact');
+	// }	
 
 	public  function forgot() {
     return view('forgot-password');
@@ -79,7 +84,9 @@ class ProjectController extends Controller
 		dd($url);*/
 		
         $category = Categor::where('slug',$slug)->first();
+        //dd($category);
       	$products = Product::where('category_id',$category->id)->paginate(10);
+      	//dd($products);
         return view('shop', ['products' => $products/*,'category'=>$category*/]);
     }
     
@@ -111,10 +118,10 @@ class ProjectController extends Controller
     return view('terms-conditions');
 	}
 
-	public  function wishlist() {
-
-    return view('wishlist');
-	}	
+	// public  function wishlist() {
+		
+ //    return view('wishlist');
+	// }	
 	 
 	
 }
