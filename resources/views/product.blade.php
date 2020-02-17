@@ -107,7 +107,13 @@
                                         </div>
                                         <div class="actions-secondary">
                                             <!--<a href="{{route('cart')}}" title="" data-original-title="Купити"> + Купити</a>-->
-                                            <a href="{{route('wishlist')}}" title="" data-original-title="Список Бажання"><i class="lnr lnr-heart"></i> <span>Додати до списку бажань</span></a>
+                                            <form method="POST" action="{{route('wishlist.add')}}">
+                                        @csrf
+                                        <input name="id" type="hidden"  value="{{$product->id}}">
+                                         <input name="count"  type="hidden" class="quantity mr-15" type="number" min="1" value="1">
+                                        <button  type="submit" > <a href="" data-original-title="Список Бажання"><i class="lnr lnr-heart"></i> <span>Додати до списку бажань</span></a></button>
+                                    </form>
+                                           
                                         </div>
                                     </div>
 

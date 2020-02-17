@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Wishlist;
+use App\Models\Category;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,48 +17,28 @@ class CartController extends Controller
 	private $cart;
 
     public  function add(Request $request){
-      //dd($request);
-        //$id = $request->id;
-       // $count = $request->count;
-        //$product = Product::find($id); 
-        //dd( $this->cart);
-        //$this->cart->add($product,$count);
-        //dd($this->cart);
         $id = $request->id;
-        //dd($id);
         $count = $request->count;
-        //dd($count);
-        //if($count == null) {
-            //$count = 1;
-        //}
         $product = Product::find($id);
-        //dd($product);
-        //dd($this->cart);
         $this->cart = new Cart();
-        //dd($this->cart);
-        //dd($product, $count);
-        $this->cart->add($product, $count);
-       //dd($this->cart); 
+        $this->cart->add($product, $count); 
         return redirect(route('cart'));
     }  
 
     public  function cart(Request $request) {
-       
-        $this->cart = new Cart();//dd(new Cart());
-     //dd($this->cart);
+        $this->cart = new Cart();
         $ids=[];
         foreach($this->cart->products as $product) {
            $ids[] = $product['id'];
         }
         $products = Product::whereIn('id',$ids)->get()->keyBy('id');
-       //dd($products);
         return view('cart', [
         'cart'=> $this->cart,
         'products' => $products,
     ]);
+
     }
     public  function remove(Request $request){
-       // dd($request);
         $id = $request->id;
         $this->cart = new Cart();
         $this->cart->remove($id);
@@ -73,15 +55,11 @@ class CartController extends Controller
     }  
      public  function checkout(Request $request) {
         $this->cart = new Cart();
-        //dd(session()->all());
-        //dd($this->cart);
         $ids=[];
         foreach($this->cart->products as $product) {
            $ids[] = $product['id'];
         }
         $products = Product::whereIn('id',$ids)->get()->keyBy('id');
-       // dd($products);
-        //dd($ids);
          return view('checkout', [
         'cart'=> $this->cart,
         'products' => $products,
@@ -112,6 +90,7 @@ class CartController extends Controller
              $message->from('domanytskya@gmail.com','domanytskya@gmail.com');
              $message->to('katya.zadorognay@gmail.com');
          });
+        
         $this->cart->clear();
          return redirect(route('cart',[
             'cart'=> $this->cart,

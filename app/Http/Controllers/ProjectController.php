@@ -13,8 +13,9 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
 	
-	public  function index() {		
-        $products = Product::all();
+	public  function index() {
+
+      	$products = Product::all();
 		
     return view('index',['products' => $products]);
     }
@@ -22,12 +23,12 @@ class ProjectController extends Controller
     public function newarrivals($slug) {
 		
         $category = Categor::where('slug',$slug)->first();
-        //dd($category);
+       
       	$products = Product::where('category_id',$category->id)->paginate(10);
-      	//dd($products);
-        return view('index',['products' => $products]);
+      	
+    return view('index',['products' => $products]);
     }
-	
+
 	public function home() {
     return view('home');
     }
@@ -42,10 +43,6 @@ class ProjectController extends Controller
     return view('blog', ['article' => $article]);
 	}
 
-	// public  function contact() {
- //    return view('contact');
-	// }	
-
 	public  function forgot() {
     return view('forgot-password');
 	}	
@@ -57,13 +54,13 @@ class ProjectController extends Controller
 	public  function product($id) {
 		
 		$category_id = Product::find($id)->category_id;
-	    //dd($category_id);
+
 		$description =Categor::find($category_id)->description;
-		//dd($description);
+		
 		$slug=Categor::find($category_id)->slug;
-//dd($slug);
+
 		$product = Product::find($id);
-		//dd($product );
+		
     return view('product', ['product' => $product, 'description'=>$description,'slug'=>$slug]);
 
 	}	
@@ -79,19 +76,16 @@ class ProjectController extends Controller
 	}
 
 	public function shop($slug) {
-		//dd($slug);
-		/*$url = URL::to('$products');
-		dd($url);*/
 		
         $category = Categor::where('slug',$slug)->first();
-        //dd($category);
+        
       	$products = Product::where('category_id',$category->id)->paginate(10);
-      	//dd($products);
-        return view('shop', ['products' => $products/*,'category'=>$category*/]);
+      	
+        return view('shop', ['products' => $products]);
     }
     
     public function product_search(Request $request) {
-    	//dd($request);
+    	
          $name = $request->name;
          $brand = $request->brand;
          $products = Product::query();
@@ -117,11 +111,6 @@ class ProjectController extends Controller
 
     return view('terms-conditions');
 	}
-
-	// public  function wishlist() {
-		
- //    return view('wishlist');
-	// }	
 	 
 	
 }

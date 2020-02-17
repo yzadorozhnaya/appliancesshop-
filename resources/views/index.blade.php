@@ -81,6 +81,7 @@
                                     <form method="POST" action="{{route('wishlist.add')}}">
                                         @csrf
                                         <input name="id" type="hidden"  value="{{$product->id}}">
+                                         <input name="count"  type="hidden" class="quantity mr-15" type="number" min="1" value="1">
                                         <button class="btn btn-primary" type="submit" > + до списку бажань</button>
                                     </form>
                                 </div>  

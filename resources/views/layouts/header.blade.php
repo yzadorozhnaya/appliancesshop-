@@ -69,6 +69,7 @@
                                     <li><a href="{{route('cart')}}"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro">{{$cart->count}}</span><span>cart</span></span></a>
                                         <ul class="ht-dropdown cart-box-width">
                                             <li>
+
                                             @if(count($cart->products)<1)
                                                 <h1>Кошик порожній</h1>
                                                  <div class="wc-proceed-to-checkout">
@@ -77,20 +78,35 @@
                                             @else
                                                 <!-- Cart Box Start -->
                                                 @foreach($cart->products as $product)
+                                               
                                                 <div class="single-cart-box">
+                                                
                                                     <div class="cart-img">
+                                                       
                                                         <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>
+                                                         
                                                         <span class="pro-quantity">{{$product['count']}}X</span>
                                                     </div>
                                                     <div class="cart-content">
-                                                        <h6><a href="#">{{$products->get($product['id'])->name}}</a></h6>
+                                                       
+                                                        <h6><a href="#"></a>"{{$products->get($product['id'])->name}}" </h6>
+                                                         
                                                         <span class="cart-price">{{$product['price']}}</span>
                                                         <!--<span>Size: S</span>
                                                         <span>Color: Yellow</span>-->
                                                     </div>
-                                                    <a class="del-icone" href="#"><i class="ion-close"></i></a>
+                                                    
+                                                    <form method="POST" action="{{route('cart.remove')}}">
+                                                    @csrf
+                                                        <td class="product-remove">
+                                                        <input name="id" type="hidden"  value="{{$product['id']}}">
+                                                        <button type="submit"> <a class="del-icone" href="#"><i class="ion-close"></i></a></button>
+                                                        </td>
+                                                    </form>
+                                                    
                                                 </div>
                                                 @endforeach
+
                                                 <!-- Cart Box End -->
                                                 <!-- Cart Footer Inner Start -->
                                                 <div class="cart-footer">
@@ -108,13 +124,10 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{route('wishlist')}}"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Список</span><span>бажань (0)</span></span></a>
+                                    <li><a href="{{route('wishlist')}}"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Список</span><span>бажань <span class="total-pro">{{$wishlist->count}}</span></span></span></a>
                                     </li>
                                     @if (auth()->check())
-                                    <li><a href=""><i class="lnr lnr-user"></i><span class="my-cart"></span>
-                                            <a id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                {{ Auth::user()->name }} 
-                                            </a>
+                                    <li><a href="" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><i class="lnr lnr-user"></i><span class="my-cart"><span> <strong>{{ Auth::user()->name }}</strong> </span></span></a>
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
@@ -126,7 +139,8 @@
                                                     @csrf
                                                     </form>
                                             </div>
-                                        </a>
+                                                </a>
+                                            </span>
                                     </li>
                                     @else
                                     <li><a href="{{route('login')}}"><i class="lnr lnr-user"></i><span class="my-cart"><span> <strong>Увійдіть в</strong> </span><span> особистий кабінет</span></span></a>

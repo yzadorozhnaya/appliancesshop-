@@ -16,43 +16,41 @@ class WishlistController extends Controller
 
     public  function add(Request $request){
       
-        //dd($request->id);
         $id = $request->id;
-        //dd($id);
-        
+        $count = $request->count;
+        //dd($count);
         $product = Product::find($id);
-      // dd($product);
+
         $this->wishlist = new Wishlist();
-        
-        $this->wishlist->add($product);
-     //dd($this->wishlist) ;
+        $this->wishlist->add($product, $count);
         return redirect(route('wishlist'));
     }  
 
     public  function wishlist(Request $request) {
-        
-        $this->wishlist = new Wishlist(); //dd($this->wishlist) ;
-        //dd($this->wishlist);
-        //dd( $request);
+        $this->wishlist = new Wishlist();
         $ids=[];
         foreach($this->wishlist->products as $product) {
            $ids[] = $product['id'];
         }
         $products = Product::whereIn('id',$ids)->get()->keyBy('id');
-       //dd($products);
         return view('wishlist', [
         'wishlist'=> $this->wishlist,
         'products' => $products,
     ]);
     }
     public  function remove(Request $request){
-        //dd($request->id);
         $id = $request->id;
         $this->wishlist = new Wishlist();
         $this->wishlist->remove($id);
-        //dd($this->wishlist);
         return redirect(route('wishlist'));
     }  
 
+   /*  public  function change(Request $request){
+        $id = $request->id;
+        $count = $request->count;
+        $this->wishlist = new Wishlist();
+        $this->wishlist->change($id, $count);
+        return redirect(route('wishlist'));
+    }  */
     
 }

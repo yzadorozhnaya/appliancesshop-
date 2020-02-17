@@ -30,7 +30,7 @@
                                                     @foreach($cat->child()->get() as $cat2)
                                                         <h3>{{$cat2->name}}</h3>
                                                         @foreach($cat2->child()->get() as $cat3)
-                                                            <p><a href="{{route('shop', ['slug' => $cat3->slug])}}">{{$cat3->name}}</a></p> 
+                                                            <p><a href="{{route('shop', ['slug' => $cat3->slug])}}">{{$cat3->name}}</a></p>
                                                         @endforeach
                                                     @endforeach
                                             </div>

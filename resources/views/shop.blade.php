@@ -395,7 +395,7 @@
                                 <div id="grid-view" class="tab-pane fade show active">
                                     <div class="products">
                                         <div class="row">
-
+                                          
                                             @foreach($products as $product_item)
                                             <!-- Single Product Start -->
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-6">
@@ -435,6 +435,7 @@
                                                                         <form method="POST" action="{{route('wishlist.add')}}">
                                                                             @csrf
                                                                             <input name="id" type="hidden"  value="{{$product_item->id}}">
+                                                                            <input name="count"  type="hidden" class="quantity mr-15" type="number" min="1" value="1">
                                                                             <button class="btn btn-primary" type="submit" > + до списку бажань</button>
                                                                         </form>
                                                                     </div>   
@@ -449,13 +450,14 @@
                                     </div>
                                     <!-- Row End -->
                                 </div>
-                                {{$products->links()}}
+                              
                                 <!-- #grid view End -->
                                 <div id="list-view" class="tab-pane fade">
                                     <!-- Single Product Start -->
                                     <div class="products">
                                         @foreach($products as $product_item)
                                             <div class="row"> 
+                                        
                                                 <div class="single-product"> 
                                                     <div class="product"> 
                                                         <div class="col-lg-4 col-md-5 col-sm-12">

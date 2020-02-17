@@ -2,17 +2,17 @@
 
 namespace App\Http\ViewComposers;
 
-use App\Models\Cart;
+use App\Models\Wishlist;
 use Illuminate\View\View;
 
-class CartComposer
+class WishlistComposer
 {
     public function compose(View $view)
     {
     	
-        $cart = new Cart();
         
-       return $view->with('cart', $cart);
-       
+         $wishlist = new Wishlist();
+
+        return $view->with('wishlist', $wishlist);
     }
 }

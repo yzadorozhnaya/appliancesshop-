@@ -65,7 +65,7 @@
                                                                         @csrf
                                                                         <td class="product-quantity">
                                                                             <input name="id" type="hidden"  value="{{$product['id']}}">
-                                                                            <input name="count" class="quantity mr-15" type="number" min="1" value="1">
+                                                                            <input name="count" class="quantity mr-15" type="number" min="1" value="{{$product['count']}}">
                                                                             <button class="btn btn-primary" type="submit"><i class="fa fa-shopping-cart inner-right-vs"></i></button>
                                                                         </td>
                                             </form>

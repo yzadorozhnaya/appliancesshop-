@@ -1,21 +1,19 @@
 <?php
 
 namespace App\Models;
-
 use \App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
 
 class Cart {
 
     public $products;
-	public $count;
+	public $count=0;
 	public $sum;
 
 	public function  __construct()
     {
-        //dd(session());
-        //dd( session()->get('cart'));
 		$cart = session()->get('cart');
 		if ($cart) {
 			$this->products=$cart;
@@ -27,9 +25,7 @@ class Cart {
 
      public  function add($product,$count){
         $flag = true; 
-//dd($this->products);
        foreach($this->products as $key => $product_cart) {
-        //dd($product_cart);
            if($product_cart['id']==$product->id) {
                $this->products[$key]['count'] = $product_cart['count']+$count;
                $flag = false;
@@ -47,15 +43,13 @@ class Cart {
     }  
 
      public  function remove($id){
-        //dd($id,$this->products);
         foreach ($this->products as $key => $product) {
-           //dd($product, $id);
                 if ($product['id']==$id) { 
                     unset($this->products[$key]);
                     break;
                 }
         }
-        $this->calc(); 
+        $this->calc();   
     }   
 
      public  function change($id, $count){
@@ -82,10 +76,10 @@ class Cart {
             $this->count +=  $product['count'];
         }  
         session(['cart'=>$this->products]);  
-        // dump(session()->all());
     }
 
     public function __destruct(){
+        $above = session('cart');
         session(['cart'=>$this->products]);
         session(['cart',$this->products]);
        
