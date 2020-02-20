@@ -191,7 +191,7 @@
                                         <ul class="ht-dropdown dropdown-style-two">
                                             <li><a href="{{route('register')}}">register</a></li>
                                             <li><a href="{{route('login')}}">sign in</a></li>
-                                            <li><a href="{{route('forgot')}}">forgot password</a></li>
+                                            <li><a href="{{ route('password.request') }}">forgot password</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>

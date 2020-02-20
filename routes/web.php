@@ -47,7 +47,7 @@ Route::get('/terms', 'ProjectController@terms') -> name('terms');
 //Route::get('/wishlist', 'ProjectController@wishlist') -> name('wishlist');
 
 Auth::routes();
-
+//Route::get('/password/reset/{token}/{email}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::get('/home', 'HomeController@home')->name('home');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin',  'middleware' => 'admin'], function()

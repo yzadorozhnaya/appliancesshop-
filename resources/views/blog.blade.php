@@ -18,9 +18,10 @@
             <div class="container">
                 <div class="main-blog">
                     <div class="row">
-                        <!-- Single Blog Start -->
+                        <!-- Single Blog Start --> 
+                        @foreach($article as $article_item)
                         <div class="col-lg-6 col-sm-12">
-                          @foreach($article as $article_item)
+                         
                            <div class="single-latest-blog">
                                <div class="blog-img">
                                    <a href="{{route('single', ['slug' => $article_item->slug])}}"><img src="{{asset("img/blog/1.jpg")}}" alt="blog-image"></a>
@@ -28,18 +29,20 @@
                                <div class="blog-desc">
                                    <h4><a href="{{route('single', ['slug' => $article_item->slug])}}">{{$article_item->title}}</a></h4>
                                     <ul class="meta-box d-flex">
-                                        <li><a href="#">By Truemart</a></li>
+                                        <li><a href="{{route('index')}}">Електрон</a></li>
                                     </ul>
-                                    <p>{{$article_item->description}}...</p>
+                                    <p>{{$article_item->description}}</p>
                                     <a  class="readmore" href="{{route('single', ['slug' => $article_item->slug])}}">Read More</a>
                                </div>
                                <div class="blog-date">
-                                    <span>{{$article_item->created_at}}</span>
-                                    June
+                                    <span>{{$article_item->created_at->format('d')}}</span>
+                                    {{$article_item->created_at->format('F')}}
+                                    
                                 </div>
                            </div>
-                           @endforeach
+                           
                         </div>
+                        @endforeach
                         <!-- Single Blog End -->
                     </div>
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,4 +46,12 @@ class User extends Authenticatable
     public function isAdmin() {
         return $this->role == self::ROLE_ADMIN;
     }
+public function sendPasswordResetNotification($token)
+
+{
+
+$this->notify(new ResetPassword($token));
+
+}
+    
 }

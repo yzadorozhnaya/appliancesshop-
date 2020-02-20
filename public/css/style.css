@@ -2104,6 +2104,13 @@ li.megamenu-img a {
   padding: 0px 0 0 10px;
   width: 57%;
 }
+.blog-desc p {
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+ 
+}
 .blog-date span {
   display: block;
   font-size: 24px;
