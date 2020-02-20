@@ -38,7 +38,7 @@ class ProjectController extends Controller
 	}
 
 	public  function blog() {
-		$article = Article::paginate(3);
+		$article = Article::paginate(8);
 
     return view('blog', ['article' => $article]);
 	}
@@ -101,11 +101,19 @@ class ProjectController extends Controller
     }
 
 	public  function single($slug) {
-
+    $articles = Article::paginate(8);
 		$article = Article::where('slug', $slug)->first();
-        
-    return view('single-blog', ['article' => $article]);
+     
+    return view('single-blog', ['article' => $article,'articles' => $articles]);
 	}	
+
+  public  function blogsingle($id) {
+ $category_id = Categor::where('id', $id)->first();
+ //dd($category_id);
+    $article = Article::where('category_id', $category_id->id)->paginate(8);
+     // dd($article);  
+    return view('blog', ['article' => $article]);
+  } 
 
 	public  function terms() {
 

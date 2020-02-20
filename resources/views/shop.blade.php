@@ -22,10 +22,8 @@
                    <div class="col-lg-3 order-2 order-lg-1">
                         <div class="sidebar">
                             <!-- Sidebar Electronics Categorie Start -->
-
-                                   @foreach($categories->where('parent_id',0) as $cat)
-                            <div class="electronics mb-40">
-
+                            @foreach($categories->where('parent_id',0) as $cat)
+                             <div class="electronics mb-40">
                                 <h3 class="sidebar-title">{{$cat->name}}</h3>
                                 <div id="shop-cate-toggle" class="category-menu sidebar-menu sidbar-style">
                                     <ul>
@@ -43,7 +41,7 @@
                                     </ul>
                                 </div>
                                 <!-- category-menu-end -->
-                            </div>
+                             </div>
                             @endforeach
                             <!-- Sidebar Electronics Categorie End -->
                             <!-- Price Filter Options Start -->

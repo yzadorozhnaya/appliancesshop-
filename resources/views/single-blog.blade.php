@@ -18,16 +18,38 @@
         <div class="single-blog ptb-100  ptb-sm-60">
             <div class="container">
                 <div class="row">
-                    <!-- Single Blog Sidebar Start -->
+                    <!-- Single Blog Sidebar Start --> 
+
                     <div class="col-lg-3 order-2 order-lg-1">
                         <aside>
+                            @foreach($categories->where('parent_id',0) as $cat)
+                             <div class="electronics mb-40">
+                                <h3 class="sidebar-title">{{$cat->name}}</h3>
+                                <div id="shop-cate-toggle" class="category-menu sidebar-menu sidbar-style">
+                                    <ul>
+                                         @foreach($cat->child()->get() as $cat2)
+                                        <li class="has-sub"><a href="#">{{$cat2->name}}</a>
+                                            <ul class="category-sub">
+                                                @foreach($cat2->child()->get() as $cat3)
+
+                                                <li><a href="{{route('blogsingle', ['id' => $cat3->id])}}">{{$cat3->name}}</a></li>
+                                                @endforeach
+                                            </ul>
+                                            <!-- category submenu end-->
+                                        </li>
+                                        @endforeach
+                                        
+                                    </ul>
+                                </div>
+                                <!-- category-menu-end -->
+                             </div>
+                            @endforeach
                             <div class="single-sidebar latest-pro mb-30">
-                                <h3 class="sidebar-title">latest Posts</h3>
+                                <h3 class="sidebar-title">последние записи</h3>
                                 <ul class="sidbar-style">
-                                    <li><a href="/shop">cameras</a></li>
-                                    <li><a href="/shop">gamepad</a></li>
-                                    <li><a href="/shop">digital cameras</a></li>
-                                    <li><a href="/shop">virtual reality</a></li>
+                                    @foreach($articles as $article_item)
+                                    <li><h4><a href="{{route('single', ['slug' => $article_item->slug])}}">{{$article_item->title}}</a></h4></li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="col-img mb-30">

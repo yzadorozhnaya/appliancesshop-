@@ -24,6 +24,10 @@ class Categor extends Model
         return $this->hasMany('App\Models\Product');
     }
     
+     public function article()
+    {
+        return $this->hasMany('App\Models\Article');
+    }
     
 
 }

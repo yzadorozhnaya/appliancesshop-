@@ -18,6 +18,9 @@ Route::get('/about', 'ProjectController@about') -> name('about');
 
 Route::get('/blog', 'ProjectController@blog') -> name('blog');
 
+Route::get('/blogsingle/{id?}', 'ProjectController@blogsingle') -> name('blogsingle');
+
+
 //Route::get('/cart', 'ProjectController@cart') -> name('cart');
 
 // Route::get('/checkout', 'ProjectController@checkout') -> name('checkout');
