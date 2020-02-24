@@ -1,5 +1,9 @@
 <!-- Main Header Area Start Here -->
         <header>
+              @if(session('success'))
+            <h1>{{session('success')}}</h1>
+        @endif
+        
             <!-- Header Top Start Here -->
             <div class="header-top-area">
                 <div class="container">
@@ -172,20 +176,13 @@
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
                                             <li><a href="{{route('categories')}}">Усі категорії</a></li>
-                                            <li><a href="#">Деталі продукту</a></li>
                                             <li><a href="{{route('cart')}}">кошик</a></li>
                                             <li><a href="{{route('checkout')}}">Оформити замовлення</a></li>
                                             <li><a href="{{route('wishlist')}}">Список бажань</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
-                                    <li><a href="{{route('blog')}}">блог<i class="fa fa-angle-down"></i></a>
-                                        <!-- Home Version Dropdown Start -->
-                                        <ul class="ht-dropdown dropdown-style-two">
-                                            <li><a href="#">подробиці блогу</a></li>
-                                        </ul>
-                                        <!-- Home Version Dropdown End -->
-                                    </li>
+                                    <li><a href="{{route('blog')}}">блог</a></li>
                                     <li><a href="#">Мой кабинет<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">

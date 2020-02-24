@@ -115,6 +115,30 @@ class ProjectController extends Controller
     return view('blog', ['article' => $article]);
   } 
 
+   public function blogbuy(Request $request){
+        //$this->cart = new Cart();
+        $body = '';
+         if (auth()->check()) {
+            $usr = Auth::user()->name;
+            $email = Auth::user()->email;
+            $sub=$request->subject;
+            $comment=$request->comment;
+            $body.="\r\n".$name."\r\n".$email."\r\n".$sub."\r\n".$comment."\r\n";
+        }
+        $name=$request->name;
+        $email=$request->email;
+        $sub=$request->sub;
+        $comment=$request->comment;
+       
+        $body.="\r\n".$name."\r\n".$email."\r\n".$sub."\r\n".$comment."\r\n";
+        $res = \Mail::raw($body, function($message){
+             $message->from('domanytskya@gmail.com','domanytskya@gmail.com');
+             $message->to('katya.zadorognay@gmail.com');
+         });
+       
+         return redirect(route('index'))->with('success','Ви успішно відправили свій відгук!');
+     }
+
 	public  function terms() {
 
     return view('terms-conditions');

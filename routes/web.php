@@ -20,6 +20,7 @@ Route::get('/blog', 'ProjectController@blog') -> name('blog');
 
 Route::get('/blogsingle/{id?}', 'ProjectController@blogsingle') -> name('blogsingle');
 
+Route::post('/blog/buy', 'ProjectController@blogbuy') -> name('blog.buy');
 
 //Route::get('/cart', 'ProjectController@cart') -> name('cart');
 
@@ -43,7 +44,7 @@ Route::get('/categories', 'ProjectController@categories') -> name('categories');
 
 //Route::get('/shop', 'ProjectController@shop') -> name('shop');
 
-Route::get('/single/{slug}', 'ProjectController@single') -> name('single');
+Route::get('/single/{slug?}', 'ProjectController@single') -> name('single');
 
 Route::get('/terms', 'ProjectController@terms') -> name('terms');
 
