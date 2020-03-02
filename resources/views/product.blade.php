@@ -18,7 +18,8 @@
             </div>
             <!-- Container End -->
         </div>
- 
+       
+        
         <!-- Breadcrumb End -->
         <!-- Product Thumbnail Start -->
         <div class="main-product-thumbnail ptb-100 ptb-sm-60">
@@ -160,8 +161,18 @@
                                 <!-- Reviews Start -->
                                 <div class="review border-default universal-padding">
                                     <div class="group-title">
-                                        <h2>customer review</h2>
+                                        <h2>Відгуки клієнтів о {{$product->name}}</h2>
                                     </div>
+                                    <div class="sidebar-desc mb-50">
+                                    
+                                        @foreach($comments as $comment)
+                                        <blockquote class="mtb-30"> <p>{{$comment->body}}</span></blockquote>
+                                        <p> {{$users->get($comment['user_id'])->name}}</p>
+                                        <p>{{$comment->created_at->format('d.m.y')}}</p>
+                                        @endforeach
+                                     
+                                    </div>
+                                    
                                     <h4 class="review-mini-title">Truemart</h4>
                                     <ul class="review-list">
                                         <!-- Single Review List Start -->
@@ -236,23 +247,31 @@
                                         </li>
                                         <!-- Single Review List End -->
                                     </ul>
+                                    @if(session('success'))
+            <h1>{{session('success')}}</h1>
+        @endif
                                     <!-- Reviews Field Start -->
                                     <div class="riview-field mt-40">
-                                        <form autocomplete="off" action="#">
+                                        @if (auth()->check())
+                                        <form method="POST" action="{{route('prodact.addComment', ['id' => $product->id])}}">
+                                        @csrf   
                                             <div class="form-group">
                                                 <label class="req" for="sure-name">Nickname</label>
-                                                <input type="text" class="form-control" id="sure-name" required="required">
+                                                <input type="text" class="form-control" name="name" ">
                                             </div>
                                             <div class="form-group">
                                                 <label class="req" for="subject">Summary</label>
-                                                <input type="text" class="form-control" id="subject" required="required">
+                                                <input type="text" class="form-control" name="sub" required="required">
                                             </div>
                                             <div class="form-group">
                                                 <label class="req" for="comments">Review</label>
-                                                <textarea class="form-control" rows="5" id="comments" required="required"></textarea>
+                                                <textarea class="form-control" rows="5" name="comment" required="required"></textarea>
                                             </div>
                                             <button type="submit" class="customer-btn">Submit Review</button>
                                         </form>
+                                        @else
+                                        Будь ласка зареєструйтеся!Для того щоб мати можливість лишити відгук!
+                                          @endif
                                     </div>
                                     <!-- Reviews Field Start -->
                                 </div>

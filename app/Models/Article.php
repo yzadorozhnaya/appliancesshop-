@@ -14,5 +14,10 @@ class Article extends Model
     {
         return $this->belongsTo('App\Models\Categor', 'category_id');
     }
+
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
      
 }

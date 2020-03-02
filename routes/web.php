@@ -34,6 +34,8 @@ Route::get('/login', 'ProjectController@login') -> name('login');
 
 Route::get('/product/{id}', 'ProjectController@product') -> name('product');
 
+Route::post('/prodact/addComment/{id}', 'ProjectController@addComment')->name('prodact.addComment');
+
 Route::get('/register', 'ProjectController@register') -> name('register');
 
 Route::get('/shop/{slug}', 'ProjectController@shop') -> name('shop');
@@ -44,7 +46,7 @@ Route::get('/categories', 'ProjectController@categories') -> name('categories');
 
 //Route::get('/shop', 'ProjectController@shop') -> name('shop');
 
-Route::get('/single/{slug?}', 'ProjectController@single') -> name('single');
+Route::get('/single/{slug}', 'ProjectController@single') -> name('single');
 
 Route::get('/terms', 'ProjectController@terms') -> name('terms');
 

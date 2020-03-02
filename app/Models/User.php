@@ -46,12 +46,16 @@ class User extends Authenticatable
     public function isAdmin() {
         return $this->role == self::ROLE_ADMIN;
     }
-public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification($token)
 
-{
+    {
 
-$this->notify(new ResetPassword($token));
+    $this->notify(new ResetPassword($token));
 
-}
+    }
+
+    public function comment() {
+        return $this->hasMany('App\Models\Comment');
+    }
     
 }

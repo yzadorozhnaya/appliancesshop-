@@ -19,12 +19,12 @@ class Categor extends Model
         return $this->belongsTo('App\Models\Categor','parent_id');
     }
 
-     public function product()
+    public function product()
     {
         return $this->hasMany('App\Models\Product');
     }
     
-     public function article()
+    public function article()
     {
         return $this->hasMany('App\Models\Article');
     }
