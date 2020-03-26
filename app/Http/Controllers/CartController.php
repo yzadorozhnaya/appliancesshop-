@@ -76,6 +76,10 @@ class CartController extends Controller
         }
         $products = Product::whereIn('id',$ids)->get()->keyBy('id');
         foreach ($this->cart->products as $product) {
+            if ($product['sale']>0) {
+                $product['price']=$product['price']*(1-$product['sale']/100);
+                $body .="\r\n"."заказ"." ".$products->get($product['id'])->name." ".$products->get($product['id'])->articul." ".$products->get($product['id'])->brand."\r\n"."цена"." ".$product['price']."\r\n".'количество'." ".$product['count'];
+            }else
             $body .="\r\n"."заказ"." ".$products->get($product['id'])->name." ".$products->get($product['id'])->articul." ".$products->get($product['id'])->brand."\r\n"."цена"." ".$product['price']."\r\n".'количество'." ".$product['count'];
         }
         $sum=$this->cart->sum;
