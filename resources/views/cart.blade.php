@@ -56,7 +56,11 @@
 
                                                     </td>
                                             </form>
-                                            <td class="product-subtotal">{{$product['price']*$product['count']}}</td>
+                                            @if($product['sale']>0)
+                                            <td class="product-subtotal">{{$product['count']*$product['price']*(1-$product['sale']/100)}}</td>
+                                            @else
+                                            <td class="product-subtotal">{{$product['count']*$product['price']}}</td>
+                                            @endif
                                             <form method="POST" action="{{route('cart.remove')}}">
                                                 @csrf
                                                     <td class="product-remove">

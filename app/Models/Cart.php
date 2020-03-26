@@ -11,6 +11,7 @@ class Cart {
     public $products;
 	public $count=0;
 	public $sum;
+    public $pricesale;
 
 	public function  __construct()
     {
@@ -36,9 +37,10 @@ class Cart {
               $this->products[]=[
                 'id'=>$product->id,
                 'price'=>$product->price,
+                'sale'=>$product->sale,
                 'count'=>$count,
             ];
-        }
+        }//dd($this->products);
         $this->calc();
     }  
 
@@ -72,14 +74,17 @@ class Cart {
      	$this->count = 0;
         $this->sum = 0;
         foreach ($this->products as $product) {
-            $this->sum += $product['price'] * $product['count'];
-            $this->count +=  $product['count'];
+            if ($product['sale']>0) {
+                $this->sum += $product['count'] * $product['price'] *(1-$product['sale']/100);
+            }else
+           $this->sum += $product['count'] * $product['price'];
+           $this->count +=  $product['count'];
         }  
         session(['cart'=>$this->products]);  
     }
 
     public function __destruct(){
-        $above = session('cart');dd($above); 
+        $above = session('cart');
         session(['cart'=>$this->products]);
         session(['cart',$this->products]);
     }     

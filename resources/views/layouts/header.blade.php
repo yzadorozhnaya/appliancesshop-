@@ -93,8 +93,11 @@
                                                     <div class="cart-content">
                                                        
                                                         <h6><a href="#"></a>"{{$products->get($product['id'])->name}}" </h6>
-                                                         
+                                                         @if($product['sale']>0)
+                                                        <span class="cart-price">{{$product['price']*(1-$product['sale']/100)}}</span>
+                                                        @else
                                                         <span class="cart-price">{{$product['price']}}</span>
+                                                        @endif
                                                         <!--<span>Size: S</span>
                                                         <span>Color: Yellow</span>-->
                                                     </div>

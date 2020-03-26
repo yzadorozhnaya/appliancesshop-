@@ -175,7 +175,11 @@
                                                {{$products->get($product['id'])->articul}}<span class="product-quantity"></span>
                                             </td>
                                             <td class="product-total">
-                                                <span class="amount">{{$product['price']}}</span>
+                                                @if($product['sale']>0)
+                                                    <span class="amount">{{$product['price']*(1-$product['sale']/100)}}</span>
+                                                @else
+                                                    <span class="amount">{{$product['price']}}</span>
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr class="cart_item">
@@ -183,7 +187,11 @@
                                              <span class="product-quantity"> x {{$product['count']}}</span>
                                             </td>
                                             <td class="product-total">
-                                                <span class="amount">{{$product['price']*$product['count']}}</span>
+                                               @if($product['sale']>0)
+                                                    <span class="amount">{{$product['count']*$product['price']*(1-$product['sale']/100)}}</span>
+                                               @else
+                                                    <span class="amount">{{$product['count']*$product['price']}}</span>
+                                              @endif
                                             </td>
                                         </tr>
                                         @endforeach
