@@ -9,11 +9,11 @@
 
                 <div class="card-body">
                     <form method="POST" 
-@if(isset($product))
+                @if(isset($product))
                     action="{{ route('admin.products.save',['id'=>$product->id]) }}"
-@else
+                @else
                     action="{{ route('admin.products.save') }}"
-@endif
+                @endif enctype = "multipart/form-data"
                     >
                         @csrf
                          <div class="form-group row">
@@ -21,7 +21,6 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="@if(isset($product)){{ $product->name}} @endif" autofocus>
-
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -29,8 +28,6 @@
                                 @enderror
                             </div>
                         </div>
-
-
                         <div class="form-group row">
                             <label for="articul" class="col-md-4 col-form-label text-md-right">Articul</label>
 
@@ -63,7 +60,7 @@
                             <label for="image_path" class="col-md-4 col-form-label text-md-right">Image_path</label>
 
                             <div class="col-md-6">
-                                <input id="image_path" type="text" class="form-control @error('image_path') is-invalid @enderror" name="image_path" value="@if(isset($product)){{ $product->image_path}} @endif" autofocus>
+                                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path">
 
                                 @error('image_path')
                                     <span class="invalid-feedback" role="alert">

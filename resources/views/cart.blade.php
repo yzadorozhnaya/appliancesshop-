@@ -12,10 +12,6 @@
             </div>
             <!-- Container End -->
         </div>
-        @if(session('success'))
-            <h1>{{session('success')}}</h1>
-        @endif
-        
         <!-- Breadcrumb End -->
         <!-- Cart Main Area Start -->
         <div class="cart-main-area ptb-100 ptb-sm-60">

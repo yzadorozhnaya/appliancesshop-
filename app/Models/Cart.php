@@ -36,7 +36,7 @@ class Cart {
               $this->products[]=[
                 'id'=>$product->id,
                 'price'=>$product->price,
-                'count'=>$count
+                'count'=>$count,
             ];
         }
         $this->calc();
@@ -79,9 +79,8 @@ class Cart {
     }
 
     public function __destruct(){
-        $above = session('cart');
+        $above = session('cart');dd($above); 
         session(['cart'=>$this->products]);
         session(['cart',$this->products]);
-       
     }     
 }

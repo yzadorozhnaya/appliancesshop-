@@ -131,8 +131,24 @@ class AdminController extends Controller
             'category_id' => 'required|max:11'
 
         ]);
+//dd($request->allFiles());
+        $product->fill($request->only('name', 'articul', 'brand'/*, 'image_path'*/, 'description', 'price', 'category_id', 'is_publish'));
 
-        $product->fill($request->only('name', 'articul', 'brand', 'image_path', 'description', 'price', 'category_id', 'is_publish'));
+         if ($request->has('image_path')) {
+            
+            $image = $request->file('image_path');
+            //dd($image);
+            $name = md5(time());
+            $folder = '/img/products/'.$product->getUrl().'/';
+        //dd($folder);
+            
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            //dd($filePath);
+            $image->move(public_path($folder), $name. '.' . $image->getClientOriginalExtension());
+            //dd($filePath);
+            $product->image_path = $filePath;
+            //dd($product->image_path);
+        }
 
         $product->save();
 

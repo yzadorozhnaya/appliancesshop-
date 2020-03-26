@@ -14,13 +14,11 @@ class WishlistController extends Controller
 
 	private $wishlist;
 
-    public  function add(Request $request){
+    public  function add(Request $request) {
       
         $id = $request->id;
         $count = $request->count;
-        //dd($count);
         $product = Product::find($id);
-
         $this->wishlist = new Wishlist();
         $this->wishlist->add($product, $count);
         return redirect(route('wishlist'));
@@ -36,21 +34,14 @@ class WishlistController extends Controller
         return view('wishlist', [
         'wishlist'=> $this->wishlist,
         'products' => $products,
-    ]);
+        ]);
     }
-    public  function remove(Request $request){
+
+    public  function remove(Request $request) {
         $id = $request->id;
         $this->wishlist = new Wishlist();
         $this->wishlist->remove($id);
         return redirect(route('wishlist'));
     }  
 
-   /*  public  function change(Request $request){
-        $id = $request->id;
-        $count = $request->count;
-        $this->wishlist = new Wishlist();
-        $this->wishlist->change($id, $count);
-        return redirect(route('wishlist'));
-    }  */
-    
 }

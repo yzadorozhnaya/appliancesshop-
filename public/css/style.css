@@ -3540,7 +3540,7 @@ p.lost-password a:hover {
     color: #E62E04;
 }
 .coupon-content {
-    border: 1px solid #e5e5e5;
+   /* border: 1px solid #e5e5e5;*/
     display: none;
     margin-bottom: 20px;
     padding: 20px;
@@ -3863,6 +3863,7 @@ p.checkout-coupon input[type="submit"] {
 
 .card {
     margin-top: 5px;
+    border: hidden;
 }
 
 .card .btn-link {

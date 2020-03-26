@@ -64,9 +64,13 @@
                         <!-- Product Content Start -->
                         <div class="pro-content">
                             <div class="pro-info">
-                                <h4><a href="{{route('product', ['id' => $product->id])}}">{{$product->name}}</a></h4>
-                                <p><span class="price">{{$product->price}}</span><del class="prev-price">{{$product->price}}</del></p>
-                                <div class="label-product l_sale">20<span class="symbol-percent">%</span></div>
+                                <h4><a href="{{route('product', ['id' => $product->id])}}">{{$product->name}}{{$product->brand}}{{$product->articul}}</a></h4>
+                                @if(($product->sale)>0)
+                                    <p><span class="price">{{$product->price*(1-$product->sale/100)}}</span><del class="prev-price">{{$product->price}}</del></p>
+                                    <div class="label-product l_sale">{{$product->sale}}<span class="symbol-percent">%</span></div>
+                                @else
+                                    <p><span class="price">{{$product->price}}</span></p>
+                                @endif
                             </div>
                             <div class="pro-actions">
                                 <div class="actions-primary">
@@ -140,9 +144,13 @@
                                         <!-- Product Content Start -->
                                         <div class="pro-content">
                                             <div class="pro-info">
-                                                <h4><a href="{{route('product', ['id' => $product->id])}}">{{$product->name}}</a></h4>
-                                                <p><span class="price">{{$product->price}}</span><del class="prev-price">{{$product->price}}</del></p>
-                                                <div class="label-product l_sale">30<span class="symbol-percent">%</span></div>
+                                                <h4><a href="{{route('product', ['id' => $product->id])}}">{{$product->name}}{{$product->brand}}{{$product->articul}}</a></h4>
+                                                @if(($product->sale)>0)
+                                                    <p><span class="price">{{$product->price*(1-$product->sale/100)}}</span><del class="prev-price">{{$product->price}}</del></p>
+                                                    <div class="label-product l_sale">{{$product->sale}}<span class="symbol-percent">%</span></div>
+                                                @else
+                                                    <p><span class="price">{{$product->price}}</span></p>
+                                                @endif
                                             </div>
                                             <div class="pro-actions">
                                                 <div class="actions-primary">

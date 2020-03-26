@@ -9,17 +9,13 @@
                         <li><a href="{{route('categories')}}">Усі категорії</a></li>
                         <li><a href="#">{{$product->category->parent->parent->name}}</a></li>
                         <li><a href="#">{{$product->category->parent->name}}</a></li>
-                       
                         <li><a href="{{route('shop', ['slug' => $slug])}}">{{$product->category->name}}</a></li>
-                        
                         <li class='active'>{{$product->name}}</li>
                     </ul>
                 </div>
             </div>
             <!-- Container End -->
         </div>
-       
-        
         <!-- Breadcrumb End -->
         <!-- Product Thumbnail Start -->
         <div class="main-product-thumbnail ptb-100 ptb-sm-60">
@@ -63,7 +59,7 @@
                         <!-- Thumbnail Description Start -->
                         <div class="col-lg-7">
                             <div class="thubnail-desc fix">
-                                <h3 class="product-header">{{$product->name}}</h3>
+                                <h3 class="product-header">{{$product->name}} {{$product->brand}} {{$product->articul}}</h3>
                                 <div class="rating-summary fix mtb-10">
                                     <div class="rating">
                                         <i class="fa fa-star"></i>
@@ -73,12 +69,20 @@
                                         <i class="fa fa-star-o"></i>
                                     </div>
                                     <div class="rating-feedback">
-                                        <a href="#">(1 відгук)</a>
-                                        <a href="#">Додати свій відгук</a>
+                                        @if(count($comments)>0)
+                                        <a href="#">({{$count}} відгук)</a>
+                                        @else
+                                        <a href="#">(0 відгукiв)</a>
+                                        @endif
+                                        <a href="#reviewreview">Додати свій відгук</a>
                                     </div>
                                 </div>
                                 <div class="pro-price mtb-30">
-                                    <p class="d-flex align-items-center"><span class="prev-price">{{$product->price}}</span><span class="price">{{$product->price}}</span><span class="saving-price">{{$product->price}}</span></p>
+                                    @if(($product->sale)>0)
+                                        <p class="d-flex align-items-center"><span class="prev-price">{{$product->price}}</span><span class="price">{{$product->price*(1-$product->sale/100)}}</span><span class="saving-price">Повертаемо {{$product->sale}}%</span></p>
+                                    @else
+                                        <p><span class="price">{{$product->price}}</span></p>
+                                    @endif
                                 </div>
                                 <p class="mb-20 pro-desc-details">{{$description}}</p>
                                 <div class="color clearfix mb-20">
@@ -121,7 +125,11 @@
                                     @show
                                 </div>
                                 <div class="pro-ref mt-20">
+                                    @if($stok==1)
                                     <p><span class="in-stock"><i class="ion-checkmark-round"></i>В НАЯВНОСТІ</span></p>
+                                     @else
+                                    <p><span class="in-stock"><i class="ion-checkmark-round"></i>НЕМАЄ В НАЯВНОСТІ</span></p>
+                                    @endif
                                 </div>
                                 <div class="socila-sharing mt-25">
                                     <ul class="d-flex">
@@ -149,7 +157,7 @@
                     <div class="col-sm-12">
                         <ul class="main-thumb-desc nav tabs-area" role="tablist">
                             <li><a class="active" data-toggle="tab" href="#dtail">Опис</a></li>
-                            <li><a data-toggle="tab" href="#review">Відгуки</a></li>
+                            <li><a data-toggle="tab" id="reviewreview" href="#review">Відгуки</a></li>
                         </ul>
                         <!-- Product Thumbnail Tab Content Start -->
                         <div class="tab-content thumb-content border-default">
@@ -167,7 +175,7 @@
                                     
                                         @foreach($comments as $comment)
                                         <blockquote class="mtb-30"> <p>{{$comment->body}}</span></blockquote>
-                                        <p> {{$users->get($comment['user_id'])->name}}</p>
+                                        <p>{{$users->get($comment['user_id'])->name}}</p>
                                         <p>{{$comment->created_at->format('d.m.y')}}</p>
                                         @endforeach
                                      
@@ -213,7 +221,11 @@
                                 <!-- Reviews End -->
                                 <!-- Reviews Start -->
                                 <div class="review border-default universal-padding mt-30">
-                                    <h2 class="review-title mb-30">Ви переглядаєте: <br><span>{{$product->name}}</span></h2>
+                                    
+                                    <h2 class="review-title mb-30">Ви переглядаєте: <br><span>{{$product->name}} {{$product->brand}} {{$product->articul}}</span></h2>
+                                    @if (!auth()->check())
+                                        Будь ласка зареєструйтеся!Для того щоб мати можливість лишити відгук!
+                                    @else
                                     <p class="review-mini-title">your rating</p>
                                     <ul class="review-list">
                                         <!-- Single Review List Start -->
@@ -248,16 +260,21 @@
                                         <!-- Single Review List End -->
                                     </ul>
                                     @if(session('success'))
-            <h1>{{session('success')}}</h1>
-        @endif
+                                        <h1>{{session('success')}}</h1>
+                                    @endif
                                     <!-- Reviews Field Start -->
                                     <div class="riview-field mt-40">
-                                        @if (auth()->check())
                                         <form method="POST" action="{{route('prodact.addComment', ['id' => $product->id])}}">
                                         @csrf   
                                             <div class="form-group">
                                                 <label class="req" for="sure-name">Nickname</label>
-                                                <input type="text" class="form-control" name="name" ">
+                                                <input id="name" type="text" class="form-control  @error('name') is-invalid @enderror" name="name">
+                                               
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label class="req" for="subject">Summary</label>
@@ -269,9 +286,7 @@
                                             </div>
                                             <button type="submit" class="customer-btn">Submit Review</button>
                                         </form>
-                                        @else
-                                        Будь ласка зареєструйтеся!Для того щоб мати можливість лишити відгук!
-                                          @endif
+                                    @endif
                                     </div>
                                     <!-- Reviews Field Start -->
                                 </div>
@@ -285,7 +300,6 @@
             </div>
             <!-- Container End -->
         </div>
-
         <!-- Product Thumbnail Description End -->
         <!-- Realted Products Start Here -->     
     @endsection

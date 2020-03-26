@@ -34,66 +34,12 @@ NOTE: main.js, All custom script and plugin activation script in this file.
     
 ================================================*/
 
-/*$(document).ready(function(){
-$("#setCookie").click(function () {
-$.cookie("popup", "", { expires:0, path: '/' });
-$("#bg_popup").hide();
-});
- 
-if ( $.cookie("popup") == null )
-{
-setTimeout(function(){
-$("#bg_popup").show();
-}, 4000)
-}
-else { $("#bg_popup").hide();
-}
-});
-*/
-
-   
 (function ($) {
     "use Strict";
     /*--------------------------
     1. Newsletter Popup
     ---------------------------*/
    
-    /*setTimeout(function () {
-        $('.popup_wrapper').css({
-            "opacity": "1",
-            "visibility": "visible"
-        });
-        $('.popup_off').on('click', function () {            
-            $(".popup_wrapper").fadeOut(500); 
-            if (document.getElementById('newsletter-permission').checked) { 
-                alert('Выбран');
-            }
-            else {
-        alert ('Не выбран');
-                          
-           setTimeout(function(){ $('.popup_wrapper').fadeIn(5000); }, 10000); 
-    }
-        })
-    },10000);
-*/
-/*$(function() {
-if (!$.cookie('hideModal')) {
-
-setTimeout(function () {
-        $('.popup_wrapper').css({
-            "opacity": "1",
-            "visibility": "visible"
-        });
-        $('.popup_off').on('click', function () {
-            $(".popup_wrapper").fadeOut(500);
-        })
-    },7000)};
-$.cookie('hideModal', true, {
-    expires: 1,
-    path: '/'
-   });
-});
-*/
 $(function() {
  if (!$.cookie('hideModal')) {
 setTimeout(function () {
@@ -122,25 +68,6 @@ $.cookie('hideModal', true, {
    });
 });
 
-/*setTimeout(function () {
-        $('.popup_wrapper').css({
-            "opacity": "1",
-            "visibility": "visible"
-        });
-        $('.popup_off').on('click', function () {
-            $(".popup_wrapper").fadeOut(500);
-        })
-    },700000);
-*/
-
-/*
-     $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.header-sticky').addClass("sticky");
-        } else {
-            $('.header-sticky').removeClass("sticky");
-        }
-    });*/
     /*----------------------------
     2. Mobile Menu Activation
     -----------------------------*/
@@ -647,9 +574,9 @@ $.cookie('hideModal', true, {
     -----------------------------*/
     $("#slider-range").slider({
         range: true,
-        min: 0,
-        max: 100,
-        values: [0, 85],
+        min: 100,
+        max: 10000,
+        values: [100, 10000],
     slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
       }

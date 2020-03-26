@@ -1,9 +1,8 @@
 <!-- Main Header Area Start Here -->
         <header>
               @if(session('success'))
-            <h1>{{session('success')}}</h1>
-        @endif
-        
+                <h1>{{session('success')}}</h1>
+              @endif
             <!-- Header Top Start Here -->
             <div class="header-top-area">
                 <div class="container">

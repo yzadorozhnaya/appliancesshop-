@@ -26,27 +26,7 @@
                             <h3><span id="showlogin">Будь ласка увійдіть до свого кабінету</span></h3>
                             <div id="checkout-login" class="coupon-content">
                                 <div class="coupon-info">
-                                    <p class="coupon-text"></p>
-                                    <form action="#">
-                                        <p class="form-row-first">
-                                            <label>Username or email <span class="required">*</span></label>
-                                            <input type="text" />
-                                        </p>
-                                        <p class="form-row-last">
-                                            <label>Password  <span class="required">*</span></label>
-                                            <input type="text" />
-                                        </p>
-                                        <p class="form-row">
-                                            <input type="submit" value="Login" />
-                                            <label>
-                                            <input type="checkbox" />
-                                             Remember me 
-                                        </label>
-                                        </p>
-                                        <p class="lost-password">
-                                            <a href="#">Lost your password?</a>
-                                        </p>
-                                    </form>
+                                    @include('layouts.login')
                                 </div>
                             </div>
                             @endif
@@ -71,12 +51,14 @@
         </div>
         <!-- coupon-area end -->
         <!-- checkout-area start -->
+        <form method="POST" action="{{route('checkout.buy')}}">
+        @csrf
         <div class="checkout-area pb-100 pt-15 pb-sm-60">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="checkbox-form mb-sm-40">
-                            <h3>Billing Details</h3>
+                            <h3>Платіжні дані</h3>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-sm-30">
@@ -84,49 +66,32 @@
                                         @if (auth()->check())
                                         <input type="text" placeholder="{{ Auth::user()->name }}"/>
                                         @else
-                                        <input type="text" placeholder=" "/>
+                                        <input type="text" placeholder=" " name="name"/>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
                                         <label>Address <span class="required">*</span></label>
-                                        <input type="text" placeholder="Street address" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list mtb-30">
-                                        <input type="text" placeholder="Apartment, suite, unit etc. (optional)" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>Town / City <span class="required">*</span></label>
-                                        <input type="text" placeholder="Town / City" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>County <span class="required">*</span></label>
-                                        <input type="text" placeholder="" />
+                                        <input type="text" placeholder="Street address" name="address" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
                                         <label>Postcode / Zip <span class="required">*</span></label>
-                                        <input type="text" placeholder="Postcode / Zip" />
+                                        <input type="text" placeholder="Postcode / Zip" name="postcode" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
                                         <label>Email Address <span class="required">*</span></label>
-                                        <input type="email" placeholder="" />
+                                        <input type="email" placeholder="" name="email" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list mb-30">
                                         <label>Phone  <span class="required">*</span></label>
-                                        <input type="text" placeholder="Postcode / Zip" />
+                                        <input type="text" placeholder="Postcode / Zip" name="phone" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -144,64 +109,47 @@
                             <div class="different-address">
                                 <div class="ship-different-title">
                                     <h3>
-                                        <label>Ship to a different address?</label>
-                                        <input id="ship-box" type="checkbox" />
+                                        <label>Доставка на іншу адресу?</label>
+                                        <input id="ship-box" type="checkbox" name="shipbox" />
                                     </h3>
                                 </div>
                                 <div id="ship-box-info">
                                         <div class="col-md-6">
                                             <div class="checkout-form-list mb-30">
                                                 <label>Name <span class="required">*</span></label>
-                                                <input type="text" placeholder="" />
+                                                <input type="text" placeholder="" name=" secondname" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list mb-30">
                                                 <label>Address <span class="required">*</span></label>
-                                                <input type="text" placeholder="Street address" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list mb-30">
-                                                <input type="text" placeholder="Apartment, suite, unit etc. (optional)" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list mb-30">
-                                                <label>Town / City <span class="required">*</span></label>
-                                                <input type="text" placeholder="Town / City" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list mb-30">
-                                                <label> County <span class="required">*</span></label>
-                                                <input type="text" placeholder="" />
+                                                <input type="text" placeholder="Street address" name=" secondaddress"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list mb-30">
                                                 <label>Postcode / Zip <span class="required">*</span></label>
-                                                <input type="text" placeholder="Postcode / Zip" />
+                                                <input type="text" placeholder="Postcode / Zip" name=" secondpostcode"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list mb-30">
                                                 <label>Email Address <span class="required">*</span></label>
-                                                <input type="email" placeholder="" />
+                                                <input type="email" placeholder="" name=" secondemail"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list mb-30">
                                                 <label>Phone  <span class="required">*</span></label>
-                                                <input type="text" placeholder="Postcode / Zip" />
+                                                <input type="text" placeholder="Postcode / Zip" name=" secondphone"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="order-notes">
                                     <div class="checkout-form-list">
-                                        <label>Order Notes</label>
-                                        <textarea id="checkout-mess" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                        <label>Примітки до замовлення</label>
+                                        <textarea id="checkout-mess" cols="30" rows="10" placeholder=" Примітки про ваше замовлення, наприклад спеціальні записки про доставку." name="checkoutmess"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -223,6 +171,8 @@
                                         <tr class="cart_item">
                                             <td class="product-name">
                                                {{$products->get($product['id'])->name}}<span class="product-quantity"></span>
+                                               {{$products->get($product['id'])->brand}}<span class="product-quantity"></span>
+                                               {{$products->get($product['id'])->articul}}<span class="product-quantity"></span>
                                             </td>
                                             <td class="product-total">
                                                 <span class="amount">{{$product['price']}}</span>
@@ -241,11 +191,11 @@
                                     <tfoot>
                                          <tr class="cart-subtotal">
                                             <th>количество</th>
-                                            <td><span class="amount">{{$cart->sum}}</span></td>
+                                            <td><span class="amount">{{$cart->count}}</span></td>
                                         </tr>
                                         <tr class="cart-subtotal">
                                             <th>сумма</th>
-                                            <td><span class="amount">{{$cart->count}}</span></td>
+                                            <td><span class="amount">{{$cart->sum}}</span></td>
                                         </tr>
                                         <tr class="order-total">
                                             <th>сумма+%скидки</th>
@@ -256,34 +206,32 @@
                                 </table>
                             </div>
                             <div class="col-md-4 col-sm-12 cart-shopping-total">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
                     <div class="cart-sub-total">
                         Quantity<span class="inner-left-md">{{$cart->count}}</span>
                     </div>
                     <div class="cart-grand-total">
                         Sum<span class="inner-left-md">{{$cart->sum}}</span>
                     </div>
-                </th>
-            </tr>
-        </thead><!-- /thead -->
-        <tbody>
-                <tr>
-                    <td>
-                        <div class="cart-checkout-btn pull-right">
-                            <form method="POST" action="{{route('checkout.buy')}}">
-                                @csrf
+                        </th>
+                    </tr>
+                </thead><!-- /thead -->
+                <tbody>
+                    <tr>
+                        <td>                            
+                        <div class="cart-checkout-btn pull-right">                            
                             <button type="submit" class="btn btn-primary checkout-btn">відправити замовлення</button>
-                            </form>
-                            <span class="">Checkout with multiples address!</span>
+                            <span class="">Checkout with multiples address!</span>                            
                         </div>
-                    </td>
-                </tr>
-        </tbody><!-- /tbody -->
-    </table><!-- /table -->
-</div><!-- /.cart-shopping-total -->
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- /tbody -->
+            </table><!-- /table -->
+        </div><!-- /.cart-shopping-total -->
                             <div class="payment-method">
                                 <div id="accordion">
                                     <div class="card">
@@ -294,7 +242,6 @@
                                                 </button>
                                             </h5>
                                         </div>
-
                                         <div id="collapseOne" class="collapse show" aria-labelledby="headingone" data-parent="#accordion">
                                             <div class="card-body">
                                                 <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
@@ -331,6 +278,7 @@
                                     </div>
                                 </div>
                             </div>
+        </form>
                         </div>
                     </div>
                 </div>

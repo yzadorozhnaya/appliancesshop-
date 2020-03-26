@@ -95,31 +95,43 @@
                             </div>
                             <div class="sidebar-desc mb-50">
                                 <p>{{$article->description}}</p>
-                                <blockquote class="mtb-30"> <p>{{$article->description}}</span></blockquote>
-                                <p>{{$article->description}}</p>
+                                 @foreach($comments as $comment)
+                                <blockquote class="mtb-30"> <p>{{$comment->body}}</span></blockquote>
+                                    @if($comment['user_id']!=0)
+                                <p>{{$users->get($comment['user_id'])->name}}</p>
+                                     @else
+                                <p>{{$comment->name}}</p>
+                                    @endif
+                                <p>{{$comment->created_at->format('d.m.y')}}</p>
+                                @endforeach
                             </div>
                             <!-- Contact Email Area Start -->
                             <div class="blog-detail-contact">
                                 <h3 class="mb-15 leave-reply">Leave a Reply</h3>
                                 <div class="submit-review">
-                                    <form method="POST" action="{{route('blog.buy')}}">
+                                    <form method="POST" action="{{route('blog.buy', ['id' => $article->id])}}">
                                         @csrf
                                         <div class="form-group">
                                             <label for="usr">Your Name:</label>
-                                            <input type="text" class="form-control" id="usr">
+                                            <input  type="text" class="form-control  @error('name') is-invalid @enderror" name="name">
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="usr">your email:</label>
-                                            <input type="email" class="form-control" id="email">
+                                            <input type="email" class="form-control" name="email">
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="sub">Subject:</label>
-                                            <input type="text" class="form-control" id="sub">
+                                            <input type="text" class="form-control" name="sub">
                                         </div>
                                         <div class="form-group">
                                             <label for="comment">Comment:</label>
-                                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                                            <textarea class="form-control" rows="5" name="comment"></textarea>
                                         </div>
                                          
                                         <div class="sbumit-reveiew">

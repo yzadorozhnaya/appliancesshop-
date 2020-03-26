@@ -19,9 +19,9 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\Comment');
     }
-    /*public function getUrl()
+    public function getUrl()
     {
        return $this->category()->first()->slug;
     }
-    */
+    
 }

@@ -16,48 +16,48 @@ Route::get('/newarrivals/{slug}', 'ProjectController@newarrivals') -> name('newa
 
 Route::get('/about', 'ProjectController@about') -> name('about');
 
-Route::get('/blog', 'ProjectController@blog') -> name('blog');
-
-Route::get('/blogsingle/{id?}', 'ProjectController@blogsingle') -> name('blogsingle');
-
-Route::post('/blog/buy', 'ProjectController@blogbuy') -> name('blog.buy');
-
-//Route::get('/cart', 'ProjectController@cart') -> name('cart');
-
-// Route::get('/checkout', 'ProjectController@checkout') -> name('checkout');
-
-//Route::get('/contact', 'ProjectController@contact') -> name('contact');
-
 Route::get('/forgot', 'ProjectController@forgot') -> name('forgot');
 
 Route::get('/login', 'ProjectController@login') -> name('login');
 
-Route::get('/product/{id}', 'ProjectController@product') -> name('product');
-
-Route::post('/prodact/addComment/{id}', 'ProjectController@addComment')->name('prodact.addComment');
-
 Route::get('/register', 'ProjectController@register') -> name('register');
-
-Route::get('/shop/{slug}', 'ProjectController@shop') -> name('shop');
-
-Route::post('/product/search', 'ProjectController@product_search') -> name('product.search');
 
 Route::get('/categories', 'ProjectController@categories') -> name('categories');
 
-//Route::get('/shop', 'ProjectController@shop') -> name('shop');
-
-Route::get('/single/{slug}', 'ProjectController@single') -> name('single');
-
 Route::get('/terms', 'ProjectController@terms') -> name('terms');
 
-//Route::get('/wishlist', 'ProjectController@wishlist') -> name('wishlist');
 
-Auth::routes();
-//Route::get('/password/reset/{token}/{email}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
+
+Route::get('/product/{id}', 'ProductController@product') -> name('product');
+
+Route::post('/prodact/addComment/{id}', 'ProductController@addComment')->name('prodact.addComment');
+
+Route::get('/shop/{slug}', 'ProductController@shop') -> name('shop');
+
+Route::get('/pricedown/{slug?}', 'ProductController@pricedown') -> name('pricedown');
+
+Route::get('/priceup/{slug?}', 'ProductController@priceup') -> name('priceup');
+
+Route::post('/product/search', 'ProductController@product_search') -> name('product.search');
+
+
+
+Route::get('/blog', 'BlogController@blog') -> name('blog');
+
+Route::get('/blogsingle/{id?}', 'BlogController@blogsingle') -> name('blogsingle');
+
+Route::post('/blog/buy/{id}', 'BlogController@blogbuy') -> name('blog.buy');
+
+Route::get('/single/{slug}', 'BlogController@single') -> name('single');
+
 Route::get('/home', 'HomeController@home')->name('home');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin',  'middleware' => 'admin'], function()
-{
+
+Auth::routes();
+
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin',  'middleware' => 'admin'], function() {
 
 Route::get('admin', 'AdminController@admin')->name('admin.admin');
 

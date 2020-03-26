@@ -1,7 +1,7 @@
 <!-- Newsletter Popup Start -->
         <div class="popup_wrapper">
             <div class="test">
-                <button class="popup_off">Закрити999</button>
+                <button class="popup_off">Закрити</button>
                
                 <div class="subscribe_area text-center mt-60">
                     <h2>Підписка</h2>

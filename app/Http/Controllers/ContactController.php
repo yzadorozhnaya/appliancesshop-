@@ -16,7 +16,7 @@ class ContactController extends Controller
     public function buy(Request $request) {
     
         $body = '';
-
+        
         if (auth()->check()) {
             $name = Auth::user()->name;
             $email = Auth::user()->email;
