@@ -377,17 +377,16 @@
                                             console.log( value.name,value.brand,value.image_path,value.id);
                                         html += '<div class="product content"><div class="pro-info"><h4 id="name"><a href="">'+value.name+'</a></h4><a>'+value.brand+'</a><a>'+value.articul+'</a><p><span class="price">'+value.price+'</span><del class="prev-price">'+value.price+'</del></p><a><img class="primary-img" src= '+value.image_path+' alt="single-product"></img></a></div></div>'
                                         });
-                                      
                                         $('.products').append(html);
-
                                 })
+
                                     .fail(function(jqXHR,textStatus){
                                         alert("(((((((:"+ textStatus);
                                     });
-                                    
                     });
+
         $(function () {
-                  $("#slider-range").slider({
+        $("#slider-range").slider({
             range: true,
             min: 100,
             max: 15000,

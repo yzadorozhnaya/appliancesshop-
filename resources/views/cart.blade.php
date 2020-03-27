@@ -20,10 +20,10 @@
                     <div class="col-md-12 col-sm-12">
 
                     @if(count($cart->products)<1)
-                         <h1 >Кошик порожній</h1>
-                          <div class="wc-proceed-to-checkout">
-                                            <a href="{{route('categories')}}">продолжить покупки</a>
-                                        </div>
+                        <h1 >Кошик порожній</h1>
+                        <div class="wc-proceed-to-checkout">
+                            <a href="{{route('categories')}}">продолжить покупки</a>
+                        </div>
                     @else
                             <!-- Table Content Start -->
                             <div class="table-content table-responsive mb-45">

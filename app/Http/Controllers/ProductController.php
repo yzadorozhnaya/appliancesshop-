@@ -32,22 +32,21 @@ class ProductController extends Controller
 	}	
 
 	public function shop($slug,Request $request) {
-     $category = Categor::where('slug',$slug)->first(); 
+    $category = Categor::where('slug',$slug)->first(); 
       if ($request->ajax() && isset($request->start)) {
         $start = $request->start; 
         $end = $request->end; 
-        $products = DB::table('products')
-                    ->where('price', '>=', $start)
-                    ->where('price', '<=', $end)
-                    ->where('category_id','=',$category->id)
-                    ->orderby('price', 'ASC')->paginate(6);
-          response()->json($products);
-          return view('products', ['products' => $products]);
-      } else{
-            $products = Product::where('category_id',$category->id)->paginate(10);
-            return view('shop', ['products' => $products, 'slug' => $slug]);
-        }
-    }
+        $products = Product::whereBetween('price', [$start, $end])
+                           ->where('category_id',$category->id)
+                           ->orderby('price', 'ASC')
+                           ->paginate(10);
+      //response()->json($products);
+        return view('products', ['products' => $products]);
+      } 
+        $products = Product::where('category_id',$category->id)->paginate(10);
+        return view('shop', ['products' => $products, 'slug' => $slug]);
+   }   
+
     
   public function pricedown($slug) {
     $category = Categor::where('slug',$slug)->first();        
@@ -65,15 +64,14 @@ class ProductController extends Controller
       $name = $request->name;
       $brand = $request->brand;     
       $products = Product::query();
-
-         if($brand){
+      if($brand){
         $products_s = $products->where('brand', 'like', $brand.'%');
       }
       if($name){
         $products_s = $products->where('name', 'like', $name.'%');
       }    
-      $array = $products_s->get()->toArray();
-      return response()->json($array);
+     $array = $products_s->get()->toArray();
+     return response()->json($array);
       }
 
    public  function addComment($id=null,  Request $request){    
