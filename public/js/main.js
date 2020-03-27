@@ -572,19 +572,17 @@ $.cookie('hideModal', true, {
     /*----------------------------
     18. Price Slider Activation
     -----------------------------*/
-    $("#slider-range").slider({
+    /*$("#slider-range").slider({
         range: true,
         min: 100,
-        max: 10000,
+        max: 15000,
         values: [100, 10000],
     slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
       }
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );*/
 
     /*--------------------------
          banner colse Popup

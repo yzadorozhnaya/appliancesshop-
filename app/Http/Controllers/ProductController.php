@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Article;
 use App\Models\Cart;
 use App\Models\Comment;
+use Illuminate\Support\Facades\DB;
 use URL;
 use Route;
 use Illuminate\Http\Request;
@@ -30,10 +31,22 @@ class ProductController extends Controller
     return view('product', ['product' => $product, 'description'=>$description,'slug'=>$slug, 'comments'=>$comments,'users'=>$users, 'stok'=>$stok,'count'=>$count]);
 	}	
 
-	public function shop($slug) {
-    $category = Categor::where('slug',$slug)->first();        
-    $products = Product::where('category_id',$category->id)->paginate(10);
-    return view('shop', ['products' => $products, 'slug' => $slug]);
+	public function shop($slug,Request $request) {
+     $category = Categor::where('slug',$slug)->first(); 
+      if ($request->ajax() && isset($request->start)) {
+        $start = $request->start; 
+        $end = $request->end; 
+        $products = DB::table('products')
+                    ->where('price', '>=', $start)
+                    ->where('price', '<=', $end)
+                    ->where('category_id','=',$category->id)
+                    ->orderby('price', 'ASC')->paginate(6);
+          response()->json($products);
+          return view('products', ['products' => $products]);
+      } else{
+            $products = Product::where('category_id',$category->id)->paginate(10);
+            return view('shop', ['products' => $products, 'slug' => $slug]);
+        }
     }
     
   public function pricedown($slug) {
@@ -52,6 +65,7 @@ class ProductController extends Controller
       $name = $request->name;
       $brand = $request->brand;     
       $products = Product::query();
+
          if($brand){
         $products_s = $products->where('brand', 'like', $brand.'%');
       }

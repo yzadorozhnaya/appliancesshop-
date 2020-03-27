@@ -46,7 +46,11 @@
                                                 <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>
                                             </td>
                                             <td class="product-name"><a href="#"></a>{{$products->get($product['id'])->name}}<br>{{$products->get($product['id'])->articul}}</td>
+                                            @if($product['sale']>0)
+                                            <td class="product-price"><span class="amount">{{$product['price']*(1-$product['sale']/100)}}</span></td>
+                                            @else
                                             <td class="product-price"><span class="amount">{{$product['price']}}</span></td>
+                                            @endif
                                             <form method="POST" action="{{route('cart.change')}}">
                                                  @csrf
                                                     <td class="product-quantity">

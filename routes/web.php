@@ -35,6 +35,9 @@ Route::post('/prodact/addComment/{id}', 'ProductController@addComment')->name('p
 
 Route::get('/shop/{slug}', 'ProductController@shop') -> name('shop');
 
+Route::get('/products', 'ProductController@shop') -> name('products');
+
+
 Route::get('/pricedown/{slug?}', 'ProductController@pricedown') -> name('pricedown');
 
 Route::get('/priceup/{slug?}', 'ProductController@priceup') -> name('priceup');

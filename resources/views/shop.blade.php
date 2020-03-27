@@ -1,5 +1,6 @@
 @extends('layouts.layout')
     @section('content')
+
         <!-- Breadcrumb Start -->
         <div class="breadcrumb-area mt-30">
             <div class="container">
@@ -44,16 +45,21 @@
                              </div>
                             @endforeach
                             <!-- Sidebar Electronics Categorie End -->
-                            <!-- Price Filter Options Start -->
                             <div class="search-filter mb-40">
-                                <h3 class="sidebar-title">filter by price</h3>
-
-                                <form action="#" class="sidbar-style">
+                             <div class="sidbar-style"><!--price-range-->
+                                <div class="well">
+                                   <h3 class="sidebar-title">filter by price</h3>
                                     <div id="slider-range"></div>
-                                    <input type="text" id="amount" class="amount-range" readonly>
-                                </form>
+                                    <br>
+                                    <b class="pull-left">$
+                                        <input size="2" type="text" id="amount_start" name="start_price"
+                                               value="500" style="border:0px; font-weight: bold; color:green" readonly="readonly" /></b>
+                                    <b class="pull-right">$
+                                        <input size="2" type="text" id="amount_end" name="end_price" value="10000"
+                                               style="border:0px; font-weight: bold; color:green" readonly="readonly"/></b>
+                                   </div>
+                            </div><!--/price-range-->
                             </div>
-                            <!-- Price Filter Options End -->
                             <!-- Product Size Start -->
                             <div class="size mb-40">
                                 <h3 class="sidebar-title">size</h3>
@@ -208,7 +214,7 @@
                             </form>        
                         </div>
                         <!-- Grid & List View End -->
-                        <div class="main-categorie mb-all-40">
+                        <div class="main-categorie mb-all-40" id="updateDiv">
                             <!-- Grid & List Main Area End -->
                             @if(count($products)<1)
                                 <h1 >Товар відсутній</h1>
@@ -380,6 +386,31 @@
                                     });
                                     
                     });
+        $(function () {
+                  $("#slider-range").slider({
+            range: true,
+            min: 100,
+            max: 15000,
+            values: [500, 10000],
+            slide: function (event, ui) {
+                $("#amount_start").val(ui.values[ 0 ]);
+                $("#amount_end").val(ui.values[ 1 ]);
+                var start = $('#amount_start').val();
+                var end = $('#amount_end').val();
+                $.ajax({
+                    type: 'get',
+                    dataType: 'html',
+                    url: '',
+                    data: "start=" + start + "& end=" + end,
+                    success: function (response) {
+                        console.log(response);
+                        $('#updateDiv').html(response);        
+                    }
+
+                });
+            }
+        }); 
+         });  
             };
      
         </script> 
