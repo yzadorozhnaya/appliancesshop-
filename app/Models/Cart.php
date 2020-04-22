@@ -5,14 +5,16 @@ use \App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-
 class Cart {
 
     public $products;
 	public $count=0;
 	public $sum;
     public $pricesale;
-
+        /*
+        yjyjy       
+        yjyjy
+        */
 	public function  __construct()
     {
 		$cart = session()->get('cart');
@@ -54,8 +56,7 @@ class Cart {
         $this->calc();   
     }   
 
-     public  function change($id, $count){
-        
+     public  function change($id, $count){        
         foreach ($this->products as $key => $product) {
             if ($product['id']==$id) {
                 $this->products[$key]['count'] = $count;

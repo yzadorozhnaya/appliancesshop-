@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Auth;
 namespace App\Http\Controllers;
-use App\Models\Categor;
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Article;
@@ -17,8 +17,8 @@ class ProductController extends Controller
 {
 	public  function product($id, Request $request) {	
 		$category_id = Product::find($id)->category_id;   
-		$description =Categor::find($category_id)->description;		
-		$slug=Categor::find($category_id)->slug;
+		$description =Category::find($category_id)->description;		
+		$slug=Category::find($category_id)->slug;
 		$product = Product::find($id);		
     $comments = Comment::where('product_id',$product->id)->paginate(10);
     $stok = Product::find($id)->is_publish;
@@ -32,14 +32,13 @@ class ProductController extends Controller
 	}	
 
 	public function shop($slug,Request $request) {
-    $category = Categor::where('slug',$slug)->first(); 
+    $category = Category::where('slug',$slug)->first(); 
       if ($request->ajax() && isset($request->start)) {
         $start = $request->start; 
         $end = $request->end; 
-        $products = Product::whereBetween('price', [$start, $end])
-                           ->where('category_id',$category->id)
-                           ->orderby('price', 'ASC')
-                           ->paginate(10);
+        $products = $category->product()->whereBetween('price', [$start, $end])
+                             ->orderby('price', 'ASC')
+                             ->paginate(10);
       //response()->json($products);
         return view('products', ['products' => $products]);
       } 
@@ -49,13 +48,13 @@ class ProductController extends Controller
 
     
   public function pricedown($slug) {
-    $category = Categor::where('slug',$slug)->first();        
+    $category = Category::where('slug',$slug)->first();        
     $products = Product::where('category_id',$category->id)->paginate(10);   
     return view('shop', ['products' => $products->sortByDesc('price'),'slug' => $slug]);
     }
     
   public function priceup($slug) {
-    $category = Categor::where('slug',$slug)->first();        
+    $category = Category::where('slug',$slug)->first();        
     $products = Product::where('category_id',$category->id)->paginate(10);   
     return view('shop', ['products' => $products->sortBy('price'),'slug' => $slug]);
     }

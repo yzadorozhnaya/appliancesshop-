@@ -108,7 +108,6 @@
                                 <div class="side-product-active owl-carousel">
                                     <!-- Side Item Start -->
                                     <div class="side-pro-item">
-
                                         <!-- Single Product Start -->
                                         @foreach($products->sortByDesc('created_at') as $product_item)
                                         <div class="single-product single-product-sidebar">
@@ -118,9 +117,7 @@
                                                     <img class="primary-img" src="{{$product_item->image_path}}" alt="single-product">
                                                     <img class="secondary-img" src="{{$product_item->image_path}}" alt="single-product">
                                                 </a>
-                                                @if(($product_item->sale)>0)
-                                                <div class="label-product l_sale">{{$product_item->sale}}<span class="symbol-percent">%</span></div>
-                                                @endif
+                                                <div class="label-product l_sale">@if(($product_item->sale)>0){{$product_item->sale}} @endif<span class="symbol-percent">%</span></div>
                                             </div>
                                             <!-- Product Image End -->
                                             <!-- Product Content Start -->
@@ -129,13 +126,10 @@
                                                     <a>{{$product_item->brand}}</a>
                                                     <a>{{$product_item->articul}}</a>
                                                 </h4>
-                                                @if(($product_item->sale)>0)
-                                                    <p><span class="price">{{$product_item->price*(1-$product_item->sale/100)}}</span>
-                                                        <del class="prev-price">{{$product_item->price}}</del>
-                                                    </p>
-                                                @else
-                                                    <p><span class="price">{{$product_item->price}}</span></p>
-                                                @endif
+                                                
+                                                    <p><span class="price">@if(($product_item->sale)>0){{$product_item->price*(1-$product_item->sale/100)}}</span>
+                                                        <del class="prev-price">{{$product_item->price}}</del></p>
+                                                    @else<p><span class="price">{{$product_item->price}}</span></p>@endif
                                             </div>
                                             <!-- Product Content End -->
                                         </div>
@@ -312,7 +306,9 @@
                                                                 <h4><a href="{{route('product', ['id' => $product_item->id])}}">{{$product_item->name}}
                                                                 {{$product_item->brand}}{{$product_item->articul}}</a>
                                                                 </h4>
-                                                                <p><span class="price">{{$product_item->price}}</span></p>
+                                                               <p><span class="price">@if(($product_item->sale)>0){{$product_item->price*(1-$product_item->sale/100)}}</span>
+                                                               <del class="prev-price">{{$product_item->price}}</del></p>
+                                                               @else<p><span class="price">{{$product_item->price}}</span></p>@endif
                                                                 <p>{{$product_item->description}}</p>
                                                                 <div class="pro-actions">
                                                                     <div class="actions-primary">

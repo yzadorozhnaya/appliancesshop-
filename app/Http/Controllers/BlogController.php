@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use App\Models\Categor;
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Comment;
@@ -27,7 +27,7 @@ class BlogController extends Controller
 	}	
 
   public  function blogsingle($id) {
-    $category_id = Categor::where('id', $id)->first();
+    $category_id = Category::where('id', $id)->first();
     $article = Article::where('category_id', $category_id->id)->paginate(8);
     return view('blog', ['article' => $article]);
   } 

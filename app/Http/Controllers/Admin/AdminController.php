@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\Categor;
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Article;
@@ -167,7 +167,7 @@ class AdminController extends Controller
 
     public  function adminCategoriesList(){
 
-        $categories = Categor::paginate(10);
+        $categories = Category::paginate(10);
 
         return view('admin.categories.list', [ 
         'categories' => $categories]);
@@ -182,7 +182,7 @@ class AdminController extends Controller
 
     public  function adminCategoriesEdit($id){
 
-        $category =  Categor::find($id);
+        $category =  Category::find($id);
 
         return view('admin.categories.edit', [ 
         'category' => $category]);
@@ -193,11 +193,11 @@ class AdminController extends Controller
         
         if($id){
 
-            $category =  Categor::find($id);
+            $category =  Category::find($id);
 
         } else {
 
-            $category= new Categor();
+            $category= new Category();
 
             $category->publish = false;
 
@@ -218,7 +218,7 @@ class AdminController extends Controller
     }   
     public  function adminCategoriesDelete($id){
 
-        $category =  Categor::find($id);
+        $category =  Category::find($id);
 
         $category->delete();
 

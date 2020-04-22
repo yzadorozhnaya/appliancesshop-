@@ -12,7 +12,7 @@ class Product extends Model
 
      public function category()
     {
-        return $this->belongsTo('App\Models\Categor', 'category_id');
+        return $this->belongsTo('App\Models\Category', 'category_id');
     }
 
     public function comment()

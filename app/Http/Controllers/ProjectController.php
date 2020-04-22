@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Auth;
 namespace App\Http\Controllers;
-use App\Models\Categor;
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Article;
@@ -21,7 +21,7 @@ class ProjectController extends Controller
     }
 
   public function newarrivals($slug) {		
-    $category = Categor::where('slug',$slug)->first();       
+    $category = Category::where('slug',$slug)->first();       
     $products = Product::where('category_id',$category->id)->paginate(10);      	
     return view('index',['products' => $products]);
     }

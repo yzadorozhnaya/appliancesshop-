@@ -39,18 +39,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                     
                                         @foreach($cart->products as $product)
                                         <tr>
                                             <td class="product-thumbnail">
                                                 <a href="#"><img src="{{$products->get($product['id'])->image_path}}" alt="cart-image"></a>
                                             </td>
                                             <td class="product-name"><a href="#"></a>{{$products->get($product['id'])->name}}<br>{{$products->get($product['id'])->articul}}</td>
-                                            @if($product['sale']>0)
-                                            <td class="product-price"><span class="amount">{{$product['price']*(1-$product['sale']/100)}}</span></td>
-                                            @else
-                                            <td class="product-price"><span class="amount">{{$product['price']}}</span></td>
-                                            @endif
+                                            <td class="product-price"><span class="amount"> @if($product['sale']>0){{$product['price']*(1-$product['sale']/100)}} @else{{$product['price']}} @endif</span></td>
                                             <form method="POST" action="{{route('cart.change')}}">
                                                  @csrf
                                                     <td class="product-quantity">
@@ -60,11 +55,7 @@
 
                                                     </td>
                                             </form>
-                                            @if($product['sale']>0)
-                                            <td class="product-subtotal">{{$product['count']*$product['price']*(1-$product['sale']/100)}}</td>
-                                            @else
-                                            <td class="product-subtotal">{{$product['count']*$product['price']}}</td>
-                                            @endif
+                                            <td class="product-subtotal">@if($product['sale']>0){{$product['count']*$product['price']*(1-$product['sale']/100)}}@else{{$product['count']*$product['price']}}@endif</td>
                                             <form method="POST" action="{{route('cart.remove')}}">
                                                 @csrf
                                                     <td class="product-remove">
