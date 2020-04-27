@@ -82,7 +82,11 @@ class CartController extends Controller
             }else
             $body .="\r\n"."заказ"." ".$products->get($product['id'])->name." ".$products->get($product['id'])->articul." ".$products->get($product['id'])->brand."\r\n"."цена"." ".$product['price']."\r\n".'количество'." ".$product['count'];
         }
-        $sum=$this->cart->sum;
+        if ($product['sale']>0) {
+            $sum=$this->cart->sumsale;
+        }else{
+            $sum=$this->cart->sum;
+        }
         $com=$request->checkoutmess;
         $body.="\r\n"."Примечания к заказу"." ".$com."\r\n"."заказ общей стоимостью"." ".$sum;
         if (auth()->check()) {

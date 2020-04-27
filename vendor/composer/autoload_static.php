@@ -391,7 +391,7 @@ class ComposerStaticInitcff5a18d4bef1eb313e80802c6b547b1
         'App\\Mail\\ResetPassword' => __DIR__ . '/../..' . '/app/Mail/ResetPassword.php',
         'App\\Models\\Article' => __DIR__ . '/../..' . '/app/Models/Article.php',
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
-        'App\\Models\\Categor' => __DIR__ . '/../..' . '/app/Models/Categor.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',

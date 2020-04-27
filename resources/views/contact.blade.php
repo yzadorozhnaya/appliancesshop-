@@ -1,19 +1,15 @@
 @extends('layouts.layout')
     @section('content')
-        <!-- Breadcrumb Start -->
         <div class="breadcrumb-area mt-30">
             <div class="container">
                 <div class="breadcrumb">
-                     <ul class="d-flex align-items-center">
+                    <ul class="d-flex align-items-center">
                         <li><a href="{{route('index')}}">Головна</a></li>
-                        <li class="active"><a href="{{route('contact')}}">контакти</a></a></li>
+                        <li class="active"><a href="{{route('contact')}}">контакти</a></li>
                     </ul>
                 </div>
             </div>
-            <!-- Container End -->
         </div>
-        <!-- Breadcrumb End -->
-        <!-- Contact Email Area Start -->
         <div class="contact-area ptb-100 ptb-sm-60">
             <div class="container">
                 <h3 class="mb-20">Свяжитесь с нами</h3>
@@ -21,23 +17,23 @@
                 <p class="mb-20">Адрес принятия письменных претензий: 49100, город Днепр, бульвар Славы (служба поддержки потребителей ООО ЕЛЕКТРОН ТРЕЙД) или по месту нахождения любого из магазинов ЕЛЕКТРОН</p>
                 <p class="mb-20">Адрес принятия претензий по обмену / возврат товаров: местонахождение любого из магазинов ЕЛЕКТРОН</p>
                 <form method="POST" action="{{route('contact.buy')}}">
-                 <!--<form id="contact-form" class="contact-form"  method="post">-->
+                    @csrf
                     <div class="address-wrapper row">
                         <div class="col-md-12">
                             <div class="address-fname">
-                                 @if (auth()->check())
-                                <input class="form-control" type="text" name="name" placeholder="{{ Auth::user()->name }}">
-                                 @else
-                                 <input class="form-control" type="text" name="name" placeholder="Name">
-                                 @endif
+                                @if(auth()->check())
+                                    <input class="form-control" type="text" name="name" placeholder="{{ Auth::user()->name }}">
+                                @else
+                                    <input class="form-control" type="text" name="name" placeholder="Name">
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="address-email">
-                                @if (auth()->check())
-                                <input class="form-control" type="email" name="email" placeholder="{{ Auth::user()->email }}">
+                                @if(auth()->check())
+                                    <input class="form-control" type="email" name="email" placeholder="{{ Auth::user()->email }}">
                                 @else
-                                <input class="form-control" type="email" name="email" placeholder="Email">
+                                    <input class="form-control" type="email" name="email" placeholder="Email">
                                 @endif
                             </div>
                         </div>
@@ -48,27 +44,17 @@
                         </div>
                     </div>
                     <p class="form-message"></p>
-
-
-
                     <div class="footer-content mail-content clearfix">
-                        <div class="send-email float-md-right">
-                           
-                                @csrf
+                        <div class="send-email float-md-right">                           
                             <button type="submit" class="btn btn-primary checkout-btn">відправити</button>
-                            <!--</form>-->
-                            
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-        <!-- Contact Email Area End -->
-       <!-- Google Map Start -->
         <div class="goole-map">
             <div id="map" style="height:400px"></div>
-        </div>
-        <!-- Google Map End -->   
+        </div> 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAq7MrCR1A2qIShmjbtLHSKjcEIEBEEwM"></script>
     <script>
         // When the window has finished loading create our google map below
@@ -168,7 +154,6 @@
                     }
                 ]
             };
-
             // Get the HTML DOM element that will contain your map 
             // We are using a div with id="map" seen below in the <body>
             var mapElement = document.getElementById('map');
@@ -184,6 +169,5 @@
             });
         }
     </script>
-        <!-- Support Area Start Here -->
     @endsection
 

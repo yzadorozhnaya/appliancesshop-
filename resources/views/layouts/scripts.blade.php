@@ -1,6 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-
 <head>
   <!-- Modernizer js -->
     <script src="{{asset("js/vendor/modernizr-3.5.0.min.js")}}"></script>
@@ -34,9 +33,7 @@
     <!-- Plugin js -->
     <script src="{{asset("js/plugins.js")}}"></script>
     <!-- Main activaion js -->
-    <script src="{{asset("js/main.js")}}"></script>
-   
-
+    <script src="{{asset("js/main.js")}}"></script> 
     <script src="{{asset("js/jquery.cookie.js")}}"></script>
 </body>
 </html>

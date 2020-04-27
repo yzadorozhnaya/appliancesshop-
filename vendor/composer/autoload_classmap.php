@@ -37,7 +37,7 @@ return array(
     'App\\Mail\\ResetPassword' => $baseDir . '/app/Mail/ResetPassword.php',
     'App\\Models\\Article' => $baseDir . '/app/Models/Article.php',
     'App\\Models\\Cart' => $baseDir . '/app/Models/Cart.php',
-    'App\\Models\\Categor' => $baseDir . '/app/Models/Categor.php',
+    'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',

@@ -11,49 +11,30 @@
 |
 */
 Route::get('/', 'ProjectController@index') -> name('index');
-
 Route::get('/newarrivals/{slug}', 'ProjectController@newarrivals') -> name('newarrivals');
-
 Route::get('/about', 'ProjectController@about') -> name('about');
-
 Route::get('/forgot', 'ProjectController@forgot') -> name('forgot');
-
 Route::get('/login', 'ProjectController@login') -> name('login');
-
 Route::get('/register', 'ProjectController@register') -> name('register');
-
 Route::get('/categories', 'ProjectController@categories') -> name('categories');
-
 Route::get('/terms', 'ProjectController@terms') -> name('terms');
 
 
-
-
 Route::get('/product/{id}', 'ProductController@product') -> name('product');
-
 Route::post('/prodact/addComment/{id}', 'ProductController@addComment')->name('prodact.addComment');
-
 Route::get('/shop/{slug}', 'ProductController@shop') -> name('shop');
-
 Route::get('/products', 'ProductController@shop') -> name('products');
 
 
 Route::get('/pricedown/{slug?}', 'ProductController@pricedown') -> name('pricedown');
-
 Route::get('/priceup/{slug?}', 'ProductController@priceup') -> name('priceup');
-
 Route::post('/product/search', 'ProductController@product_search') -> name('product.search');
 
 
-
 Route::get('/blog', 'BlogController@blog') -> name('blog');
-
 Route::get('/blogsingle/{id?}', 'BlogController@blogsingle') -> name('blogsingle');
-
 Route::post('/blog/buy/{id}', 'BlogController@blogbuy') -> name('blog.buy');
-
 Route::get('/single/{slug}', 'BlogController@single') -> name('single');
-
 Route::get('/home', 'HomeController@home')->name('home');
 
 

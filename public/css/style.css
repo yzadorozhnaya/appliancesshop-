@@ -3426,7 +3426,6 @@ ul.tag-list > li > a {
     padding: 20px 15px;
     vertical-align: middle;
 }
-
 .product-title {
     font-size: 15px;
     font-weight: 600;
@@ -4008,6 +4007,9 @@ p.checkout-coupon input[type="submit"] {
     width: 130px;
 }
 
+td.product-description {
+    width: 130px;
+}
 .table-content table td.product-name a:hover,
 .buttons-cart a:hover {
     color: #e62e04;
@@ -4548,4 +4550,11 @@ a.shipping-calculator-button:hover {
   text-decoration: none;
   top: 6px;
   transition: all 0.3s ease-in 0s;
+}
+.single-cart-box button{
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
 }

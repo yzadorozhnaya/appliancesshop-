@@ -1,6 +1,5 @@
 @extends('layouts.layout')
     @section('content')
-        <!-- Breadcrumb Start -->
         <div class="breadcrumb-area mt-30">
             <div class="container">
                 <div class="breadcrumb">
@@ -10,10 +9,7 @@
                     </ul>
                 </div>
             </div>
-            <!-- Container End -->
         </div>
-        <!-- Breadcrumb End -->
-        <!-- About Us Start Here -->
         <div class="about-us pt-100 pt-sm-60">
             <div class="container">
                 <div class="row">
@@ -33,7 +29,5 @@
                     </div>
                 </div>
             </div>
-            <!-- Container End -->
         </div>
-        <!-- About Us End Here -->
     @endsection

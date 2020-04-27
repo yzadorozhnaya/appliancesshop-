@@ -42,14 +42,8 @@ class ResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        
-        /*return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');*/
         $subject = 'Восстановление пароля';
         return (new Mailable($this->token, $notifiable))->subject($subject)->to($notifiable->email);
-
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\View\View;
 class CartComposer
 {
     public function compose(View $view) {
-        $cart = new Cart();        
-       return $view->with('cart', $cart);       
+       	$cart = new Cart();        
+    	return $view->with('cart', $cart);       
     }
 }

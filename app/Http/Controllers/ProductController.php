@@ -94,7 +94,6 @@ class ProductController extends Controller
     $comment->fill($request->only('user_id','body','name'));
     $comment->save();
     return redirect(route('index'))->with('success','Ваш отзыв ' . $name . ' добавлен' . '!');
-    }    
-
+    }
 	
 }

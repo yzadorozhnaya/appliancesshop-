@@ -13,9 +13,9 @@ class AlterProductsTable extends Migration
      */
     public function up()
     {
-       Schema::table('products', function (Blueprint $table) {
-            $table->integer('sale')->after('price');
-        }); 
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('sale')->default(0)->after('price');
+        });
     }
 
     /**

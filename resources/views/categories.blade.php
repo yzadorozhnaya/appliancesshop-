@@ -26,13 +26,13 @@
                                         @foreach($categories->where('parent_id',0) as $cat)
                                         <div class="col-lg-4 col-md-4">
                                             <div class="single-product">
-                                                    <h2>{{$cat->name}}</h2>
-                                                    @foreach($cat->child()->get() as $cat2)
-                                                        <h3>{{$cat2->name}}</h3>
-                                                        @foreach($cat2->child()->get() as $cat3)
-                                                            <p><a href="{{route('shop', ['slug' => $cat3->slug])}}">{{$cat3->name}}</a></p>
-                                                        @endforeach
+                                                <h2>{{$cat->name}}</h2>
+                                                @foreach($cat->child()->get() as $cat2)
+                                                    <h3>{{$cat2->name}}</h3>
+                                                    @foreach($cat2->child()->get() as $cat3)
+                                                        <p><a href="{{route('shop', ['slug' => $cat3->slug])}}">{{$cat3->name}}</a></p>
                                                     @endforeach
+                                                @endforeach
                                             </div>
                                         </div>
                                         @endforeach

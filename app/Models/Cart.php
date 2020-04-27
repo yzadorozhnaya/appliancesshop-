@@ -10,13 +10,9 @@ class Cart {
     public $products;
 	public $count=0;
 	public $sum;
-    public $pricesale;
-        /*
-        yjyjy       
-        yjyjy
-        */
-	public function  __construct()
-    {
+    public $sumsale;
+      
+	public function  __construct(){
 		$cart = session()->get('cart');
 		if ($cart) {
 			$this->products=$cart;
@@ -26,32 +22,32 @@ class Cart {
 		}
 	}
 
-     public  function add($product,$count){
+    public  function add($product,$count){
         $flag = true; 
-       foreach($this->products as $key => $product_cart) {
-           if($product_cart['id']==$product->id) {
+        foreach($this->products as $key => $product_cart) {
+            if($product_cart['id']==$product->id) {
                $this->products[$key]['count'] = $product_cart['count']+$count;
                $flag = false;
                break;
-           }
-       }
+            }
+        }
         if ($flag) {
-              $this->products[]=[
-                'id'=>$product->id,
-                'price'=>$product->price,
-                'sale'=>$product->sale,
-                'count'=>$count,
+            $this->products[]=[
+            'id'=>$product->id,
+            'price'=>$product->price,
+            'sale'=>$product->sale,
+            'count'=>$count,
             ];
-        }//dd($this->products);
+        }
         $this->calc();
     }  
 
      public  function remove($id){
-        foreach ($this->products as $key => $product) {
-                if ($product['id']==$id) { 
-                    unset($this->products[$key]);
-                    break;
-                }
+        foreach ($this->products as $key => $product){
+            if ($product['id']==$id) { 
+                unset($this->products[$key]);
+                break;
+            }
         }
         $this->calc();   
     }   
@@ -74,13 +70,15 @@ class Cart {
     private  function calc(){
      	$this->count = 0;
         $this->sum = 0;
+        $this->sumsale = 0;
         foreach ($this->products as $product) {
             if ($product['sale']>0) {
-                $this->sum += $product['count'] * $product['price'] *(1-$product['sale']/100);
+                $this->sumsale += $product['count'] * $product['price'] *(1-$product['sale']/100);
             }else
-           $this->sum += $product['count'] * $product['price'];
-           $this->count +=  $product['count'];
-        }  
+            $this->sumsale += $product['count'] * $product['price'];
+            $this->sum += $product['price'] * $product['count'];
+            $this->count += $product['count'];
+        } 
         session(['cart'=>$this->products]);  
     }
 

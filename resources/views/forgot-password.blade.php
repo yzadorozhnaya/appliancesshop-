@@ -1,7 +1,5 @@
 @extends('layouts.layout')
     @section('content')
-     
-        <!-- Breadcrumb Start -->
         <div class="breadcrumb-area mt-30">
             <div class="container">
                 <div class="breadcrumb">
@@ -12,10 +10,7 @@
                     </ul>
                 </div>
             </div>
-            <!-- Container End -->
         </div>
-        <!-- Breadcrumb End -->
-        <!-- Register Account Start -->
         <div class="Lost-pass ptb-100 ptb-sm-60">
             <div class="container">
                 <div class="register-title">
@@ -42,7 +37,5 @@
                     </div>
                 </form>
             </div>
-            <!-- Container End -->
         </div>
-
- @endsection
+    @endsection

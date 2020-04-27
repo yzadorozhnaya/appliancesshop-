@@ -32,6 +32,6 @@ class ContactController extends Controller
              $message->to('katya.zadorognay@gmail.com');
          });
        
-         return redirect(route('contact'))->with('success','Ви успішно зробили своє замовлення!');
-     }
+        return redirect(route('contact'))->with('success','Ви успішно зробили своє замовлення!');
+    }
 }

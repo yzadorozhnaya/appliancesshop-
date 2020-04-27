@@ -25,8 +25,8 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-          view()->composer('*', CartComposer::class);
-          view()->composer('*', WishlistComposer::class);
-         view()->composer('layouts.header', ProductComposer::class);
+        view()->composer('*', CartComposer::class);
+        view()->composer('*', WishlistComposer::class);
+        view()->composer('layouts.header', ProductComposer::class);
     }
 }

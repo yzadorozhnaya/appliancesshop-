@@ -10,11 +10,11 @@ class ProductComposer
 {
     public function compose(View $view) {
     	$cart = new Cart();
-         $ids=[];
+        $ids=[];
         foreach($cart->products as $product) {
            $ids[] = $product['id'];
         }
         $products = Product::whereIn('id',$ids)->get()->keyBy('id');              
-      return $view->with('products', $products);       
+    return $view->with('products', $products);       
     }
 }
